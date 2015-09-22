@@ -1,27 +1,52 @@
 package com.paris8.univ.androidproject;
 
-import android.support.v7.app.AppCompatActivity;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import com.paris8.univ.androidproject.engine.EngineView;
+
+public class MainActivity extends AppCompatActivity
+{
+    final static private String TAG = "MainActivity";
+
+    GLSurfaceView mView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        mView = new EngineView(getApplication());
+        setContentView(mView);
+        //setContentView(R.layout.activity_main);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    protected void onPause()
+    {
+        super.onPause();
+        mView.onPause();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        mView.onResume();
+    }
+
+    /*@Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -33,5 +58,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }*/
+
+    static
+    {
+        System.loadLibrary("engine-jni");
     }
 }
