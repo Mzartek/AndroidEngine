@@ -1,12 +1,12 @@
 package com.paris8.univ.androidproject;
 
+import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.paris8.univ.androidproject.engine.EngineView;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends Activity
 {
     final static private String TAG = "MainActivity";
 

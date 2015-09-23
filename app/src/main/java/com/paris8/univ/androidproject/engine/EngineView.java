@@ -17,28 +17,34 @@ public class EngineView extends GLSurfaceView
     public EngineView(Context context)
     {
         super(context);
-        setEGLConfigChooser(8, 8, 8, 0, 16, 0);
+        setEGLConfigChooser(8, 8, 8, 0, 24, 8);
         setEGLContextClientVersion(2);
         setRenderer(new Renderer());
     }
 
     private class Renderer implements GLSurfaceView.Renderer
     {
+        private int mWidth = 0;
+        private int mHeight = 0;
+
         @Override
         public void onSurfaceCreated(GL10 gl, EGLConfig config)
         {
-            Log.d(TAG, "Surface Created");
             GraphicsRenderer.printGLinfo();
         }
 
         @Override
         public void onSurfaceChanged(GL10 gl, int width, int height)
         {
+            mWidth = width;
+            mHeight = height;
         }
 
         @Override
         public void onDrawFrame(GL10 gl)
         {
+            GraphicsRenderer.clear();
+            GraphicsRenderer.setState(mWidth, mHeight);
         }
     }
 }

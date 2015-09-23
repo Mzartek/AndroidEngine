@@ -20,6 +20,8 @@ namespace Engine
 
     public:
         void printGLinfo(void);
+	    void setState(GLuint width, GLuint height) const;
+        void clear(void) const;
     };
 }
 
