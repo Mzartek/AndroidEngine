@@ -6,8 +6,15 @@
 /build
 /captures
 
+# Tmp
 *~
 
+# C++
 *.so
 *.o
 *.d
+
+# Android
+*.iml
+.idea
+.gradle
