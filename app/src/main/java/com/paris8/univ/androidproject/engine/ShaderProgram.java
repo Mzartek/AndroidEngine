@@ -5,7 +5,7 @@ package com.paris8.univ.androidproject.engine;
  */
 public class ShaderProgram extends EngineObject
 {
-    private static native int newShaderProgram(String vs, String fs);
+    private static native long newShaderProgram(String vs, String fs);
 
     public ShaderProgram(String vs, String fs)
     {

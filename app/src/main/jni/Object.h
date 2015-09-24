@@ -22,7 +22,7 @@
 
 namespace Engine
 {
-    typedef unsigned int ObjectHandler;
+    typedef long long ObjectHandler;
 
     class Object
     {
@@ -30,14 +30,8 @@ namespace Engine
         template<typename T>
         static T* retrieveObject(ObjectHandler objectHandler)
         {
-            return reinterpret_cast<T*>(objectsHandler[objectHandler]);
+            return reinterpret_cast<T*>(objectHandler);
         }
-
-    private:
-        static std::map<ObjectHandler, Object *> objectsHandler;
-        static ObjectHandler GenerateHandler(void);
-
-        ObjectHandler _handler;
 
     public:
         Object(void);

@@ -4,43 +4,34 @@
 
 #include "Object.h"
 
-std::map<Engine::ObjectHandler, Engine::Object *> Engine::Object::objectsHandler;
-
-Engine::ObjectHandler Engine::Object::GenerateHandler(void)
-{
-    static ObjectHandler objectHandler = 1;
-
-    while (objectsHandler.find(objectHandler) != objectsHandler.end())
-    {
-        objectHandler++;
-    }
-
-    return objectHandler++;
-}
-
 Engine::Object::Object(void)
-        : _handler(GenerateHandler())
 {
-    objectsHandler[_handler] = this;
 }
 
 Engine::Object::~Object(void)
 {
-    objectsHandler.erase(_handler);
 }
 
 Engine::ObjectHandler Engine::Object::getHandler(void)
 {
-    return _handler;
+    return reinterpret_cast<long long>(this);
 }
 
 extern "C"
 {
-    JNIEXPORT void JNICALL Java_com_paris8_univ_androidproject_engine_EngineObject_DeleteObject(JNIEnv *env, jobject thiz, jint objectHandler);
+    JNIEXPORT void JNICALL Java_com_paris8_univ_androidproject_engine_EngineObject_DeleteObject(JNIEnv *env, jobject thiz, jlong objectHandler);
 }
 
-void Java_com_paris8_univ_androidproject_engine_EngineObject_DeleteObject(JNIEnv *env, jobject thiz, jint objectHandler)
+void Java_com_paris8_univ_androidproject_engine_EngineObject_DeleteObject(JNIEnv *env, jobject thiz, jlong objectHandler)
 {
-    ALOGD("Delete Object (Handler=%d)", objectHandler);
+    ALOGD("Delete Object (Handler=%lld)", objectHandler);
     delete Engine::Object::retrieveObject<Engine::Object>(objectHandler);
 }
+
+/*#include <assimp/Importer.hpp>
+#include <assimp/postprocess.h>
+void testtest(void)
+{
+    Assimp::Importer importer;
+    const aiScene *pScene = importer.ReadFile("test", aiProcess_Triangulate);
+}*/

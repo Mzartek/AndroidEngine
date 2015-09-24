@@ -5,11 +5,11 @@ package com.paris8.univ.androidproject.engine;
  */
 public class EngineObject extends Object
 {
-    private static native void DeleteObject(int objectHandler);
+    private static native void DeleteObject(long objectHandler);
 
-    private int objectHandler;
+    private long objectHandler;
 
-    public EngineObject(int objectHandler)
+    public EngineObject(long objectHandler)
     {
         this.objectHandler = objectHandler;
     }
@@ -31,7 +31,7 @@ public class EngineObject extends Object
         }
     }
 
-    public int getObjectHandler()
+    public long getObjectHandler()
     {
         return objectHandler;
     }
