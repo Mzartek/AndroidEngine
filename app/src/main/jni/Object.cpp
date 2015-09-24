@@ -4,7 +4,7 @@
 
 #include "Object.h"
 
-std::map<Engine::ObjectHandler, const Engine::Object *> Engine::Object::objectsHandler;
+std::map<Engine::ObjectHandler, Engine::Object *> Engine::Object::objectsHandler;
 
 Engine::ObjectHandler Engine::Object::GenerateHandler(void)
 {
@@ -32,4 +32,15 @@ Engine::Object::~Object(void)
 Engine::ObjectHandler Engine::Object::getHandler(void)
 {
     return _handler;
+}
+
+extern "C"
+{
+    JNIEXPORT void JNICALL Java_com_paris8_univ_androidproject_engine_EngineObject_DeleteObject(JNIEnv *env, jobject thiz, jint objectHandler);
+}
+
+void Java_com_paris8_univ_androidproject_engine_EngineObject_DeleteObject(JNIEnv *env, jobject thiz, jint objectHandler)
+{
+    ALOGD("Delete Object (Handler=%d)", objectHandler);
+    delete Engine::Object::retrieveObject<Engine::Object>(objectHandler);
 }

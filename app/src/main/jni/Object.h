@@ -7,6 +7,7 @@
 
 #include <map>
 #include <string>
+#include <fstream>
 
 #include <jni.h>
 
@@ -15,9 +16,9 @@
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
 
-#define ALOGD(LOG_TAG, ...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
-#define ALOGE(LOG_TAG, ...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
-#define ALOGI(LOG_TAG, ...) __android_log_print(ANDROID_LOG_INFO , LOG_TAG, __VA_ARGS__)
+#define ALOGD(...) __android_log_print(ANDROID_LOG_DEBUG, __FILE__, __VA_ARGS__)
+#define ALOGE(...) __android_log_print(ANDROID_LOG_ERROR, __FILE__, __VA_ARGS__)
+#define ALOGI(...) __android_log_print(ANDROID_LOG_INFO , __FILE__, __VA_ARGS__)
 
 namespace Engine
 {
@@ -26,10 +27,16 @@ namespace Engine
     class Object
     {
     public:
-        static std::map<ObjectHandler, const Object *> objectsHandler;
+        template<typename T>
+        static T* retrieveObject(ObjectHandler objectHandler)
+        {
+            return reinterpret_cast<T*>(objectsHandler[objectHandler]);
+        }
 
     private:
+        static std::map<ObjectHandler, Object *> objectsHandler;
         static ObjectHandler GenerateHandler(void);
+
         ObjectHandler _handler;
 
     public:

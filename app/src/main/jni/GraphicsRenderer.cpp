@@ -4,8 +4,6 @@
 
 #include "GraphicsRenderer.h"
 
-#define LOG_TAG "GraphicsRenderer"
-
 Engine::GraphicsRenderer& Engine::GraphicsRenderer::Instance(void)
 {
     static GraphicsRenderer instance;
@@ -22,10 +20,10 @@ Engine::GraphicsRenderer::~GraphicsRenderer(void)
 
 void Engine::GraphicsRenderer::printGLinfo(void)
 {
-    ALOGD(LOG_TAG, "Version:    \"%s\"", glGetString(GL_VERSION)   );
-    ALOGD(LOG_TAG, "Vendor:     \"%s\"", glGetString(GL_VENDOR)    );
-    ALOGD(LOG_TAG, "Renderer:   \"%s\"", glGetString(GL_RENDERER)  );
-    ALOGD(LOG_TAG, "Extensions: \"%s\"", glGetString(GL_EXTENSIONS));
+    ALOGD("Version:    \"%s\"", glGetString(GL_VERSION)   );
+    ALOGD("Vendor:     \"%s\"", glGetString(GL_VENDOR)    );
+    ALOGD("Renderer:   \"%s\"", glGetString(GL_RENDERER)  );
+    ALOGD("Extensions: \"%s\"", glGetString(GL_EXTENSIONS));
 }
 
 void Engine::GraphicsRenderer::setState(GLuint width, GLuint height) const
