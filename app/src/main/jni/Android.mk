@@ -9,9 +9,9 @@ LOCAL_INCLUDE_PATH      := $(LOCAL_PATH)/externals/include
 
 include $(CLEAR_VARS)
 LOCAL_MODULE            := engine-jni
-LOCAL_SRC_FILES         := Object.cpp GraphicsRenderer.cpp ShaderProgram.cpp Tools/StringHandler.cpp
-#LOCAL_C_INCLUDES        := $(LOCAL_INCLUDE_PATH)
-LOCAL_CFLAGS            := -std=c++11 -Wall
+LOCAL_SRC_FILES         := Object.cpp GraphicsRenderer.cpp Buffer.cpp ShaderProgram.cpp Tools/StringHandler.cpp Camera/Camera.cpp Camera/OrthoCamera.cpp Camera/PerspCamera.cpp
+LOCAL_C_INCLUDES        := $(LOCAL_INCLUDE_PATH)
+LOCAL_CFLAGS            := -std=c++11 -Wall -fexceptions
 LOCAL_LDLIBS            := -llog -lGLESv2
 #LOCAL_STATIC_LIBRARIES  := assimpStaticLib
 include $(BUILD_SHARED_LIBRARY)

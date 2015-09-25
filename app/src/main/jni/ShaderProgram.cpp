@@ -16,8 +16,7 @@ inline GLuint loadShader(const GLchar *filename, const GLenum &type)
     id = glCreateShader(type);
     if (id == 0)
     {
-        ALOGE("Error while creating shader");
-        exit(1);
+        throw std::runtime_error("Error while creating shader");
     }
 
     content = Engine::Tools::readText(filename);
@@ -33,13 +32,13 @@ inline GLuint loadShader(const GLchar *filename, const GLenum &type)
         log[logsize] = '\0';
 
         glGetShaderInfoLog(id, logsize, &logsize, log);
-        ALOGE("Error while compiling shader: %s\n%s", filename, log);
+        std::string error("Error while compiling shader: " + std::string(filename) + '\n' + std::string(log));
 
         glDeleteShader(id);
         delete[] log;
         delete[] content;
 
-        exit(1);
+        throw std::runtime_error(error);
     }
 
     delete[] content;
@@ -56,8 +55,7 @@ Engine::ShaderProgram::ShaderProgram(const GLchar *vs, const GLchar *fs)
     _idProgram = glCreateProgram();
     if (_idProgram == 0)
     {
-        ALOGE("Error while creating program");
-        exit(1);
+        throw std::runtime_error("Error while creating program");
     }
 
     if (vs != nullptr)
@@ -83,11 +81,11 @@ Engine::ShaderProgram::ShaderProgram(const GLchar *vs, const GLchar *fs)
         log[logsize] = '\0';
 
         glGetProgramInfoLog(_idProgram, logsize, &logsize, log);
-        ALOGE("Error while linking program: %u\n%s", _idProgram, log);
+        std::string error("Error while linking program: " + std::string(log));
 
         delete[] log;
 
-        exit(1);
+        throw std::runtime_error(error);
     }
 }
 
