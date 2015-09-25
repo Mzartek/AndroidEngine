@@ -62,6 +62,8 @@ public class MainActivity extends Activity
 
     static
     {
+        // Warning! The order of the load is important
+        System.loadLibrary("assimp");
         System.loadLibrary("engine-jni");
     }
 }

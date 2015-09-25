@@ -1,17 +1,17 @@
 LOCAL_PATH              := $(call my-dir)
-LOCAL_LIB_PATH          := $(LOCAL_PATH)/externals/lib
-LOCAL_INCLUDE_PATH      := $(LOCAL_PATH)/externals/include
+EXTERNALS_INCLUDE       := externals/include
+EXTERNALS_LIB           := externals/lib
 
-#include $(CLEAR_VARS)
-#LOCAL_MODULE            := assimpStaticLib
-#LOCAL_SRC_FILES         := /home/mzartek/Programmation/AndroidProject/app/src/main/jni/externals/lib/libassimp.a
-#include $(PREBUILT_STATIC_LIBRARY)
+include $(CLEAR_VARS)
+LOCAL_MODULE            := libassimp
+LOCAL_SRC_FILES         := $(EXTERNALS_LIB)/$(TARGET_ARCH_ABI)/libassimp.so
+include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE            := engine-jni
 LOCAL_SRC_FILES         := Object.cpp GraphicsRenderer.cpp Buffer.cpp ShaderProgram.cpp Tools/StringHandler.cpp Camera/Camera.cpp Camera/OrthoCamera.cpp Camera/PerspCamera.cpp
-LOCAL_C_INCLUDES        := $(LOCAL_INCLUDE_PATH)
-LOCAL_CFLAGS            := -std=c++11 -Wall -fexceptions
+LOCAL_C_INCLUDES        := $(LOCAL_PATH)/$(EXTERNALS_INCLUDE)
+LOCAL_CFLAGS            := -std=c++11 -Wall -Wno-attributes -fexceptions
 LOCAL_LDLIBS            := -llog -lGLESv2
-#LOCAL_STATIC_LIBRARIES  := assimpStaticLib
+LOCAL_SHARED_LIBRARIES  := libassimp
 include $(BUILD_SHARED_LIBRARY)
