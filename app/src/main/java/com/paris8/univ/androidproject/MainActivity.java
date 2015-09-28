@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import com.paris8.univ.androidproject.engine.EngineView;
 
+import java.io.File;
+
 public class MainActivity extends Activity
 {
     final static private String TAG = "MainActivity";
@@ -63,6 +65,8 @@ public class MainActivity extends Activity
     static
     {
         // Warning! The order of the load is important
+        //System.loadLibrary("png");
+        //System.loadLibrary("jpeg");
         System.loadLibrary("assimp");
         System.loadLibrary("engine-jni");
     }

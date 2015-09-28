@@ -3,6 +3,16 @@ EXTERNALS_INCLUDE       := externals/include
 EXTERNALS_LIB           := externals/lib
 
 include $(CLEAR_VARS)
+LOCAL_MODULE            := libpng
+LOCAL_SRC_FILES         := $(EXTERNALS_LIB)/$(TARGET_ARCH_ABI)/libpng.so
+include $(PREBUILT_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE            := libjpeg
+LOCAL_SRC_FILES         := $(EXTERNALS_LIB)/$(TARGET_ARCH_ABI)/libjpeg.so
+include $(PREBUILT_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE            := libassimp
 LOCAL_SRC_FILES         := $(EXTERNALS_LIB)/$(TARGET_ARCH_ABI)/libassimp.so
 include $(PREBUILT_SHARED_LIBRARY)

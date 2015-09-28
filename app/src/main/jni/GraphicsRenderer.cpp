@@ -4,6 +4,8 @@
 
 #include "GraphicsRenderer.h"
 
+#include <cstdlib>
+
 Engine::GraphicsRenderer& Engine::GraphicsRenderer::Instance(void)
 {
     static GraphicsRenderer instance;
