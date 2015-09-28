@@ -17,6 +17,10 @@
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
 
+#define SDL_MAIN_HANDLED
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/matrix.hpp>

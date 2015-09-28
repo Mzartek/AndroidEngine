@@ -5,6 +5,8 @@
 #ifndef ANDROIDPROJECT_TEXTURE_H
 #define ANDROIDPROJECT_TEXTURE_H
 
+#include "../Object.h"
+
 namespace Engine
 {
     enum TextureType { TEXTURE_2D_TYPE, TEXTURE_CUBE_TYPE };
