@@ -9,22 +9,6 @@ namespace Engine
 {
     enum TextureType { TEXTURE_2D_TYPE, TEXTURE_CUBE_TYPE };
 
-    struct Color
-    {
-        GLubyte r, g, b, a;
-    };
-
-    struct Image
-    {
-        std::vector<Color> *data;
-        GLsizei width, height;
-
-        Image(void);
-        ~Image(void);
-
-        static Image loadPNG(const GLchar *file);
-    };
-
     class Texture : public Object
     {
     protected:

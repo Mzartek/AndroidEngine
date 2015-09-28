@@ -65,8 +65,8 @@ public class MainActivity extends Activity
     static
     {
         // Warning! The order of the load is important
-        //System.loadLibrary("png");
-        //System.loadLibrary("jpeg");
+        System.loadLibrary("SDL2");
+        System.loadLibrary("SDL2_image");
         System.loadLibrary("assimp");
         System.loadLibrary("engine-jni");
     }

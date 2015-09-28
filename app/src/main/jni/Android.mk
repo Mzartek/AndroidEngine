@@ -3,13 +3,13 @@ EXTERNALS_INCLUDE       := externals/include
 EXTERNALS_LIB           := externals/lib
 
 include $(CLEAR_VARS)
-LOCAL_MODULE            := libpng
-LOCAL_SRC_FILES         := $(EXTERNALS_LIB)/$(TARGET_ARCH_ABI)/libpng.so
+LOCAL_MODULE            := libSDL2
+LOCAL_SRC_FILES         := $(EXTERNALS_LIB)/$(TARGET_ARCH_ABI)/libSDL2.so
 include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE            := libjpeg
-LOCAL_SRC_FILES         := $(EXTERNALS_LIB)/$(TARGET_ARCH_ABI)/libjpeg.so
+LOCAL_MODULE            := libSDL2_image
+LOCAL_SRC_FILES         := $(EXTERNALS_LIB)/$(TARGET_ARCH_ABI)/libSDL2_image.so
 include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -23,5 +23,5 @@ LOCAL_SRC_FILES         := Object.cpp GraphicsRenderer.cpp Buffer.cpp ShaderProg
 LOCAL_C_INCLUDES        := $(LOCAL_PATH)/$(EXTERNALS_INCLUDE)
 LOCAL_CFLAGS            := -std=c++11 -Wall -Wno-attributes -fexceptions
 LOCAL_LDLIBS            := -llog -lGLESv2
-LOCAL_SHARED_LIBRARIES  := libassimp
+LOCAL_SHARED_LIBRARIES  := libSDL2 libSDL2_image libassimp
 include $(BUILD_SHARED_LIBRARY)
