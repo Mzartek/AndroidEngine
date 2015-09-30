@@ -32,13 +32,17 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#define BUFFER_OFFSET(i) ((GLbyte *)NULL + (i))
+
+#define JNI_RETURN(TYPE) JNIEXPORT TYPE JNICALL
+
 #define ALOGD(...) __android_log_print(ANDROID_LOG_DEBUG, __FILE__, __VA_ARGS__)
 #define ALOGE(...) __android_log_print(ANDROID_LOG_ERROR, __FILE__, __VA_ARGS__)
 #define ALOGI(...) __android_log_print(ANDROID_LOG_INFO , __FILE__, __VA_ARGS__)
 
 namespace Engine
 {
-    typedef long long ObjectHandler;
+    typedef long long int ObjectHandler;
 
     class Object
     {

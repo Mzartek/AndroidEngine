@@ -103,7 +103,7 @@ GLuint Engine::ShaderProgram::getId(void) const
 
 extern "C"
 {
-    JNIEXPORT jlong JNICALL Java_com_paris8_univ_androidproject_engine_ShaderProgram_newShaderProgram(JNIEnv *env, jobject thiz, jstring vs, jstring fs);
+    JNI_RETURN(jlong) Java_com_paris8_univ_androidproject_engine_ShaderProgram_newShaderProgram(JNIEnv *env, jobject thiz, jstring vs, jstring fs);
 }
 
 jlong Java_com_paris8_univ_androidproject_engine_ShaderProgram_newShaderProgram(JNIEnv *env, jobject thiz, jstring vs, jstring fs)

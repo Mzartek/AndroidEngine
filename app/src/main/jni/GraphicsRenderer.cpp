@@ -13,6 +13,7 @@ Engine::GraphicsRenderer& Engine::GraphicsRenderer::Instance(void)
 }
 
 Engine::GraphicsRenderer::GraphicsRenderer(void)
+	: _width(0), _height(0)
 {
 }
 
@@ -28,7 +29,33 @@ void Engine::GraphicsRenderer::printGLinfo(void)
     ALOGD("Extensions: \"%s\"", glGetString(GL_EXTENSIONS));
 }
 
-void Engine::GraphicsRenderer::setState(GLuint width, GLuint height) const
+void Engine::GraphicsRenderer::setSize(GLuint width, GLuint height)
+{
+	_width = width;
+	_height = height;
+}
+
+void Engine::GraphicsRenderer::setSkyboxState() const
+{
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+	glDepthMask(GL_FALSE);
+
+	glDisable(GL_STENCIL_TEST);
+
+	glDisable(GL_BLEND);
+
+	glDisable(GL_CULL_FACE);
+
+	glViewport(0, 0, _width, _height);
+	glDepthRangef(0.0f, 1.0f);
+}
+
+void Engine::GraphicsRenderer::setState(void) const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
@@ -48,7 +75,7 @@ void Engine::GraphicsRenderer::setState(GLuint width, GLuint height) const
 	glCullFace(GL_BACK);
 	glFrontFace(GL_CCW);
 
-	glViewport(0, 0, width, height);
+	glViewport(0, 0, _width, _height);
 	glDepthRangef(0.0f, 1.0f);
 }
 
@@ -69,9 +96,9 @@ void Engine::GraphicsRenderer::clear(void) const
 
 extern "C"
 {
-    JNIEXPORT void JNICALL Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_printGLinfo(JNIEnv *env, jobject thiz);
-    JNIEXPORT void JNICALL Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_setState(JNIEnv *env, jobject thiz, jint width, jint height);
-    JNIEXPORT void JNICALL Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_clear(JNIEnv *env, jobject thiz);
+	JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_printGLinfo(JNIEnv *env, jobject thiz);
+	JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_setSize(JNIEnv *env, jobject thiz, jint width, jint height);
+	JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_clear(JNIEnv *env, jobject thiz);
 };
 
 void Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_printGLinfo(JNIEnv *env, jobject thiz)
@@ -79,9 +106,9 @@ void Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_printGLinfo(JNI
 	Engine::GraphicsRenderer::Instance().printGLinfo();
 }
 
-void Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_setState(JNIEnv *env, jobject thiz, jint width, jint height)
+void Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_setSize(JNIEnv *env, jobject thiz, jint width, jint height)
 {
-    Engine::GraphicsRenderer::Instance().setState(width, height);
+	Engine::GraphicsRenderer::Instance().setSize(width, height);
 }
 
 void Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_clear(JNIEnv *env, jobject thiz)

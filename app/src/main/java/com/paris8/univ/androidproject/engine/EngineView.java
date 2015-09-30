@@ -38,13 +38,13 @@ public class EngineView extends GLSurfaceView
         {
             mWidth = width;
             mHeight = height;
+            GraphicsRenderer.setSize(mWidth, mHeight);
         }
 
         @Override
         public void onDrawFrame(GL10 gl)
         {
             GraphicsRenderer.clear();
-            GraphicsRenderer.setState(mWidth, mHeight);
         }
     }
 }

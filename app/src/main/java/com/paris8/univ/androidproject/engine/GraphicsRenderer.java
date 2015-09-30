@@ -6,6 +6,7 @@ package com.paris8.univ.androidproject.engine;
 public class GraphicsRenderer
 {
     public static native void printGLinfo();
-    public static native void setState(int width, int height);
+    public static native void setSize(int width, int height);
+    public static native void setState();
     public static native void clear();
 }

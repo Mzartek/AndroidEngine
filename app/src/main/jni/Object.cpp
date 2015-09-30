@@ -19,7 +19,7 @@ Engine::ObjectHandler Engine::Object::getHandler(void)
 
 extern "C"
 {
-    JNIEXPORT void JNICALL Java_com_paris8_univ_androidproject_engine_EngineObject_DeleteObject(JNIEnv *env, jobject thiz, jlong objectHandler);
+    JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_EngineObject_DeleteObject(JNIEnv *env, jobject thiz, jlong objectHandler);
 }
 
 void Java_com_paris8_univ_androidproject_engine_EngineObject_DeleteObject(JNIEnv *env, jobject thiz, jlong objectHandler)

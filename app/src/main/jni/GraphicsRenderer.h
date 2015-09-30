@@ -18,9 +18,17 @@ namespace Engine
         GraphicsRenderer(void);
         ~GraphicsRenderer(void);
 
+        GLuint _width;
+        GLuint _height;
+
     public:
         void printGLinfo(void);
-	    void setState(GLuint width, GLuint height) const;
+
+        void setSize(GLuint width, GLuint height);
+
+        void setSkyboxState(void) const;
+	    void setState(void) const;
+
         void clear(void) const;
     };
 }
