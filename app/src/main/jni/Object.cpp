@@ -17,6 +17,8 @@ Engine::ObjectHandler Engine::Object::getHandler(void)
     return reinterpret_cast<long long>(this);
 }
 
+void Engine::null_deleter(Object *obj) { }
+
 extern "C"
 {
     JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_EngineObject_DeleteObject(JNIEnv *env, jobject thiz, jlong objectHandler);

@@ -25,13 +25,13 @@ namespace Engine
         std::shared_ptr<Buffer> _vertexBuffer;
         std::shared_ptr<Buffer> _indexBuffer;
 
-        ShaderProgram *_program;
+        std::shared_ptr<ShaderProgram> _program;
         GLint _MVPUniformLocation;
 
         GLuint _numElement;
 
     public:
-        SkyBox(ShaderProgram *program);
+        SkyBox(std::shared_ptr<ShaderProgram> program);
         ~SkyBox(void);
 
         void load(const GLchar *posx, const GLchar *negx,

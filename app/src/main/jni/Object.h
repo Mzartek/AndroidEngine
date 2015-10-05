@@ -59,6 +59,8 @@ namespace Engine
 
         ObjectHandler getHandler(void);
     };
+
+    void null_deleter(Object *obj);
 }
 
 #endif //ANDROIDPROJECT_OBJECT_H

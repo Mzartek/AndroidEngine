@@ -4,7 +4,7 @@
 
 #include "SkyBox.h"
 
-Engine::SkyBox::SkyBox(ShaderProgram *program)
+Engine::SkyBox::SkyBox(std::shared_ptr<ShaderProgram> program)
         : _program(program)
 {
     _cubeTexture = std::make_shared<TextureCube>();
@@ -90,7 +90,7 @@ extern "C"
 jlong Java_com_paris8_univ_androidproject_engine_SkyBox_newSkyBox(JNIEnv *env, jobject thiz, jlong shaderProgramHandler)
 {
     Engine::ShaderProgram *shaderProgram = Engine::Object::retrieveObject<Engine::ShaderProgram>(shaderProgramHandler);
-    Engine::Object *object = new Engine::SkyBox(shaderProgram);
+    Engine::Object *object = new Engine::SkyBox(std::shared_ptr<Engine::ShaderProgram>(shaderProgram, Engine::null_deleter));
 
     ALOGD("New SkyBox (Handler=%lld)", object->getHandler());
     return object->getHandler();
