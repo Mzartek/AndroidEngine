@@ -19,7 +19,7 @@ include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE            := engine-jni
-LOCAL_SRC_FILES         := Object.cpp GraphicsRenderer.cpp Buffer.cpp ShaderProgram.cpp SkyBox.cpp Camera/Camera.cpp Camera/OrthoCamera.cpp Camera/PerspCamera.cpp Texture/Texture.cpp Texture/Texture2D.cpp Texture/TextureCube.cpp Tools/StringHandler.cpp
+LOCAL_SRC_FILES         := Object.cpp GraphicsRenderer.cpp Buffer.cpp ShaderProgram.cpp SkyBox.cpp Camera/Camera.cpp Camera/OrthoCamera.cpp Camera/PerspCamera.cpp Model/Material.cpp Texture/Texture.cpp Texture/Texture2D.cpp Texture/TextureCube.cpp Tools/StringHandler.cpp
 LOCAL_C_INCLUDES        := $(LOCAL_PATH)/$(EXTERNALS_INCLUDE)
 LOCAL_CFLAGS            := -std=c++11 -Wall -Wno-attributes -fexceptions
 LOCAL_LDLIBS            := -llog -lGLESv2
