@@ -74,9 +74,11 @@ void Engine::SkyBox::display(const std::shared_ptr<PerspCamera> &cam) const
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer->getId());
     {
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, GLsizei(3 * sizeof(GLfloat)), BUFFER_OFFSET(0));
 
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, GLsizei(3 * sizeof(GLfloat)), BUFFER_OFFSET(0));
         glDrawElements(GL_TRIANGLES, _numElement, GL_UNSIGNED_INT, 0);
+
+        glDisableVertexAttribArray(0);
     }
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
