@@ -21,7 +21,6 @@ public class MainActivity extends Activity
 
         mView = new EngineView(getApplication());
         setContentView(mView);
-        //setContentView(R.layout.activity_main);
     }
 
     @Override

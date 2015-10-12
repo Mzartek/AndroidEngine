@@ -21,7 +21,18 @@ namespace Engine
         friend struct CompareMesh;
 
         std::shared_ptr<Material> _material;
-        GLuint _tex[10];
+        struct {
+            GLuint id;
+            GLboolean hasTex;
+            GLint hasTexUniformLocation;
+        } _tex[10];
+
+        GLint _diffuseMaterialUniformLocation;
+        GLint _specularMaterialUniformLocation;
+        GLint _ambientMaterialUniformLocation;
+        GLint _emissiveMaterialUniformLocation;
+        GLint _shininessMaterialUniformLocation;
+        GLint _opacityMaterialUniformLocation;
 
     protected:
         std::shared_ptr<Buffer> _vertexBuffer;
@@ -29,7 +40,7 @@ namespace Engine
         GLsizei _numElement;
 
     public:
-        Mesh(void);
+        Mesh(const std::shared_ptr<ShaderProgram> &_program);
         ~Mesh(void);
         void setMaterial(const std::shared_ptr<Material> &material);
 
