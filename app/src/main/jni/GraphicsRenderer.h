@@ -27,7 +27,7 @@ namespace Engine
         void setSize(GLuint width, GLuint height);
 
         void setSkyboxState(void) const;
-	    void setState(void) const;
+	    void setGeometryState(void) const;
 
         void clear(void) const;
     };

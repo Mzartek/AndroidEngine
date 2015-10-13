@@ -35,6 +35,12 @@ Engine::Model::Model(const std::shared_ptr<ShaderProgram> &program)
     glUniform1i(glGetUniformLocation(_program->getId(), "displacementMap"), 8);
     glUniform1i(glGetUniformLocation(_program->getId(), "lightMap"), 9);
     glUniform1i(glGetUniformLocation(_program->getId(), "reflectionTex"), 10);
+
+    _MVPMatrixUniformLocation = glGetUniformLocation(_program->getId(), "MVPMatrix");
+    _projectionMatrixUniformLocation = glGetUniformLocation(_program->getId(), "projectionMatrix");
+    _viewMatrixUniformLocation = glGetUniformLocation(_program->getId(), "viewMatrix");
+    _modelMatrixUniformLocation = glGetUniformLocation(_program->getId(), "modelMatrix");
+    _normalMatrixUniformLocation = glGetUniformLocation(_program->getId(), "normalMatrix");
 }
 
 Engine::Model::Model(const std::shared_ptr<Model> &model, const std::shared_ptr<ShaderProgram> &program)
@@ -57,6 +63,12 @@ Engine::Model::Model(const std::shared_ptr<Model> &model, const std::shared_ptr<
     glUniform1i(glGetUniformLocation(_program->getId(), "normalMap"), 7);
     glUniform1i(glGetUniformLocation(_program->getId(), "displacementMap"), 8);
     glUniform1i(glGetUniformLocation(_program->getId(), "lightMap"), 9);
+
+    _MVPMatrixUniformLocation = glGetUniformLocation(_program->getId(), "MVPMatrix");
+    _projectionMatrixUniformLocation = glGetUniformLocation(_program->getId(), "projectionMatrix");
+    _viewMatrixUniformLocation = glGetUniformLocation(_program->getId(), "viewMatrix");
+    _modelMatrixUniformLocation = glGetUniformLocation(_program->getId(), "modelMatrix");
+    _normalMatrixUniformLocation = glGetUniformLocation(_program->getId(), "normalMatrix");
 }
 
 Engine::Model::~Model(void)

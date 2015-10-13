@@ -55,7 +55,7 @@ void Engine::GraphicsRenderer::setSkyboxState() const
 	glDepthRangef(0.0f, 1.0f);
 }
 
-void Engine::GraphicsRenderer::setState(void) const
+void Engine::GraphicsRenderer::setGeometryState(void) const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
@@ -63,17 +63,18 @@ void Engine::GraphicsRenderer::setState(void) const
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
-	glDepthMask(GL_FALSE);
+	glDepthMask(GL_TRUE);
 
-	glDisable(GL_STENCIL_TEST);
+	glEnable(GL_STENCIL_TEST);
+	glStencilMask(0xFF);
+	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+	glStencilFunc(GL_ALWAYS, 1, 0xFF);
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glBlendEquation(GL_FUNC_ADD);
 
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	glFrontFace(GL_CCW);
+    glDisable(GL_CULL_FACE);
 
 	glViewport(0, 0, _width, _height);
 	glDepthRangef(0.0f, 1.0f);

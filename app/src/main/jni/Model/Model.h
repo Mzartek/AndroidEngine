@@ -27,9 +27,6 @@ namespace Engine
     protected:
         struct
         {
-            glm::mat4 MVP;
-            glm::mat4 projection;
-            glm::mat4 view;
             glm::mat4 model;
             glm::mat4 normal;
         } _matrix;
@@ -41,6 +38,12 @@ namespace Engine
         std::shared_ptr<TextureCube> _cubeTexture;
 
         std::shared_ptr<ShaderProgram> _program;
+
+        GLint _MVPMatrixUniformLocation;
+        GLint _projectionMatrixUniformLocation;
+        GLint _viewMatrixUniformLocation;
+        GLint _modelMatrixUniformLocation;
+        GLint _normalMatrixUniformLocation;
 
         void checkMatrix(void);
 
