@@ -2,8 +2,8 @@
 // Created by khavranek on 07/10/15.
 //
 
-#ifndef ANDROIDPROJECT_MODEL_H
-#define ANDROIDPROJECT_MODEL_H
+#ifndef ANDROIDPROJECT_MESH_H
+#define ANDROIDPROJECT_MESH_H
 
 #include "../Texture/TextureCube.h"
 
@@ -61,11 +61,6 @@ namespace Engine
     protected:
         virtual void startDrawing(void) const = 0;
         virtual void endDrawing(void) const = 0;
-    };
-
-    struct CompareMesh
-    {
-        bool operator() (const std::shared_ptr<Mesh> &first, const std::shared_ptr<Mesh> &second);
     };
 }
 

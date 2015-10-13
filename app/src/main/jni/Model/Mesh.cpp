@@ -164,12 +164,3 @@ void Engine::Mesh::bindMaterials() const
     glUniform1f(_opacityMaterialUniformLocation, _material->getOpacity());
 }
 
-bool Engine::CompareMesh::operator()(const std::shared_ptr<Mesh> &first, const std::shared_ptr<Mesh> &second)
-{
-    if (first->_material == nullptr)
-        return false;
-    if (first->_material->getOpacity() < second->_material->getOpacity())
-        return true;
-    return false;
-}
-
