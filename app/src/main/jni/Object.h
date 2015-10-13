@@ -6,6 +6,7 @@
 #define ANDROIDPROJECT_OBJECT_H
 
 #include <map>
+#include <vector>
 #include <string>
 #include <fstream>
 #include <memory>

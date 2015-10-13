@@ -79,35 +79,36 @@ const std::shared_ptr<Engine::Material> &Engine::Mesh::getMaterial(void) const
 
 void Engine::Mesh::display(void) const
 {
-    //glBindBufferBase(GL_UNIFORM_BUFFER, 2, _material->getMatBuffer());
-    //glBindBufferBase(GL_UNIFORM_BUFFER, 3, _material->getStateBuffer());
+    this->bindMaterials();
+    this->bindTextures();
 
-    //glBindVertexArray(_idVAO);
-    //glDrawElements(GL_TRIANGLES, _numElement, GL_UNSIGNED_INT, nullptr);
-    //glBindVertexArray(0);
+    this->startDrawing();
+    glDrawElements(GL_TRIANGLES, _numElement, GL_UNSIGNED_INT, nullptr);
+    this->endDrawing();
 }
 
 void Engine::Mesh::display(const std::shared_ptr<TextureCube> &cubeTexture) const
 {
+    this->bindMaterials();
+    this->bindTextures();
+
     glActiveTexture(GL_TEXTURE10);
     glBindTexture(GL_TEXTURE_CUBE_MAP, cubeTexture->getId());
 
-    //glBindBufferBase(GL_UNIFORM_BUFFER, 2, _material->getMatBuffer());
-    //glBindBufferBase(GL_UNIFORM_BUFFER, 3, _material->getStateBuffer());
-
-    //glBindVertexArray(_idVAO);
-    //glDrawElements(GL_TRIANGLES, _numElement, GL_UNSIGNED_INT, nullptr);
-    //glBindVertexArray(0);
+    this->startDrawing();
+    glDrawElements(GL_TRIANGLES, _numElement, GL_UNSIGNED_INT, nullptr);
+    this->endDrawing();
 }
 
 void Engine::Mesh::displayShadow(void) const
 {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, _tex[0].id);
+    glUniform1i(_tex[0].hasTexUniformLocation, _tex[0].hasTex);
 
-    //glBindVertexArray(_idVAO);
-    //glDrawElements(GL_TRIANGLES, _numElement, GL_UNSIGNED_INT, nullptr);
-    //glBindVertexArray(0);
+    this->startDrawing();
+    glDrawElements(GL_TRIANGLES, _numElement, GL_UNSIGNED_INT, nullptr);
+    this->endDrawing();
 }
 
 void Engine::Mesh::bindTextures() const
@@ -155,6 +156,12 @@ void Engine::Mesh::bindTextures() const
 
 void Engine::Mesh::bindMaterials() const
 {
+    glUniform3fv(_diffuseMaterialUniformLocation, 1, glm::value_ptr(_material->getDiffuse()));
+    glUniform3fv(_specularMaterialUniformLocation, 1, glm::value_ptr(_material->getSpecular()));
+    glUniform3fv(_ambientMaterialUniformLocation, 1, glm::value_ptr(_material->getAmbient()));
+    glUniform3fv(_emissiveMaterialUniformLocation, 1, glm::value_ptr(_material->getEmissive()));
+    glUniform1f(_shininessMaterialUniformLocation, _material->getShininess());
+    glUniform1f(_opacityMaterialUniformLocation, _material->getOpacity());
 }
 
 bool Engine::CompareMesh::operator()(const std::shared_ptr<Mesh> &first, const std::shared_ptr<Mesh> &second)
