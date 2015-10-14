@@ -6,10 +6,10 @@
 
 #include "Tools/StringHandler.h"
 
-inline GLuint loadShader(const GLchar *filename, const GLenum &type)
+inline GLuint loadShader(const GLchar *content, const GLenum &type)
 {
     GLuint id;
-    GLchar *content, *log;
+    GLchar *log;
     GLsizei logsize;
     GLint status;
 
@@ -18,8 +18,6 @@ inline GLuint loadShader(const GLchar *filename, const GLenum &type)
     {
         throw std::runtime_error("Error while creating shader");
     }
-
-    content = Engine::Tools::readText(filename);
 
     glShaderSource(id, 1, const_cast<const GLchar **>(&content), nullptr);
     glCompileShader(id);
@@ -32,16 +30,14 @@ inline GLuint loadShader(const GLchar *filename, const GLenum &type)
         log[logsize] = '\0';
 
         glGetShaderInfoLog(id, logsize, &logsize, log);
-        std::string error("Error while compiling shader: " + std::string(filename) + '\n' + std::string(log));
+        std::string error("Error while compiling shader: \n" + std::string(log));
 
         glDeleteShader(id);
         delete[] log;
-        delete[] content;
 
         throw std::runtime_error(error);
     }
 
-    delete[] content;
     return id;
 }
 
