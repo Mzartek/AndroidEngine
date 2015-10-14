@@ -3,6 +3,7 @@ package com.paris8.univ.androidproject.engine;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 
+import com.paris8.univ.androidproject.R;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -36,6 +37,8 @@ public class EngineView extends GLSurfaceView
         public void onSurfaceCreated(GL10 gl, EGLConfig config)
         {
             GraphicsRenderer.printGLinfo();
+
+            skyboxProgram = new ShaderProgram(getResources().openRawResource(R.raw.skybox_vs), getResources().openRawResource(R.raw.skybox_fs));
 
             camera = new PerspCamera();
         }

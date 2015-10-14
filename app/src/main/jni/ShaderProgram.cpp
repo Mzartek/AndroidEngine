@@ -35,6 +35,7 @@ inline GLuint loadShader(const GLchar *content, const GLenum &type)
         glDeleteShader(id);
         delete[] log;
 
+        ALOGE("%s", error.c_str());
         throw std::runtime_error(error);
     }
 

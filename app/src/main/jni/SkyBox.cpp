@@ -35,7 +35,7 @@ Engine::SkyBox::SkyBox(std::shared_ptr<ShaderProgram> program)
     _vertexBuffer->createStore(GL_ARRAY_BUFFER, vertexArray, sizeof vertexArray, GL_STATIC_DRAW);
     _indexBuffer->createStore(GL_ELEMENT_ARRAY_BUFFER, indexArray, sizeof indexArray, GL_STATIC_DRAW);
 
-    _MVPUniformLocation = glGetUniformLocation(_program->getId(), "MVP");
+    _MVPUniformLocation = glGetUniformLocation(_program->getId(), "MVPMatrix");
 
     glUseProgram(_program->getId());
     glUniform1i(glGetUniformLocation(_program->getId(), "cubeMap"), 0);
