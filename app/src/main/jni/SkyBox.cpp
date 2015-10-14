@@ -91,7 +91,7 @@ extern "C"
                                                                             jstring posx, jstring negx,
                                                                             jstring posy, jstring negy,
                                                                             jstring posz, jstring negz);
-    JNI_RETURN(Engine::ObjectHandler) Java_com_paris8_univ_androidproject_engine_SkyBox_getTexture(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler);
+    JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_SkyBox_display(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler, Engine::ObjectHandler cameraObjectHandler);
 }
 
 Engine::ObjectHandler Java_com_paris8_univ_androidproject_engine_SkyBox_newSkyBox(JNIEnv *env, jobject thiz, Engine::ObjectHandler shaderProgramHandler)
@@ -127,7 +127,8 @@ void Java_com_paris8_univ_androidproject_engine_SkyBox_load(JNIEnv *env, jobject
     env->ReleaseStringUTFChars(negz, negz_string);
 }
 
-Engine::ObjectHandler Java_com_paris8_univ_androidproject_engine_SkyBox_getTexture(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler)
+void Java_com_paris8_univ_androidproject_engine_SkyBox_display(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler, Engine::ObjectHandler cameraObjectHandler)
 {
-    return Engine::Object::retrieveObject<Engine::SkyBox>(objectHandler)->getTexture()->getHandler();
+    Engine::PerspCamera *perspCamera = Engine::Object::retrieveObject<Engine::PerspCamera>(cameraObjectHandler);
+    Engine::Object::retrieveObject<Engine::SkyBox>(objectHandler)->display(std::shared_ptr<Engine::PerspCamera>(perspCamera, Engine::null_deleter));
 }

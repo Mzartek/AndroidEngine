@@ -12,7 +12,7 @@ public class SkyBox extends EngineObject
                                     String posx, String negx,
                                     String posy, String negy,
                                     String posz, String negz);
-    private static native long getTexture(long objectHandler);
+    private static native void display(long objectHandler, long cameraObjectHandler);
 
     public SkyBox(ShaderProgram shaderProgram)
     {
