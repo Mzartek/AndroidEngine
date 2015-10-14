@@ -2,7 +2,6 @@ package com.paris8.univ.androidproject.engine;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
-import android.util.Log;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;

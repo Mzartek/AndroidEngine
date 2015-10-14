@@ -8,6 +8,11 @@ import android.util.Log;
 public class SkyBox extends EngineObject
 {
     private static native long newSkyBox(long shaderProgram);
+    private static native void load(long objectHandler,
+                                    String posx, String negx,
+                                    String posy, String negy,
+                                    String posz, String negz);
+    private static native long getTexture(long objectHandler);
 
     public SkyBox(ShaderProgram shaderProgram)
     {
@@ -18,6 +23,9 @@ public class SkyBox extends EngineObject
                      String posy, String negy,
                      String posz, String negz)
     {
-        Log.d("SkyBox", posx);
+        this.load(this.getObjectHandler(),
+                posx, negx,
+                posy, negy,
+                posz, negz);
     }
 }

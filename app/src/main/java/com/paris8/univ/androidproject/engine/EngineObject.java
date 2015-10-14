@@ -14,21 +14,9 @@ public class EngineObject extends Object
         this.objectHandler = objectHandler;
     }
 
-    @Override
-    protected void finalize() throws Throwable
+    public void deleteObject()
     {
-        try
-        {
-            deleteObject(objectHandler);
-        }
-        catch(Throwable t)
-        {
-            throw t;
-        }
-        finally
-        {
-            super.finalize();
-        }
+        this.deleteObject(objectHandler);
     }
 
     public long getObjectHandler()

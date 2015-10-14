@@ -84,18 +84,50 @@ void Engine::SkyBox::display(const std::shared_ptr<PerspCamera> &cam) const
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-#define JNI_FUNCTION(X) Java_com_paris8_univ_androidproject_engine_SkyBox_X
 extern "C"
 {
-    JNI_RETURN(Engine::ObjectHandler) JNI_FUNCTION(newSkyBox)(JNIEnv *env, jobject thiz, Engine::ObjectHandler shaderProgramHandler);
-    //JNI_RETURN(Engine::ObjectHandler) JNI_FUNCTION(getTexture)(JNIEnv *env)
+    JNI_RETURN(Engine::ObjectHandler) Java_com_paris8_univ_androidproject_engine_SkyBox_newSkyBox(JNIEnv *env, jobject thiz, Engine::ObjectHandler shaderProgramHandler);
+    JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_SkyBox_load(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler,
+                                                                            jstring posx, jstring negx,
+                                                                            jstring posy, jstring negy,
+                                                                            jstring posz, jstring negz);
+    JNI_RETURN(Engine::ObjectHandler) Java_com_paris8_univ_androidproject_engine_SkyBox_getTexture(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler);
 }
 
-Engine::ObjectHandler JNI_FUNCTION(newSkyBox)(JNIEnv *env, jobject thiz, Engine::ObjectHandler shaderProgramHandler)
+Engine::ObjectHandler Java_com_paris8_univ_androidproject_engine_SkyBox_newSkyBox(JNIEnv *env, jobject thiz, Engine::ObjectHandler shaderProgramHandler)
 {
     Engine::ShaderProgram *shaderProgram = Engine::Object::retrieveObject<Engine::ShaderProgram>(shaderProgramHandler);
     Engine::Object *object = new Engine::SkyBox(std::shared_ptr<Engine::ShaderProgram>(shaderProgram, Engine::null_deleter));
 
     ALOGD("New SkyBox (Handler=%lld)", object->getHandler());
     return object->getHandler();
+}
+
+void Java_com_paris8_univ_androidproject_engine_SkyBox_load(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler,
+                                                            jstring posx, jstring negx,
+                                                            jstring posy, jstring negy,
+                                                            jstring posz, jstring negz)
+{
+    const char *posx_string = env->GetStringUTFChars(posx, 0);
+    const char *negx_string = env->GetStringUTFChars(negx, 0);
+    const char *posy_string = env->GetStringUTFChars(posy, 0);
+    const char *negy_string = env->GetStringUTFChars(negy, 0);
+    const char *posz_string = env->GetStringUTFChars(posz, 0);
+    const char *negz_string = env->GetStringUTFChars(negz, 0);
+
+    Engine::Object::retrieveObject<Engine::SkyBox>(objectHandler)->load(posx_string, negx_string,
+                                                                        posy_string, negy_string,
+                                                                        posz_string, negz_string);
+
+    env->ReleaseStringUTFChars(posx, posx_string);
+    env->ReleaseStringUTFChars(negx, negx_string);
+    env->ReleaseStringUTFChars(posy, posy_string);
+    env->ReleaseStringUTFChars(negy, negy_string);
+    env->ReleaseStringUTFChars(posz, posz_string);
+    env->ReleaseStringUTFChars(negz, negz_string);
+}
+
+Engine::ObjectHandler Java_com_paris8_univ_androidproject_engine_SkyBox_getTexture(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler)
+{
+    return Engine::Object::retrieveObject<Engine::SkyBox>(objectHandler)->getTexture()->getHandler();
 }

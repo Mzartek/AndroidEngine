@@ -19,13 +19,12 @@ Engine::ObjectHandler Engine::Object::getHandler(void)
 
 void Engine::null_deleter(Object *obj) { }
 
-#define JNI_FUNCTION(X) Java_com_paris8_univ_androidproject_engine_EngineObject_X
 extern "C"
 {
-    JNI_RETURN(void) JNI_FUNCTION(deleteObject)(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler);
+    JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_EngineObject_deleteObject(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler);
 }
 
-void JNI_FUNCTION(deleteObject)(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler)
+void Java_com_paris8_univ_androidproject_engine_EngineObject_deleteObject_deleteObject(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler)
 {
     ALOGD("Delete Object (Handler=%lld)", objectHandler);
     delete Engine::Object::retrieveObject<Engine::Object>(objectHandler);
