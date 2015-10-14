@@ -84,12 +84,14 @@ void Engine::SkyBox::display(const std::shared_ptr<PerspCamera> &cam) const
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
+#define JNI_FUNCTION(X) Java_com_paris8_univ_androidproject_engine_SkyBox_X
 extern "C"
 {
-    JNI_RETURN(jlong) Java_com_paris8_univ_androidproject_engine_SkyBox_newSkyBox(JNIEnv *env, jobject thiz, jlong shaderProgramHandler);
+    JNI_RETURN(Engine::ObjectHandler) JNI_FUNCTION(newSkyBox)(JNIEnv *env, jobject thiz, Engine::ObjectHandler shaderProgramHandler);
+    //JNI_RETURN(Engine::ObjectHandler) JNI_FUNCTION(getTexture)(JNIEnv *env)
 }
 
-jlong Java_com_paris8_univ_androidproject_engine_SkyBox_newSkyBox(JNIEnv *env, jobject thiz, jlong shaderProgramHandler)
+Engine::ObjectHandler JNI_FUNCTION(newSkyBox)(JNIEnv *env, jobject thiz, Engine::ObjectHandler shaderProgramHandler)
 {
     Engine::ShaderProgram *shaderProgram = Engine::Object::retrieveObject<Engine::ShaderProgram>(shaderProgramHandler);
     Engine::Object *object = new Engine::SkyBox(std::shared_ptr<Engine::ShaderProgram>(shaderProgram, Engine::null_deleter));

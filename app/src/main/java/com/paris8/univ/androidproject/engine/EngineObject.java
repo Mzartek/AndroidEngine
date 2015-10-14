@@ -5,7 +5,7 @@ package com.paris8.univ.androidproject.engine;
  */
 public class EngineObject extends Object
 {
-    private static native void DeleteObject(long objectHandler);
+    private static native void deleteObject(long objectHandler);
 
     private long objectHandler;
 
@@ -19,7 +19,7 @@ public class EngineObject extends Object
     {
         try
         {
-            DeleteObject(objectHandler);
+            deleteObject(objectHandler);
         }
         catch(Throwable t)
         {

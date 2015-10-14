@@ -43,7 +43,7 @@
 
 namespace Engine
 {
-    typedef long long int ObjectHandler;
+    typedef jlong ObjectHandler;
 
     class Object
     {
