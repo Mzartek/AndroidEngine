@@ -2,6 +2,8 @@ package com.paris8.univ.androidproject.engine;
 
 import android.util.Log;
 
+import com.paris8.univ.androidproject.engine.camera.PerspCamera;
+
 /**
  * Created by khavranek on 30/09/15.
  */
@@ -27,5 +29,10 @@ public class SkyBox extends EngineObject
                 posx, negx,
                 posy, negy,
                 posz, negz);
+    }
+
+    public void display(PerspCamera camera)
+    {
+        display(this.getObjectHandler(), camera.getObjectHandler());
     }
 }

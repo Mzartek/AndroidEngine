@@ -3,6 +3,8 @@ package com.paris8.univ.androidproject.engine;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 
+import com.paris8.univ.androidproject.engine.camera.PerspCamera;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
@@ -26,10 +28,16 @@ public class EngineView extends GLSurfaceView
         private int mWidth = 0;
         private int mHeight = 0;
 
+        private ShaderProgram skyboxProgram;
+
+        private PerspCamera camera;
+
         @Override
         public void onSurfaceCreated(GL10 gl, EGLConfig config)
         {
             GraphicsRenderer.printGLinfo();
+
+            camera = new PerspCamera();
         }
 
         @Override
@@ -38,6 +46,9 @@ public class EngineView extends GLSurfaceView
             mWidth = width;
             mHeight = height;
             GraphicsRenderer.setSize(mWidth, mHeight);
+
+            camera.setPositionAndTarget(10, 10, 10, 0, 0, 0);
+            camera.updateData();
         }
 
         @Override

@@ -111,3 +111,63 @@ void Engine::PerspCamera::updateData(void)
     _VPMatrix = _projectionMatrix * _viewMatrix;
     _IVPMatrix = glm::inverse(_VPMatrix);
 }
+
+extern "C"
+{
+    JNI_RETURN(Engine::ObjectHandler) Java_com_paris8_univ_androidproject_engine_camera_PerspCamera_newPerspCamera(JNIEnv *env, jobject thiz);
+
+    JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_camera_PerspCamera_setCameraPosition(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler,
+                                                                                                jfloat posx, jfloat posy, jfloat posz);
+
+    JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_camera_PerspCamera_setAngle(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler,
+                                                                                            jfloat atheta, jfloat aphi);
+
+    JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_camera_PerspCamera_setPositionAndTarget(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler,
+                                                                                                        jfloat posx, jfloat posy, jfloat posz,
+                                                                                                        jfloat tarx, jfloat tary, jfloat tarz);
+
+    JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_camera_PerspCamera_setPerspective(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler,
+                                                                                                  jfloat fov, jint width, jint height, jfloat n, jfloat f);
+
+    JNI_RETURN(void) Java_com_paris8_univ_androidproject_engine_camera_PerspCamera_updateData(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler);
+}
+
+Engine::ObjectHandler Java_com_paris8_univ_androidproject_engine_camera_PerspCamera_newPerspCamera(JNIEnv *env, jobject thiz)
+{
+    Engine::Object *object = new Engine::PerspCamera();
+
+    ALOGD("New PerspCamera (Handler=%lld)", object->getHandler());
+    return object->getHandler();
+}
+
+void Java_com_paris8_univ_androidproject_engine_ShaderProgram_setCameraPosition(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler,
+                                                                                jfloat posx, jfloat posy, jfloat posz)
+{
+    Engine::Object::retrieveObject<Engine::PerspCamera>(objectHandler)->setCameraPosition(glm::vec3(posx, posy, posz));
+}
+
+void Java_com_paris8_univ_androidproject_engine_camera_PerspCamera_setAngle(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler,
+                                                                            jfloat atheta, jfloat aphi)
+{
+    Engine::Object::retrieveObject<Engine::PerspCamera>(objectHandler)->setAngle(atheta, aphi);
+}
+
+void Java_com_paris8_univ_androidproject_engine_camera_PerspCamera_setPositionAndTarget(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler,
+                                                                                        jfloat posx, jfloat posy, jfloat posz,
+                                                                                        jfloat tarx, jfloat tary, jfloat tarz)
+{
+    Engine::Object::retrieveObject<Engine::PerspCamera>(objectHandler)->setPositionAndTarget(glm::vec3(posx, posy, posz), glm::vec3(tarx, tary, tarz));
+}
+
+void Java_com_paris8_univ_androidproject_engine_camera_PerspCamera_setPerspective(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler,
+                                                                                  jfloat fov, jint width, jint height, jfloat n, jfloat f)
+{
+    Engine::Object::retrieveObject<Engine::PerspCamera>(objectHandler)->setPerspective(fov,
+                                                                                       static_cast<GLuint>(width), static_cast<GLuint>(height),
+                                                                                       n, f);
+}
+
+void Java_com_paris8_univ_androidproject_engine_camera_PerspCamera_updateData(JNIEnv *env, jobject thiz, Engine::ObjectHandler objectHandler)
+{
+    Engine::Object::retrieveObject<Engine::PerspCamera>(objectHandler)->updateData();
+}
