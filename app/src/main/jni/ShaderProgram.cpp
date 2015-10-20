@@ -8,105 +8,106 @@
 
 inline GLuint loadShader(const GLchar *content, const GLenum &type)
 {
-    GLuint id;
-    GLchar *log;
-    GLsizei logsize;
-    GLint status;
+  GLuint id;
+  GLchar *log;
+  GLsizei logsize;
+  GLint status;
 
-    id = glCreateShader(type);
-    if (id == 0)
+  id = glCreateShader(type);
+  if (id == 0)
     {
-        throw std::runtime_error("Error while creating shader");
+      throw std::runtime_error("Error while creating shader");
     }
 
-    glShaderSource(id, 1, const_cast<const GLchar **>(&content), nullptr);
-    glCompileShader(id);
-    glGetShaderiv(id, GL_COMPILE_STATUS, &status);
-    if (status != GL_TRUE)
+  glShaderSource(id, 1, const_cast<const GLchar **>(&content), nullptr);
+  glCompileShader(id);
+  glGetShaderiv(id, GL_COMPILE_STATUS, &status);
+  if (status != GL_TRUE)
     {
-        glGetShaderiv(id, GL_INFO_LOG_LENGTH, &logsize);
+      glGetShaderiv(id, GL_INFO_LOG_LENGTH, &logsize);
 
-        log = new GLchar[logsize + 1];
-        log[logsize] = '\0';
+      log = new GLchar[logsize + 1];
+      log[logsize] = '\0';
 
-        glGetShaderInfoLog(id, logsize, &logsize, log);
-        std::string error("Error while compiling shader: \n" + std::string(log));
+      glGetShaderInfoLog(id, logsize, &logsize, log);
+      std::string error("Error while compiling shader: \n" + std::string(log));
 
-        glDeleteShader(id);
-        delete[] log;
+      glDeleteShader(id);
+      delete[] log;
 
-        ALOGE("%s", error.c_str());
-        throw std::runtime_error(error);
+      ALOGE("%s", error.c_str());
+      throw std::runtime_error(error);
     }
 
-    return id;
+  return id;
 }
 
 Engine::ShaderProgram::ShaderProgram(const GLchar *vs, const GLchar *fs)
-        : _idProgram(0), _idVertexShader(0), _idFragmentShader(0)
+  : _idProgram(0), _idVertexShader(0), _idFragmentShader(0)
 {
-    GLchar *log;
-    GLsizei logsize;
-    GLint status;
+  GLchar *log;
+  GLsizei logsize;
+  GLint status;
 
-    _idProgram = glCreateProgram();
-    if (_idProgram == 0)
+  _idProgram = glCreateProgram();
+  if (_idProgram == 0)
     {
-        throw std::runtime_error("Error while creating program");
+      throw std::runtime_error("Error while creating program");
     }
 
-    if (vs != nullptr)
+  if (vs != nullptr)
     {
-        _idVertexShader = loadShader(vs, GL_VERTEX_SHADER);
-        glAttachShader(_idProgram, _idVertexShader);
+      _idVertexShader = loadShader(vs, GL_VERTEX_SHADER);
+      glAttachShader(_idProgram, _idVertexShader);
     }
 
-    if (fs != nullptr)
+  if (fs != nullptr)
     {
-        _idFragmentShader = loadShader(fs, GL_FRAGMENT_SHADER);
-        glAttachShader(_idProgram, _idFragmentShader);
+      _idFragmentShader = loadShader(fs, GL_FRAGMENT_SHADER);
+      glAttachShader(_idProgram, _idFragmentShader);
     }
 
-    glLinkProgram(_idProgram);
+  glLinkProgram(_idProgram);
 
-    glGetProgramiv(_idProgram, GL_LINK_STATUS, &status);
-    if (status != GL_TRUE)
+  glGetProgramiv(_idProgram, GL_LINK_STATUS, &status);
+  if (status != GL_TRUE)
     {
-        glGetProgramiv(_idProgram, GL_INFO_LOG_LENGTH, &logsize);
+      glGetProgramiv(_idProgram, GL_INFO_LOG_LENGTH, &logsize);
 
-        log = new GLchar[logsize + 1];
-        log[logsize] = '\0';
+      log = new GLchar[logsize + 1];
+      log[logsize] = '\0';
 
-        glGetProgramInfoLog(_idProgram, logsize, &logsize, log);
-        std::string error("Error while linking program: " + std::string(log));
+      glGetProgramInfoLog(_idProgram, logsize, &logsize, log);
+      std::string error("Error while linking program: " + std::string(log));
 
-        delete[] log;
+      delete[] log;
 
-        throw std::runtime_error(error);
+      throw std::runtime_error(error);
     }
 }
 
 Engine::ShaderProgram::~ShaderProgram(void)
 {
-    if (glIsProgram(_idProgram)) glDeleteProgram(_idProgram);
-    if (glIsShader(_idVertexShader)) glDeleteShader(_idVertexShader);
-    if (glIsShader(_idFragmentShader)) glDeleteShader(_idFragmentShader);
+  if (glIsProgram(_idProgram)) glDeleteProgram(_idProgram);
+  if (glIsShader(_idVertexShader)) glDeleteShader(_idVertexShader);
+  if (glIsShader(_idFragmentShader)) glDeleteShader(_idFragmentShader);
 }
 
 GLuint Engine::ShaderProgram::getId(void) const
 {
-    return _idProgram;
+  return _idProgram;
 }
 
 extern "C"
 {
-    JNI_RETURN(Engine::ObjectHandler) Java_com_paris8_univ_androidproject_engine_ShaderProgram_newShaderProgram(JNIEnv *env, jobject thiz, jstring vs, jstring fs);
-}
-
-Engine::ObjectHandler Java_com_paris8_univ_androidproject_engine_ShaderProgram_newShaderProgram(JNIEnv *env, jobject thiz, jstring vs, jstring fs)
-{
+  JNI_RETURN(Engine::ObjectHandler)
+  Java_com_paris8_univ_androidproject_engine_ShaderProgram_newShaderProgram(JNIEnv *env, jobject thiz, jstring vs, jstring fs)
+  {
     const char *VSString = env->GetStringUTFChars(vs, 0);
     const char *FSString = env->GetStringUTFChars(fs, 0);
+
+    ALOGD("TESTVERTEX: %s\n", VSString);
+    ALOGD("TESTPIXEL : %s\n", FSString);
 
     Engine::Object *object = new Engine::ShaderProgram(VSString, FSString);
 
@@ -115,4 +116,5 @@ Engine::ObjectHandler Java_com_paris8_univ_androidproject_engine_ShaderProgram_n
 
     ALOGD("New ShaderProgram (Handler=%lld)", object->getHandler());
     return object->getHandler();
+  }
 }

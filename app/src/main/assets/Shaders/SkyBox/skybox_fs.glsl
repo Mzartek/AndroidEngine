@@ -1,13 +1,11 @@
-#version 330
-
-uniform samplerCube cubeMap;
+#version 130 uniform samplerCube cubeMap;
 
 in VertexData
 {
 	vec3 texCoord;
 } FragIn;
 
-layout(location = 0) out vec4 fragColor;
+out vec4 fragColor;
 
 void main(void)
 {

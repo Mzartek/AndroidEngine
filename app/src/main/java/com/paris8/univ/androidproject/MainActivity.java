@@ -19,7 +19,7 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 
-        mView = new EngineView(getApplication());
+        mView = new EngineView(getApplication(), getAssets());
         setContentView(mView);
     }
 

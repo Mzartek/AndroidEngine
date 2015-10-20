@@ -1,6 +1,4 @@
-#version 330
-
-uniform mat4 MVPMatrix;
+#version 130 uniform mat4 MVPMatrix;
 
 layout(location = 0) in vec3 vertex;
 
