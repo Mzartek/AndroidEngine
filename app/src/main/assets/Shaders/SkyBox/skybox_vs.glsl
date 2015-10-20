@@ -2,7 +2,7 @@
 
 uniform mat4 MVPMatrix;
 
-varying vec3 vertexPosition;
+attribute vec3 vertexPosition;
 
 varying vec3 out_texCoord;
 
