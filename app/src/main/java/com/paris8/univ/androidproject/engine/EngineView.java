@@ -35,9 +35,11 @@ public class EngineView extends GLSurfaceView
         private int mWidth = 0;
         private int mHeight = 0;
 
+        private PerspCamera camera;
+
         private ShaderProgram skyboxProgram;
 
-        private PerspCamera camera;
+        private SkyBox skyBox;
 
         public Renderer(AssetManager assetManager)
         {
@@ -49,10 +51,11 @@ public class EngineView extends GLSurfaceView
         {
             GraphicsRenderer.printGLinfo();
 
+            camera = new PerspCamera();
+
             try
             {
-                skyboxProgram = new ShaderProgram(
-                        assetManager.open("Shaders/SkyBox/skybox_vs.glsl"),
+                skyboxProgram = new ShaderProgram(assetManager.open("Shaders/SkyBox/skybox_vs.glsl"),
                         assetManager.open("Shaders/SkyBox/skybox_fs.glsl"));
             }
             catch (Exception ex)
@@ -60,7 +63,10 @@ public class EngineView extends GLSurfaceView
                 Log.e(TAG, ex.toString());
             }
 
-            camera = new PerspCamera();
+            skyBox = new SkyBox(skyboxProgram);
+            skyBox.load("Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg",
+                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg",
+                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg");
         }
 
         @Override
