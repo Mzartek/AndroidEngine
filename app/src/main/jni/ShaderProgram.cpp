@@ -106,9 +106,6 @@ extern "C"
     const char *VSString = env->GetStringUTFChars(vs, 0);
     const char *FSString = env->GetStringUTFChars(fs, 0);
 
-    ALOGD("TESTVERTEX: %s\n", VSString);
-    ALOGD("TESTPIXEL : %s\n", FSString);
-
     Engine::Object *object = new Engine::ShaderProgram(VSString, FSString);
 
     env->ReleaseStringUTFChars(vs, VSString);

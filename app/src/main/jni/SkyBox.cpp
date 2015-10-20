@@ -39,6 +39,8 @@ Engine::SkyBox::SkyBox(std::shared_ptr<ShaderProgram> program)
 
   glUseProgram(_program->getId());
   glUniform1i(glGetUniformLocation(_program->getId(), "cubeMap"), 0);
+
+  glBindAttribLocation(_program->getId(), 0, "vertexPosition");
 }
 
 Engine::SkyBox::~SkyBox(void)

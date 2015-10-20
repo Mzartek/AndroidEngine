@@ -1,14 +1,13 @@
-#version 130 uniform mat4 MVPMatrix;
+#version 130
 
-layout(location = 0) in vec3 vertex;
+uniform mat4 MVPMatrix;
 
-out VertexData
-{
-    vec3 texCoord;
-} VertOut;
+in vec3 vertexPosition;
+
+out vec3 out_texCoord;
 
 void main(void)
 {
-    gl_Position = MVPMatrix * vec4(vertex, 1.0);
-    VertOut.texCoord = vertex;
+    gl_Position = MVPMatrix * vec4(vertexPosition, 1.0);
+    out_texCoord = vertexPosition;
 }

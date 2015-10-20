@@ -1,13 +1,12 @@
-#version 130 uniform samplerCube cubeMap;
+#version 130
 
-in VertexData
-{
-	vec3 texCoord;
-} FragIn;
+uniform samplerCube cubeMap;
+
+in vec3 out_texCoord;
 
 out vec4 fragColor;
 
 void main(void)
 {
-	fragColor = texture(cubeMap, vec3(FragIn.texCoord.x, FragIn.texCoord.y, FragIn.texCoord.z));
+	fragColor = texture(cubeMap, out_texCoord);
 }
