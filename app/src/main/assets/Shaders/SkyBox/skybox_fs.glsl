@@ -1,5 +1,3 @@
-#version 100
-
 uniform samplerCube cubeMap;
 
 varying vec3 out_texCoord;

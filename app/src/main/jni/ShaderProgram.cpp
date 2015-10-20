@@ -30,6 +30,7 @@ inline GLuint loadShader(const GLchar *content, const GLenum &type)
       log[logsize] = '\0';
 
       glGetShaderInfoLog(id, logsize, &logsize, log);
+						
       std::string error("Error while compiling shader: \n" + std::string(log));
 
       glDeleteShader(id);
@@ -57,12 +58,14 @@ Engine::ShaderProgram::ShaderProgram(const GLchar *vs, const GLchar *fs)
 
   if (vs != nullptr)
     {
+			ALOGD("Load the Vertex shader");
       _idVertexShader = loadShader(vs, GL_VERTEX_SHADER);
       glAttachShader(_idProgram, _idVertexShader);
     }
 
   if (fs != nullptr)
     {
+			ALOGD("Load the Fragment shader");
       _idFragmentShader = loadShader(fs, GL_FRAGMENT_SHADER);
       glAttachShader(_idProgram, _idFragmentShader);
     }

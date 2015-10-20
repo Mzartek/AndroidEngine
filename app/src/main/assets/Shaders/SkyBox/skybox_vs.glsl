@@ -1,5 +1,3 @@
-#version 100
-
 uniform mat4 MVPMatrix;
 
 attribute vec3 vertexPosition;

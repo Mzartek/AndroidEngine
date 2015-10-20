@@ -2,6 +2,7 @@ package com.paris8.univ.androidproject.engine;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.util.Log;
 
@@ -52,10 +53,12 @@ public class EngineView extends GLSurfaceView
             GraphicsRenderer.printGLinfo();
 
             camera = new PerspCamera();
+            camera.setPositionAndTarget(10, 10, 10, 0, 0, 0);
 
             try
             {
-                skyboxProgram = new ShaderProgram(assetManager.open("Shaders/SkyBox/skybox_vs.glsl"),
+                skyboxProgram = new ShaderProgram(
+                        assetManager.open("Shaders/SkyBox/skybox_vs.glsl"),
                         assetManager.open("Shaders/SkyBox/skybox_fs.glsl"));
             }
             catch (Exception ex)
@@ -64,7 +67,8 @@ public class EngineView extends GLSurfaceView
             }
 
             skyBox = new SkyBox(skyboxProgram);
-            /*skyBox.load("Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg",
+            /*skyBox.load(
+                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg",
                     "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg",
                     "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg");*/
         }
@@ -75,15 +79,14 @@ public class EngineView extends GLSurfaceView
             mWidth = width;
             mHeight = height;
             GraphicsRenderer.setSize(mWidth, mHeight);
-
-            camera.setPositionAndTarget(10, 10, 10, 0, 0, 0);
-            camera.updateData();
         }
 
         @Override
         public void onDrawFrame(GL10 gl)
         {
             GraphicsRenderer.clear();
+
+            camera.updateData();
         }
     }
 }
