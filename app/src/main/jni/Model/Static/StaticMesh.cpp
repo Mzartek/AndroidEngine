@@ -6,7 +6,11 @@
 
 Engine::StaticMesh::StaticMesh(const std::shared_ptr<ShaderProgram> &_program)
     : Mesh::Mesh(_program), _stride(11 * sizeof(GLfloat))
-{
+{    
+    glBindAttribLocation(_program->getId(), 0, "vertexPosition");
+    glBindAttribLocation(_program->getId(), 1, "textureCoord");
+    glBindAttribLocation(_program->getId(), 2, "normalVector");
+    glBindAttribLocation(_program->getId(), 3, "tangentVector");
 }
 
 Engine::StaticMesh::~StaticMesh(void)
