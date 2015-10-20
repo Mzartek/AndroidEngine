@@ -1,10 +1,10 @@
-#version 130
+#version 100
 
 uniform mat4 MVPMatrix;
 
-in vec3 vertexPosition;
+varying vec3 vertexPosition;
 
-out vec3 out_texCoord;
+varying vec3 out_texCoord;
 
 void main(void)
 {
