@@ -67,10 +67,10 @@ public class EngineView extends GLSurfaceView
             }
 
             skyBox = new SkyBox(skyboxProgram);
-            /*skyBox.load(
-                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg",
-                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg",
-                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg");*/
+            skyBox.load(
+                    "Textures/butterfly.bmp", "Textures/butterfly.bmp",
+                    "Textures/butterfly.bmp", "Textures/butterfly.bmp",
+                    "Textures/butterfly.bmp", "Textures/butterfly.bmp");
         }
 
         @Override
