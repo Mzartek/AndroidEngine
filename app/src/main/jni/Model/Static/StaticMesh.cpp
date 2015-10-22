@@ -6,11 +6,11 @@
 
 Engine::StaticMesh::StaticMesh(const std::shared_ptr<ShaderProgram> &_program)
     : Mesh::Mesh(_program), _stride(11 * sizeof(GLfloat))
-{    
-    glBindAttribLocation(_program->getId(), 0, "vertexPosition");
-    glBindAttribLocation(_program->getId(), 1, "textureCoord");
-    glBindAttribLocation(_program->getId(), 2, "normalVector");
-    glBindAttribLocation(_program->getId(), 3, "tangentVector");
+{
+     _vertexAttributeLocation = glGetAttribLocation(_program->getId(), "vertexPosition");
+     _textureAttributeLocation = glGetAttribLocation(_program->getId(), "textureCoord");
+     _normalAttributeLocation = glGetAttribLocation(_program->getId(), "normalVector");
+     _tangentAttributeLocation = glGetAttribLocation(_program->getId(), "tangentVector");
 }
 
 Engine::StaticMesh::~StaticMesh(void)
@@ -39,22 +39,22 @@ void Engine::StaticMesh::startDrawing() const
 {
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer->getId());
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer->getId());
-    glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
-    glEnableVertexAttribArray(2);
-    glEnableVertexAttribArray(3);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, _stride, BUFFER_OFFSET(0));
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, _stride, BUFFER_OFFSET(3 * sizeof(GLfloat)));
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, _stride, BUFFER_OFFSET(5 * sizeof(GLfloat)));
-    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, _stride, BUFFER_OFFSET(8 * sizeof(GLfloat)));
+    glEnableVertexAttribArray(_vertexAttributeLocation);
+    glEnableVertexAttribArray(_textureAttributeLocation);
+    glEnableVertexAttribArray(_normalAttributeLocation);
+    glEnableVertexAttribArray(_tangentAttributeLocation);
+    glVertexAttribPointer(_vertexAttributeLocation, 3, GL_FLOAT, GL_FALSE, _stride, BUFFER_OFFSET(0));
+    glVertexAttribPointer(_textureAttributeLocation, 2, GL_FLOAT, GL_FALSE, _stride, BUFFER_OFFSET(3 * sizeof(GLfloat)));
+    glVertexAttribPointer(_normalAttributeLocation, 3, GL_FLOAT, GL_FALSE, _stride, BUFFER_OFFSET(5 * sizeof(GLfloat)));
+    glVertexAttribPointer(_tangentAttributeLocation, 3, GL_FLOAT, GL_FALSE, _stride, BUFFER_OFFSET(8 * sizeof(GLfloat)));
 }
 
 void Engine::StaticMesh::endDrawing() const
 {
-    glDisableVertexAttribArray(3);
-    glDisableVertexAttribArray(2);
-    glDisableVertexAttribArray(1);
-    glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(_tangentAttributeLocation);
+    glDisableVertexAttribArray(_normalAttributeLocation);
+    glDisableVertexAttribArray(_textureAttributeLocation);
+    glDisableVertexAttribArray(_vertexAttributeLocation);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

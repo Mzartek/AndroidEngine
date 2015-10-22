@@ -36,6 +36,8 @@ public class EngineView extends GLSurfaceView
         private int mWidth = 0;
         private int mHeight = 0;
 
+        private float tmp = 0.0f;
+
         private PerspCamera camera;
 
         private ShaderProgram skyboxProgram;
@@ -53,7 +55,7 @@ public class EngineView extends GLSurfaceView
             GraphicsRenderer.printGLinfo();
 
             camera = new PerspCamera();
-            camera.setPositionAndTarget(10, 10, 10, 0, 0, 0);
+            camera.setCameraPosition(0, 0, 0);
 
             try
             {
@@ -68,9 +70,9 @@ public class EngineView extends GLSurfaceView
 
             skyBox = new SkyBox(skyboxProgram);
             skyBox.load(assetManager,
-                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg",
-                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg",
-                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg");
+                    "Textures/BlueSky/bluesky_right.jpg", "Textures/BlueSky/bluesky_left.jpg",
+                    "Textures/BlueSky/bluesky_top.jpg", "Textures/BlueSky/bluesky_top.jpg",
+                    "Textures/BlueSky/bluesky_front.jpg", "Textures/BlueSky/bluesky_back.jpg");
         }
 
         @Override
@@ -79,6 +81,8 @@ public class EngineView extends GLSurfaceView
             mWidth = width;
             mHeight = height;
             GraphicsRenderer.setSize(mWidth, mHeight);
+
+            camera.setPerspective(90, width, height, 0.1f, 100.0f);
         }
 
         @Override
@@ -86,6 +90,7 @@ public class EngineView extends GLSurfaceView
         {
             GraphicsRenderer.clear();
 
+            camera.setAngle((float)Math.toRadians(tmp += 0.1), 0);
             camera.updateData();
 
             skyBox.display(camera);

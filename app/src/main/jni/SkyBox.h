@@ -26,6 +26,7 @@ namespace Engine
 	  std::shared_ptr<Buffer> _indexBuffer;
 
 	  std::shared_ptr<ShaderProgram> _program;
+	  GLint _vertexAttributeLocation;
 	  GLint _MVPUniformLocation;
 
 	  GLuint _numElement;

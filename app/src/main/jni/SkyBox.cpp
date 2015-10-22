@@ -35,12 +35,11 @@ Engine::SkyBox::SkyBox(std::shared_ptr<ShaderProgram> program)
      _vertexBuffer->createStore(GL_ARRAY_BUFFER, vertexArray, sizeof vertexArray, GL_STATIC_DRAW);
      _indexBuffer->createStore(GL_ELEMENT_ARRAY_BUFFER, indexArray, sizeof indexArray, GL_STATIC_DRAW);
 
+     _vertexAttributeLocation = glGetAttribLocation(_program->getId(), "vertexPosition");
      _MVPUniformLocation = glGetUniformLocation(_program->getId(), "MVPMatrix");
 
      glUseProgram(_program->getId());
      glUniform1i(glGetUniformLocation(_program->getId(), "cubeMap"), 0);
-
-     glBindAttribLocation(_program->getId(), 0, "vertexPosition");
 }
 
 Engine::SkyBox::~SkyBox(void)
@@ -75,14 +74,14 @@ void Engine::SkyBox::display(const std::shared_ptr<PerspCamera> &cam) const
 
      glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer->getId());
      glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer->getId());
-     {
-	  glEnableVertexAttribArray(0);
+     
+     glEnableVertexAttribArray(_vertexAttributeLocation);
 
-	  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, GLsizei(3 * sizeof(GLfloat)), BUFFER_OFFSET(0));
-	  glDrawElements(GL_TRIANGLES, _numElement, GL_UNSIGNED_INT, 0);
+     glVertexAttribPointer(_vertexAttributeLocation, 3, GL_FLOAT, GL_FALSE, GLsizei(3 * sizeof(GLfloat)), BUFFER_OFFSET(0));
+     glDrawElements(GL_TRIANGLES, _numElement, GL_UNSIGNED_INT, 0);
 
-	  glDisableVertexAttribArray(0);
-     }
+     glDisableVertexAttribArray(_vertexAttributeLocation);
+	  
      glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
      glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

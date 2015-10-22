@@ -14,6 +14,11 @@ namespace Engine
     private:
         GLsizei _stride;
 
+	GLint _vertexAttributeLocation;
+	GLint _textureAttributeLocation;
+	GLint _normalAttributeLocation;
+	GLint _tangentAttributeLocation;
+
     public:
         struct Vertex
         {

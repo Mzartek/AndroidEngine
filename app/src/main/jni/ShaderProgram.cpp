@@ -69,7 +69,7 @@ Engine::ShaderProgram::ShaderProgram(const GLchar *vs, const GLchar *fs)
       _idFragmentShader = loadShader(fs, GL_FRAGMENT_SHADER);
       glAttachShader(_idProgram, _idFragmentShader);
     }
-
+  
   glLinkProgram(_idProgram);
 
   glGetProgramiv(_idProgram, GL_LINK_STATUS, &status);
