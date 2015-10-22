@@ -22,7 +22,8 @@ void Engine::Texture2D::loadFromFile(const GLchar *path)
     SDL_Surface *image = IMG_Load(path);
     if (image == nullptr)
     {
-        throw std::runtime_error(std::string("Error while loading image: " + std::string(path) + "\n" + IMG_GetError()));
+        ALOGE("Error while loading image: %s", path);
+        throw std::exception();
     }
 
     if (glIsTexture(_idTexture)) glDeleteTextures(1, &_idTexture);
@@ -38,7 +39,8 @@ void Engine::Texture2D::loadFromFile(const GLchar *path)
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->w, image->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->pixels);
             break;
         default:
-            throw std::runtime_error(std::string(path) + ": Pixel format unsupported");
+            ALOGE("%s: Pixel format unsupported(%d)", path, image->format->format);
+            throw std::exception();
     }
     glGenerateMipmap(GL_TEXTURE_2D);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

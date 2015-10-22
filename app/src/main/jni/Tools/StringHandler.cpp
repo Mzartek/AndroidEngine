@@ -26,7 +26,8 @@ char* Engine::Tools::readText(const char *filePath)
 
     if (!file.is_open())
     {
-        throw std::runtime_error(std::string("Error while opening file: " + std::string(filePath)));
+        ALOGE("Error while opening file: %s", filePath);
+        throw std::exception();
     }
     // Lenght of the file
     file.seekg(0, std::ifstream::end);

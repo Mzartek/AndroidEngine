@@ -1,6 +1,6 @@
 package com.paris8.univ.androidproject.engine;
 
-import android.util.Log;
+import android.content.res.AssetManager;
 
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 
@@ -11,6 +11,7 @@ public class SkyBox extends EngineObject
 {
     private static native long newSkyBox(long shaderProgram);
     private static native void load(long objectHandler,
+                                    AssetManager assetManager,
                                     String posx, String negx,
                                     String posy, String negy,
                                     String posz, String negz);
@@ -21,11 +22,13 @@ public class SkyBox extends EngineObject
         super(newSkyBox(shaderProgram.getObjectHandler()));
     }
 
-    public void load(String posx, String negx,
+    public void load(AssetManager assetManager,
+                     String posx, String negx,
                      String posy, String negy,
                      String posz, String negz)
     {
         this.load(this.getObjectHandler(),
+                assetManager,
                 posx, negx,
                 posy, negy,
                 posz, negz);

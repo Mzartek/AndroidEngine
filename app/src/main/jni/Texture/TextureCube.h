@@ -9,18 +9,18 @@
 
 namespace Engine
 {
-    class TextureCube : public Texture
-    {
-    public:
-        TextureCube(void);
-        ~TextureCube(void);
-        TextureType getType(void) const override;
+     class TextureCube : public Texture
+     {
+     public:
+	  TextureCube(void);
+	  ~TextureCube(void);
+	  TextureType getType(void) const override;
 
-        void loadFromFiles(
-                const GLchar *posx, const GLchar *negx,
-                const GLchar *posy, const GLchar *negy,
-                const GLchar *posz, const GLchar *negz);
-    };
+	  void loadFromAssets(JNIEnv *env, jobject assetManager,
+			      const GLchar *posx, const GLchar *negx,
+			      const GLchar *posy, const GLchar *negy,
+			      const GLchar *posz, const GLchar *negz);
+     };
 }
 
 #endif //ANDROIDPROJECT_TEXTURECUBE_H

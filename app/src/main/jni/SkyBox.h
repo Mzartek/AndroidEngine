@@ -18,30 +18,31 @@
 
 namespace Engine
 {
-    class SkyBox : public Object
-    {
-    private:
-        std::shared_ptr<TextureCube> _cubeTexture;
-        std::shared_ptr<Buffer> _vertexBuffer;
-        std::shared_ptr<Buffer> _indexBuffer;
+     class SkyBox : public Object
+     {
+     private:
+	  std::shared_ptr<TextureCube> _cubeTexture;
+	  std::shared_ptr<Buffer> _vertexBuffer;
+	  std::shared_ptr<Buffer> _indexBuffer;
 
-        std::shared_ptr<ShaderProgram> _program;
-        GLint _MVPUniformLocation;
+	  std::shared_ptr<ShaderProgram> _program;
+	  GLint _MVPUniformLocation;
 
-        GLuint _numElement;
+	  GLuint _numElement;
 
-    public:
-        SkyBox(std::shared_ptr<ShaderProgram> program);
-        ~SkyBox(void);
+     public:
+	  SkyBox(std::shared_ptr<ShaderProgram> program);
+	  ~SkyBox(void);
 
-        void load(const GLchar *posx, const GLchar *negx,
-                  const GLchar *posy, const GLchar *negy,
-                  const GLchar *posz, const GLchar *negz) const;
+	  void load(JNIEnv *env, jobject assetManager,
+		    const GLchar *posx, const GLchar *negx,
+		    const GLchar *posy, const GLchar *negy,
+		    const GLchar *posz, const GLchar *negz) const;
 
-        const std::shared_ptr<TextureCube> &getTexture(void) const;
+	  const std::shared_ptr<TextureCube> &getTexture(void) const;
 
-        void display(const std::shared_ptr<PerspCamera> &cam) const;
-    };
+	  void display(const std::shared_ptr<PerspCamera> &cam) const;
+     };
 }
 
 #endif //ANDROIDPROJECT_SKYBOX_H

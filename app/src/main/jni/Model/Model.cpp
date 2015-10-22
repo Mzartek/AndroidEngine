@@ -79,7 +79,8 @@ void Engine::Model::addMesh(const std::shared_ptr<Mesh> &mesh)
 {
     if (_isMirror == GL_TRUE)
     {
-        throw std::runtime_error("Error Model configuration");
+        ALOGE("Error Model configuration");
+        throw std::exception();
     }
 
     _tMesh->push_back(mesh);

@@ -25,7 +25,8 @@ void Engine::StaticModel::loadFromFile(const GLchar *inFile)
 {
     if (_isMirror == GL_TRUE)
     {
-        throw std::runtime_error("Error Model configuration");
+        ALOGE("Error Model configuration");
+        throw std::exception();
     }
 
     _tMesh->clear();
@@ -34,7 +35,8 @@ void Engine::StaticModel::loadFromFile(const GLchar *inFile)
     const aiScene *pScene = ToolsPrivate::openFile(importer, inFile);
     if (pScene->HasAnimations())
     {
-        throw std::runtime_error("The model is not static");
+        ALOGE("Error Model configuration");
+        throw std::exception();
     }
 
     std::vector<StaticMesh::Vertex> vertices;

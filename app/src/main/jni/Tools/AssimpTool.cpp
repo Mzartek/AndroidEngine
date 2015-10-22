@@ -10,10 +10,9 @@ const aiScene *Engine::ToolsPrivate::openFile(Assimp::Importer &importer, const 
     const aiScene *pScene = importer.ReadFile(inFile, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_CalcTangentSpace | aiProcess_JoinIdenticalVertices | aiProcess_OptimizeMeshes);
     if (!pScene)
     {
-        std::string error = "Failed to load model File: ";
-        error.append(inFile + '\n');
-        error.append(importer.GetErrorString());
-        throw std::runtime_error(error);
+        ALOGE("Failed to load model File: %s", inFile);
+        ALOGE("%s", importer.GetErrorString());
+        throw std::exception();
     }
 
     return pScene;

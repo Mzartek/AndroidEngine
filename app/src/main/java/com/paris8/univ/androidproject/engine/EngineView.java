@@ -67,10 +67,10 @@ public class EngineView extends GLSurfaceView
             }
 
             skyBox = new SkyBox(skyboxProgram);
-            skyBox.load(
-                    "butterfly.bmp", "butterfly.bmp",
-                    "butterfly.bmp", "butterfly.bmp",
-                    "butterfly.bmp", "butterfly.bmp");
+            skyBox.load(assetManager,
+                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg",
+                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg",
+                    "Textures/BlueSky/bluesky_back.jpg", "Textures/BlueSky/bluesky_back.jpg");
         }
 
         @Override
@@ -87,6 +87,8 @@ public class EngineView extends GLSurfaceView
             GraphicsRenderer.clear();
 
             camera.updateData();
+
+            skyBox.display(camera);
         }
     }
 }
