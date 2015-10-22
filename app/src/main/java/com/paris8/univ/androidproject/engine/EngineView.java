@@ -68,9 +68,9 @@ public class EngineView extends GLSurfaceView
 
             skyBox = new SkyBox(skyboxProgram);
             skyBox.load(
-                    "Textures/butterfly.bmp", "Textures/butterfly.bmp",
-                    "Textures/butterfly.bmp", "Textures/butterfly.bmp",
-                    "Textures/butterfly.bmp", "Textures/butterfly.bmp");
+                    "butterfly.bmp", "butterfly.bmp",
+                    "butterfly.bmp", "butterfly.bmp",
+                    "butterfly.bmp", "butterfly.bmp");
         }
 
         @Override
