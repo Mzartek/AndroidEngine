@@ -7,10 +7,22 @@ import com.paris8.univ.androidproject.engine.EngineObject;
  */
 public abstract class Mesh extends EngineObject
 {
+    private static native void setMaterial(long materialHandler);
+
+    private static native void display(long objectHandler);
+
     public Mesh(long objectHandler)
     {
         super(objectHandler);
     }
 
-    public abstract void display();
+    public void setMaterial(Material material)
+    {
+        setMaterial(material.getObjectHandler());
+    }
+
+    public void display()
+    {
+        display(this.getObjectHandler());
+    }
 }

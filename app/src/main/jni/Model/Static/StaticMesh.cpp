@@ -58,3 +58,34 @@ void Engine::StaticMesh::endDrawing() const
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
+
+extern "C"
+{
+	JNI_RETURN(Engine::ObjectHandler)
+	Java_com_paris8_univ_androidproject_engine_model_staticmodel_StaticMesh_createStaticMesh(JNIEnv *env, jobject thiz,
+												 Engine::ObjectHandler shaderProgramHandler)
+	{
+		Engine::ShaderProgram *shaderProgram = Engine::Object::retrieveObject<Engine::ShaderProgram>(shaderProgramHandler);
+		Engine::Object *object = new Engine::StaticMesh(std::shared_ptr<Engine::ShaderProgram>(shaderProgram, Engine::null_deleter));
+
+		ALOGD("New StaticMesh (Handler=%lld)", object->getHandler());
+		return object->getHandler();		
+	}
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_staticmodel_StaticMesh_load(JNIEnv *env, jobject thiz,
+										     Engine::ObjectHandler objectHandler,
+										     jint numVertex, jfloatArray vertices,
+										     jint numIndex, jintArray indices)
+	{
+		jfloat *vertexArray = env->GetFloatArrayElements(vertices, 0);
+		jint *indexArray = env->GetIntArrayElements(indices, 0);
+
+		Engine::Object::retrieveObject<Engine::StaticMesh>(objectHandler)
+			->load(static_cast<GLsizei>(numVertex), reinterpret_cast<Engine::StaticMesh::Vertex *>(vertexArray),
+			       static_cast<GLsizei>(numIndex), reinterpret_cast<GLuint *>(indexArray));
+
+		env->ReleaseFloatArrayElements(vertices, vertexArray, 0);
+		env->ReleaseIntArrayElements(indices, indexArray, 0);
+	}
+}
