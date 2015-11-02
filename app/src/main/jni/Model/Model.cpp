@@ -162,3 +162,70 @@ const std::shared_ptr<Engine::Mesh> &Engine::Model::getMesh(GLuint num) const
     }
     return (*_tMesh)[num];
 }
+
+extern "C"
+{
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_Model_addMesh(Engine::ObjectHandler objectHandler, Engine::ObjectHandler meshHandler)
+	{
+		Engine::Mesh *mesh = Engine::Object::retrieveObject<Engine::Mesh>(meshHandler);
+		Engine::Object::retrieveObject<Engine::Model>(objectHandler)
+			->addMesh(std::shared_ptr<Engine::Mesh>(mesh, Engine::null_deleter));
+	}
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_Model_setPosition(Engine::ObjectHandler objectHandler,
+									   float x, float y, float z)
+	{
+		Engine::Object::retrieveObject<Engine::Model>(objectHandler)->setPosition(glm::vec3(x, y, z));
+	}
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_Model_setScale(Engine::ObjectHandler objectHandler,
+									float x, float y, float z)
+	{
+		Engine::Object::retrieveObject<Engine::Model>(objectHandler)->setScale(glm::vec3(x, y, z));
+	}
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_Model_setRotation1(Engine::ObjectHandler objectHandler,
+									    float x, float y, float z)
+	{
+		Engine::Object::retrieveObject<Engine::Model>(objectHandler)->setRotation(glm::vec3(x, y, z));
+	}
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_Model_setRotation2(Engine::ObjectHandler objectHandler,
+									    float x, float y, float z, float angle)
+	{
+		Engine::Object::retrieveObject<Engine::Model>(objectHandler)->setRotation(glm::vec3(x, y, z), angle);
+	}
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_Model_addPosition(Engine::ObjectHandler objectHandler,
+									   float x, float y, float z)
+	{
+		Engine::Object::retrieveObject<Engine::Model>(objectHandler)->addPosition(glm::vec3(x, y, z));
+	}
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_Model_addScale(Engine::ObjectHandler objectHandler,
+									float x, float y, float z)
+	{
+		Engine::Object::retrieveObject<Engine::Model>(objectHandler)->addScale(glm::vec3(x, y, z));
+	}
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_Model_addRotation1(Engine::ObjectHandler objectHandler,
+									    float x, float y, float z)
+	{
+		Engine::Object::retrieveObject<Engine::Model>(objectHandler)->addRotation(glm::vec3(x, y, z));
+	}
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_Model_addRotation2(Engine::ObjectHandler objectHandler,
+									    float x, float y, float z, float angle)
+	{
+		Engine::Object::retrieveObject<Engine::Model>(objectHandler)->addRotation(glm::vec3(x, y, z), angle);
+	}
+}

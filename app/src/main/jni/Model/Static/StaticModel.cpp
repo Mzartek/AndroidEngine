@@ -105,3 +105,49 @@ void Engine::StaticModel::displayTransparent(const std::shared_ptr<PerspCamera> 
                 (*_tMesh)[i]->display();
         }
 }
+
+extern "C"
+{
+	JNI_RETURN(Engine::ObjectHandler)
+	Java_com_paris8_univ_androidproject_engine_model_staticmodel_StaticModel_createStaticModel1(Engine::ObjectHandler shaderProgramHandler)
+	{
+		Engine::ShaderProgram *shaderProgram = Engine::Object::retrieveObject<Engine::ShaderProgram>(shaderProgramHandler);
+		Engine::Object *object = new Engine::StaticModel(std::shared_ptr<Engine::ShaderProgram>(shaderProgram, Engine::null_deleter));
+
+		ALOGD("New StaticModel (Handler=%lld)", object->getHandler());
+		return object->getHandler();
+	}
+	
+	JNI_RETURN(Engine::ObjectHandler)
+	Java_com_paris8_univ_androidproject_engine_model_staticmodel_StaticModel_createStaticModel2(
+		Engine::ObjectHandler staticModelHandler,
+		Engine::ObjectHandler shaderProgramHandler)
+	{
+		Engine::StaticModel *staticModel = Engine::Object::retrieveObject<Engine::StaticModel>(staticModelHandler);
+		Engine::ShaderProgram *shaderProgram = Engine::Object::retrieveObject<Engine::ShaderProgram>(shaderProgramHandler);
+		Engine::Object *object = new Engine::StaticModel(
+			std::shared_ptr<Engine::StaticModel>(staticModel, Engine::null_deleter),
+			std::shared_ptr<Engine::ShaderProgram>(shaderProgram, Engine::null_deleter));
+
+		ALOGD("New StaticModel (Handler=%lld)", object->getHandler());
+		return object->getHandler();
+	}
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_staticmodel_StaticModel_display(Engine::ObjectHandler objectHandler,
+											 Engine::ObjectHandler cameraHandler)
+	{
+		Engine::PerspCamera *camera = Engine::Object::retrieveObject<Engine::PerspCamera>(cameraHandler);
+		Engine::Object::retrieveObject<Engine::StaticModel>(objectHandler)
+			->display(std::shared_ptr<Engine::PerspCamera>(camera, Engine::null_deleter));
+	}
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_staticmodel_StaticModel_displayTransparent(Engine::ObjectHandler objectHandler,
+												    Engine::ObjectHandler cameraHandler)
+	{
+		Engine::PerspCamera *camera = Engine::Object::retrieveObject<Engine::PerspCamera>(cameraHandler);
+		Engine::Object::retrieveObject<Engine::StaticModel>(objectHandler)
+			->displayTransparent(std::shared_ptr<Engine::PerspCamera>(camera, Engine::null_deleter));
+	}
+}
