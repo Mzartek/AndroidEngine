@@ -12,7 +12,10 @@
 namespace Engine
 {
     namespace Tools
-    {
+    {	
+	extern JNIEnv *jniEnv;
+    	extern jobject jniAssetManager;
+
         struct AssetRessource
         {
             AAsset *asset;
@@ -20,7 +23,7 @@ namespace Engine
             char *buffer;
         };
 
-        AssetRessource openAsset(JNIEnv *env, jobject assetManager, const char *asset);
+        AssetRessource openAsset(const char *asset);
         void closeAsset(AssetRessource assetRessource);
     }
 }

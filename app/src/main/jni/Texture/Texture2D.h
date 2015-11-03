@@ -16,7 +16,7 @@ namespace Engine
         ~Texture2D(void);
         TextureType getType(void) const override;
 
-        void loadFromFile(const GLchar *path);
+        void loadFromAsset(const GLchar *asset);
     };
 }
 

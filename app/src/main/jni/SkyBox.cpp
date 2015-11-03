@@ -4,6 +4,8 @@
 
 #include "SkyBox.h"
 
+#include "Tools/AssetTool.h"
+
 Engine::SkyBox::SkyBox(std::shared_ptr<ShaderProgram> program)
      : _program(program)
 {
@@ -46,12 +48,11 @@ Engine::SkyBox::~SkyBox(void)
 {
 }
 
-void Engine::SkyBox::load(JNIEnv *env, jobject assetManager,
-			  const GLchar *posx, const GLchar *negx,
+void Engine::SkyBox::load(const GLchar *posx, const GLchar *negx,
 			  const GLchar *posy, const GLchar *negy,
 			  const GLchar *posz, const GLchar *negz) const
 {
-     _cubeTexture->loadFromAssets(env, assetManager, posx, negx, posy, negy, posz, negz);
+     _cubeTexture->loadFromAssets(posx, negx, posy, negy, posz, negz);
 }
 
 const std::shared_ptr<Engine::TextureCube> &Engine::SkyBox::getTexture(void) const
@@ -112,8 +113,9 @@ extern "C"
 	  const char *posz_string = env->GetStringUTFChars(posz, 0);
 	  const char *negz_string = env->GetStringUTFChars(negz, 0);
     
-	  Engine::Object::retrieveObject<Engine::SkyBox>(objectHandler)->load(env, assetManager,
-									      posx_string, negx_string,
+	  Engine::Tools::jniEnv = env;
+	  Engine::Tools::jniAssetManager = assetManager;
+	  Engine::Object::retrieveObject<Engine::SkyBox>(objectHandler)->load(posx_string, negx_string,
 									      posy_string, negy_string,
 									      posz_string, negz_string);
 

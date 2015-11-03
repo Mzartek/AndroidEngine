@@ -35,8 +35,7 @@ namespace Engine
 	  SkyBox(std::shared_ptr<ShaderProgram> program);
 	  ~SkyBox(void);
 
-	  void load(JNIEnv *env, jobject assetManager,
-		    const GLchar *posx, const GLchar *negx,
+	  void load(const GLchar *posx, const GLchar *negx,
 		    const GLchar *posy, const GLchar *negy,
 		    const GLchar *posz, const GLchar *negz) const;
 

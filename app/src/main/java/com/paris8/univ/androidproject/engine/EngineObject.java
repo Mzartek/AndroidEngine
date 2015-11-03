@@ -1,5 +1,7 @@
 package com.paris8.univ.androidproject.engine;
 
+import android.content.res.AssetManager;
+
 /**
  * Created by mzartek on 24/09/15.
  */

@@ -2,11 +2,9 @@ package com.paris8.univ.androidproject.engine;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.util.Log;
 
-import com.paris8.univ.androidproject.R;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -69,7 +67,7 @@ public class EngineView extends GLSurfaceView
             }
 
             skyBox = new SkyBox(skyboxProgram);
-            skyBox.load(assetManager,
+            skyBox.load(this.assetManager,
                     "Textures/BlueSky/bluesky_right.jpg", "Textures/BlueSky/bluesky_left.jpg",
                     "Textures/BlueSky/bluesky_top.jpg", "Textures/BlueSky/bluesky_top.jpg",
                     "Textures/BlueSky/bluesky_front.jpg", "Textures/BlueSky/bluesky_back.jpg");

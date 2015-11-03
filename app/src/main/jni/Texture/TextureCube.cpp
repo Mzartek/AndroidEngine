@@ -20,7 +20,6 @@ Engine::TextureType Engine::TextureCube::getType(void) const
 }
 
 void Engine::TextureCube::loadFromAssets(
-     JNIEnv *env, jobject assetManager,
      const GLchar *posx, const GLchar *negx,
      const GLchar *posy, const GLchar *negy,
      const GLchar *posz, const GLchar *negz)
@@ -32,7 +31,7 @@ void Engine::TextureCube::loadFromAssets(
 
      for (int i = 0; i < 6; ++i)
      {
-	  assetRessource = Tools::openAsset(env, assetManager, tex[i]);
+	  assetRessource = Tools::openAsset(tex[i]);
 	  rw = SDL_RWFromMem(assetRessource.buffer, assetRessource.size);
 	  Tools::closeAsset(assetRessource);
 	  image[i] = IMG_Load_RW(rw, 1);

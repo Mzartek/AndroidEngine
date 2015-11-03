@@ -77,7 +77,7 @@ std::shared_ptr<Engine::Material> Engine::ToolsPrivate::loadMaterial(const aiMat
             std::string filePath = dir + path.C_Str();
             std::shared_ptr<Texture2D> newTexture = std::make_shared<Texture2D>();
 
-            newTexture->loadFromFile(filePath.c_str());
+            newTexture->loadFromAsset(filePath.c_str());
 
             switch (_textureType[i])
             {

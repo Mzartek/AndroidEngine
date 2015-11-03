@@ -4,12 +4,13 @@
 
 #include "AssetTool.h"
 
-Engine::Tools::AssetRessource Engine::Tools::openAsset(JNIEnv *env,
-                                                       jobject assetManager,
-                                                       const char *assetPath)
+JNIEnv *Engine::Tools::jniEnv;
+jobject Engine::Tools::jniAssetManager;
+
+Engine::Tools::AssetRessource Engine::Tools::openAsset(const char *assetPath)
 {
     AssetRessource assetRessource;
-    AAssetManager* mgr = AAssetManager_fromJava(env, assetManager);
+    AAssetManager* mgr = AAssetManager_fromJava(jniEnv, jniAssetManager);
     assetRessource.asset = AAssetManager_open(mgr, assetPath, AASSET_MODE_UNKNOWN);
     if (assetRessource.asset == nullptr)
     {

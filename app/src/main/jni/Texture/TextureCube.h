@@ -16,8 +16,7 @@ namespace Engine
 	  ~TextureCube(void);
 	  TextureType getType(void) const override;
 
-	  void loadFromAssets(JNIEnv *env, jobject assetManager,
-			      const GLchar *posx, const GLchar *negx,
+	  void loadFromAssets(const GLchar *posx, const GLchar *negx,
 			      const GLchar *posy, const GLchar *negy,
 			      const GLchar *posz, const GLchar *negz);
      };
