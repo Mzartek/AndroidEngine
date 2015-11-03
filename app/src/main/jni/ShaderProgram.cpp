@@ -4,9 +4,10 @@
 
 #include "ShaderProgram.h"
 
+#include "Tools/AssetTool.h"
 #include "Tools/StringHandler.h"
 
-inline GLuint loadShader(const GLchar *content, const GLenum &type)
+inline GLuint loadShader(const GLchar *asset, const GLenum &type)
 {
   GLuint id;
   GLchar *log;
@@ -20,7 +21,10 @@ inline GLuint loadShader(const GLchar *content, const GLenum &type)
       throw std::exception();
     }
 
-  glShaderSource(id, 1, const_cast<const GLchar **>(&content), nullptr);
+  Engine::Tools::AssetRessource assetRessource = Engine::Tools::openAsset(asset);
+  GLint bufferSize = static_cast<GLint>(assetRessource.size);
+  glShaderSource(id, 1, const_cast<const GLchar **>(&assetRessource.buffer), &bufferSize);
+  Engine::Tools::closeAsset(assetRessource);
   glCompileShader(id);
   glGetShaderiv(id, GL_COMPILE_STATUS, &status);
   if (status != GL_TRUE)
@@ -31,7 +35,7 @@ inline GLuint loadShader(const GLchar *content, const GLenum &type)
       log[logsize] = '\0';
 
       glGetShaderInfoLog(id, logsize, &logsize, log);
-      ALOGE("Error while compiling shader: %s", log);
+      ALOGE("Error while compiling shader %s: %s", asset, log);
 
       glDeleteShader(id);
       delete[] log;
@@ -58,14 +62,12 @@ Engine::ShaderProgram::ShaderProgram(const GLchar *vs, const GLchar *fs)
 
   if (vs != nullptr)
     {
-      ALOGD("Load the Vertex shader");
       _idVertexShader = loadShader(vs, GL_VERTEX_SHADER);
       glAttachShader(_idProgram, _idVertexShader);
     }
 
   if (fs != nullptr)
     {
-      ALOGD("Load the Fragment shader");
       _idFragmentShader = loadShader(fs, GL_FRAGMENT_SHADER);
       glAttachShader(_idProgram, _idFragmentShader);
     }
@@ -104,11 +106,15 @@ GLuint Engine::ShaderProgram::getId(void) const
 extern "C"
 {
   JNI_RETURN(Engine::ObjectHandler)
-  Java_com_paris8_univ_androidproject_engine_ShaderProgram_newShaderProgram(JNIEnv *env, jobject thiz, jstring vs, jstring fs)
+  Java_com_paris8_univ_androidproject_engine_ShaderProgram_newShaderProgram(JNIEnv *env, jobject thiz,
+									    jobject assetManager,
+									    jstring vs, jstring fs)
   {
     const char *VSString = env->GetStringUTFChars(vs, 0);
     const char *FSString = env->GetStringUTFChars(fs, 0);
 
+    Engine::Tools::jniEnv = env;
+    Engine::Tools::jniAssetManager = assetManager;
     Engine::Object *object = new Engine::ShaderProgram(VSString, FSString);
 
     env->ReleaseStringUTFChars(vs, VSString);

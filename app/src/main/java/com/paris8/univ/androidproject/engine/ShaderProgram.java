@@ -1,5 +1,6 @@
 package com.paris8.univ.androidproject.engine;
 
+import android.content.res.AssetManager;
 import android.util.Log;
 
 import com.paris8.univ.androidproject.engine.tools.StringHandler;
@@ -15,12 +16,10 @@ public class ShaderProgram extends EngineObject
 {
     private static final String TAG = "ShaderProgram";
 
-    private static native long newShaderProgram(String vs, String fs);
+    private static native long newShaderProgram(AssetManager assetManager, String vs, String fs);
 
-    public ShaderProgram(InputStream vs, InputStream fs)
+    public ShaderProgram(AssetManager assetManager, String vs, String fs)
     {
-        super(newShaderProgram(
-                StringHandler.readFromInputStream(vs),
-                StringHandler.readFromInputStream(fs)));
+        super(newShaderProgram(assetManager, vs, fs));
     }
 }

@@ -57,9 +57,9 @@ public class EngineView extends GLSurfaceView
 
             try
             {
-                skyboxProgram = new ShaderProgram(
-                        assetManager.open("Shaders/SkyBox/skybox_vs.glsl"),
-                        assetManager.open("Shaders/SkyBox/skybox_fs.glsl"));
+                skyboxProgram = new ShaderProgram(this.assetManager,
+                        "Shaders/SkyBox/skybox_vs.glsl",
+                        "Shaders/SkyBox/skybox_fs.glsl");
             }
             catch (Exception ex)
             {
