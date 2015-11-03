@@ -9,28 +9,28 @@
 
 namespace Engine
 {
-    class GraphicsRenderer
-    {
-    public:
-        static GraphicsRenderer& Instance(void);
+     class GraphicsRenderer
+     {
+     public:
+	  static GraphicsRenderer& Instance(void);
 
-    private:
-        GraphicsRenderer(void);
-        ~GraphicsRenderer(void);
+     private:
+	  GraphicsRenderer(void);
+	  ~GraphicsRenderer(void);
 
-        GLuint _width;
-        GLuint _height;
+	  GLuint _width;
+	  GLuint _height;
 
-    public:
-        void printGLinfo(void);
+     public:
+	  void printGLinfo(void);
 
-        void setSize(GLuint width, GLuint height);
+	  void setSize(GLuint width, GLuint height);
 
-        void setSkyboxState(void) const;
-	    void setGeometryState(void) const;
+	  void setSkyboxState(void) const;
+	  void setGeometryState(void) const;
 
-        void clear(void) const;
-    };
+	  void clear(void) const;
+     };
 }
 
 #endif //ANDROIDPROJECT_GRAPHICSRENDERER_H

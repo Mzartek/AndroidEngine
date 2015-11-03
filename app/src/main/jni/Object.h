@@ -43,25 +43,25 @@
 
 namespace Engine
 {
-    typedef jlong ObjectHandler;
+     typedef jlong ObjectHandler;
 
-    class Object
-    {
-    public:
-        template<typename T>
-        static T* retrieveObject(ObjectHandler objectHandler)
-        {
-            return reinterpret_cast<T*>(objectHandler);
-        }
+     class Object
+     {
+     public:
+	  template<typename T>
+	       static T* retrieveObject(ObjectHandler objectHandler)
+	  {
+	       return reinterpret_cast<T*>(objectHandler);
+	  }
 
-    public:
-        Object(void);
-        virtual ~Object(void);
+     public:
+	  Object(void);
+	  virtual ~Object(void);
 
-        ObjectHandler getHandler(void);
-    };
+	  ObjectHandler getHandler(void);
+     };
 
-    void null_deleter(Object *obj);
+     void null_deleter(Object *obj);
 }
 
 #endif //ANDROIDPROJECT_OBJECT_H

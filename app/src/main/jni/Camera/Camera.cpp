@@ -14,20 +14,20 @@ Engine::Camera::~Camera(void)
 
 const glm::mat4 &Engine::Camera::getProjectionMatrix(void) const
 {
-    return _projectionMatrix;
+     return _projectionMatrix;
 }
 
 const glm::mat4 &Engine::Camera::getViewMatrix(void) const
 {
-    return _viewMatrix;
+     return _viewMatrix;
 }
 
 const glm::mat4 &Engine::Camera::getVPMatrix(void) const
 {
-    return _VPMatrix;
+     return _VPMatrix;
 }
 
 const glm::mat4 &Engine::Camera::getIVPMatrix(void) const
 {
-    return _IVPMatrix;
+     return _IVPMatrix;
 }

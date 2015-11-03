@@ -9,20 +9,20 @@
 
 namespace Engine
 {
-    enum TextureType { TEXTURE_2D_TYPE, TEXTURE_CUBE_TYPE };
+     enum TextureType { TEXTURE_2D_TYPE, TEXTURE_CUBE_TYPE };
 
-    class Texture : public Object
-    {
-    protected:
-        GLuint _idTexture;
+     class Texture : public Object
+     {
+     protected:
+	  GLuint _idTexture;
 
-    public:
-        Texture(void);
-        ~Texture(void);
-        GLuint getId(void) const;
+     public:
+	  Texture(void);
+	  ~Texture(void);
+	  GLuint getId(void) const;
 
-        virtual TextureType getType(void) const = 0;
-    };
+	  virtual TextureType getType(void) const = 0;
+     };
 }
 
 #endif //ANDROIDPROJECT_TEXTURE_H

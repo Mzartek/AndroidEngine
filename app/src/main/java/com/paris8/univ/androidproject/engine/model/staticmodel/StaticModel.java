@@ -1,5 +1,7 @@
 package com.paris8.univ.androidproject.engine.model.staticmodel;
 
+import android.content.res.AssetManager;
+
 import com.paris8.univ.androidproject.engine.ShaderProgram;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 import com.paris8.univ.androidproject.engine.model.Model;
@@ -12,6 +14,8 @@ public class StaticModel extends Model
     private static native long createStaticModel1(long shaderProgramHandler);
     private static native long createStaticModel2(long staticModelHandler, long shaderProgramHandler);
 
+    private static native void loadFromAsset(long objectHandler, AssetManager assetManager, String asset);
+
     private static native void display(long objectHandler, long cameraHandler);
     private static native void displayTransparent(long objectHandler, long cameraHandler);
 
@@ -23,6 +27,11 @@ public class StaticModel extends Model
     public StaticModel(StaticModel staticModel, ShaderProgram shaderProgram)
     {
         super(createStaticModel2(staticModel.getObjectHandler(), shaderProgram.getObjectHandler()));
+    }
+
+    public void loadFromAsset(AssetManager assetManager, String asset)
+    {
+        loadFromAsset(this.getObjectHandler(), assetManager, asset);
     }
 
     @Override

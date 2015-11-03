@@ -16,13 +16,13 @@
 
 namespace Engine
 {
-    namespace ToolsPrivate
-    {
-        extern const aiScene *openFile(Assimp::Importer &importer, const GLchar *inFile);
-        extern std::vector<StaticMesh::Vertex> loadStaticVertices(const aiMesh *mesh);
-        extern std::vector<GLuint> loadIndices(const aiMesh *mesh);
-        extern std::shared_ptr<Material> loadMaterial(const aiMaterial *material, const std::string &dir);
-    }
+     namespace ToolsPrivate
+     {
+	  extern const aiScene *openAsset(Assimp::Importer &importer, const GLchar *asset);
+	  extern std::vector<StaticMesh::Vertex> loadStaticVertices(const aiMesh *mesh);
+	  extern std::vector<GLuint> loadIndices(const aiMesh *mesh);
+	  extern std::shared_ptr<Material> loadMaterial(const aiMaterial *material, const std::string &dir);
+     }
 }
 
 #endif //ANDROIDPROJECT_ASSIMPTOOL_H

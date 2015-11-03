@@ -9,19 +9,19 @@
 
 namespace Engine
 {
-    class ShaderProgram : public Object
-    {
-    private:
-        GLuint _idProgram;
-        GLuint _idVertexShader;
-        GLuint _idFragmentShader;
+     class ShaderProgram : public Object
+     {
+     private:
+	  GLuint _idProgram;
+	  GLuint _idVertexShader;
+	  GLuint _idFragmentShader;
 
-    public:
-        ShaderProgram(const GLchar *vs, const GLchar *fs);
-        ~ShaderProgram(void);
+     public:
+	  ShaderProgram(const GLchar *vs, const GLchar *fs);
+	  ~ShaderProgram(void);
 
-        GLuint getId(void) const;
-    };
+	  GLuint getId(void) const;
+     };
 }
 
 #endif //ANDROIDPROJECT_SHADERPROGRAM_H

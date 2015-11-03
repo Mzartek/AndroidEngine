@@ -11,21 +11,21 @@
 
 namespace Engine
 {
-    namespace Tools
-    {	
-	extern JNIEnv *jniEnv;
-    	extern jobject jniAssetManager;
+     namespace Tools
+     {	
+	  extern JNIEnv *jniEnv;
+	  extern jobject jniAssetManager;
 
-        struct AssetRessource
-        {
-            AAsset *asset;
-            long size;
-            char *buffer;
-        };
+	  struct AssetRessource
+	  {
+	       AAsset *asset;
+	       long size;
+	       char *buffer;
+	  };
 
-        AssetRessource openAsset(const char *asset);
-        void closeAsset(AssetRessource assetRessource);
-    }
+	  AssetRessource openAsset(const char *asset);
+	  void closeAsset(AssetRessource assetRessource);
+     }
 }
 
 #endif //ANDROIDPROJECT_ASSETTOOL_H

@@ -9,11 +9,11 @@
 
 namespace Engine
 {
-    namespace Tools
-    {
-        extern std::string getDir(const char *filePath);
-        extern char *readText(const char *filePath);
-    }
+     namespace Tools
+     {
+	  extern std::string getDir(const char *filePath);
+	  extern char *readText(const char *filePath);
+     }
 }
 
 #endif //ANDROIDPROJECT_STRINGHANDLER_H
