@@ -1,12 +1,8 @@
-package com.paris8.univ.androidproject;
+package com.paris8.univ.androidproject.game;
 
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-
-import com.paris8.univ.androidproject.engine.EngineView;
-
-import java.io.File;
 
 public class GameActivity extends Activity
 {
@@ -19,7 +15,7 @@ public class GameActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 
-        mView = new EngineView(getApplication(), getAssets());
+        mView = new GameView(getApplication(), getAssets());
         setContentView(mView);
     }
 
