@@ -73,7 +73,7 @@ public class Cube
         }
 
         mMaterial = new Material();
-        mMaterial.setAmbient(r, g, b);
+        mMaterial.setDiffuse(r, g, b);
 
         mStaticMesh = new StaticMesh(mShaderProgram);
         mStaticMesh.setMaterial(mMaterial);
@@ -81,6 +81,11 @@ public class Cube
 
         mStaticModel = new StaticModel(mShaderProgram);
         mStaticModel.addMesh(mStaticMesh);
+    }
+
+    public StaticModel getModel()
+    {
+        return mStaticModel;
     }
 
     public void display(PerspCamera camera)

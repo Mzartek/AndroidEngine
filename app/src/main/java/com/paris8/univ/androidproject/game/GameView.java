@@ -59,7 +59,8 @@ public class GameView extends GLSurfaceView
 
             mySkyBox = new MySkyBox(this.assetManager);
 
-            //cube0 = new Cube(0, 255, 0);
+            cube0 = new Cube(this.assetManager, 0, 255, 0);
+            cube0.getModel().setPosition(0, 0, 5);
         }
 
         @Override
@@ -81,6 +82,8 @@ public class GameView extends GLSurfaceView
             camera.updateData();
 
             mySkyBox.display(camera);
+            cube0.display(camera);
+            cube0.getModel().addRotation(0.01f, 0.01f, 0.0f);
         }
     }
 }
