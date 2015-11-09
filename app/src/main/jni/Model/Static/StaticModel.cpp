@@ -190,17 +190,17 @@ extern "C"
      {
 	  Engine::PerspCamera *camera = Engine::Object::retrieveObject<Engine::PerspCamera>(cameraHandler);
 	  Engine::Object::retrieveObject<Engine::StaticModel>(objectHandler)
-		  ->displayTransparent(std::shared_ptr<Engine::PerspCamera>(camera, Engine::null_deleter));
+	       ->displayTransparent(std::shared_ptr<Engine::PerspCamera>(camera, Engine::null_deleter));
      }
 
-	JNI_RETURN(void)
-	Java_com_paris8_univ_androidproject_engine_model_staticmodel_StaticModel_displayOffSet(JNIEnv *env, jobject thiz,
-											       Engine::ObjectHandler objectHandler,
-											       Engine::ObjectHandler cameraHandler,
-											       jfloat x, jfloat y, jfloat z)
-	{
-		Engine::PerspCamera *camera = Engine::Object::retrieveObject<Engine::PerspCamera>(cameraHandler);
-		Engine::Object::retrieveObject<Engine::StaticModel>(objectHandler)
-			->displayOffSet(std::shared_ptr<Engine::PerspCamera>(camera, Engine::null_deleter), glm::vec3(x, y, z));
-	}
+     JNI_RETURN(void)
+     Java_com_paris8_univ_androidproject_engine_model_staticmodel_StaticModel_displayOffSet(JNIEnv *env, jobject thiz,
+											    Engine::ObjectHandler objectHandler,
+											    Engine::ObjectHandler cameraHandler,
+											    jfloat x, jfloat y, jfloat z)
+     {
+	  Engine::PerspCamera *camera = Engine::Object::retrieveObject<Engine::PerspCamera>(cameraHandler);
+	  Engine::Object::retrieveObject<Engine::StaticModel>(objectHandler)
+	       ->displayOffSet(std::shared_ptr<Engine::PerspCamera>(camera, Engine::null_deleter), glm::vec3(x, y, z));
+     }
 }

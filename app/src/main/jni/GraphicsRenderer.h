@@ -29,6 +29,8 @@ namespace Engine
 	  void setSkyboxState(void) const;
 	  void setGeometryState(void) const;
 
+	  bool compareColor(const int x, const int y, const glm::vec3 &color);
+
 	  void clear(void) const;
      };
 }

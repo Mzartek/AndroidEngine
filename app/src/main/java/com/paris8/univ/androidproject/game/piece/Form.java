@@ -1,5 +1,7 @@
 package com.paris8.univ.androidproject.game.piece;
 
+import com.paris8.univ.androidproject.engine.GraphicsRenderer;
+
 /**
  * Created by Mzartek on 09/11/15.
  */
@@ -13,14 +15,9 @@ public abstract class Form
     protected float rotation;
     protected float rotationWin;
 
-    public boolean sameColor(float r, float g, float b)
+    public boolean isSelected(int x, int y)
     {
-        if (r == this.r && g == this.g && b == this.b)
-        {
-            return true;
-        }
-
-        return false;
+        return GraphicsRenderer.compareColor(x, y, r, g, b);
     }
 
     public boolean winPosition()

@@ -3,12 +3,13 @@ package com.paris8.univ.androidproject.game;
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.view.MotionEvent;
 
 public class GameActivity extends Activity
 {
     final static private String TAG = "GameActivity";
 
-    GLSurfaceView mView;
+    GameView mView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,9 +28,22 @@ public class GameActivity extends Activity
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         super.onResume();
         mView.onResume();
+    }
+
+    @Override
+    public boolean onTouchEvent (MotionEvent event)
+    {
+        super.onTouchEvent(event);
+
+        mView.touchEvent = true;
+        mView.touchPosition[0] = event.getX();
+        mView.touchPosition[1] = event.getY();
+
+        return true;
     }
 
     static

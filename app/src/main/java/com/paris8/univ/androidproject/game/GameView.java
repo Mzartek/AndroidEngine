@@ -4,12 +4,17 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.opengl.GLSurfaceView;
 import android.util.Log;
+import android.view.MotionEvent;
 
 import com.paris8.univ.androidproject.engine.GraphicsRenderer;
 import com.paris8.univ.androidproject.engine.ShaderProgram;
 import com.paris8.univ.androidproject.engine.SkyBox;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 import com.paris8.univ.androidproject.game.piece.Form1;
+
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -20,6 +25,9 @@ import javax.microedition.khronos.opengles.GL10;
 public class GameView extends GLSurfaceView
 {
     final static private String TAG = "EngineView";
+
+    public boolean touchEvent = false;
+    public float[] touchPosition = new float[] { 0, 0 };
 
     public GameView(Context context, AssetManager assetManager)
     {
@@ -37,8 +45,6 @@ public class GameView extends GLSurfaceView
 
         private int mWidth = 0;
         private int mHeight = 0;
-
-        private float tmp = 0.0f;
 
         private PerspCamera camera;
 
@@ -61,7 +67,7 @@ public class GameView extends GLSurfaceView
             mySkyBox = new MySkyBox(this.assetManager);
 
             form1 = new Form1(this.assetManager,
-                    0, 255, 0,
+                    0, 1, 0,
                     0, 0, 0, 0, 0, 0,
                     0, 0);
         }
@@ -79,6 +85,8 @@ public class GameView extends GLSurfaceView
         @Override
         public void onDrawFrame(GL10 gl)
         {
+            manageEvent();
+
             GraphicsRenderer.clear();
 
             camera.updateData();
@@ -86,7 +94,25 @@ public class GameView extends GLSurfaceView
             mySkyBox.display(camera);
 
             form1.display(camera);
-            form1.addRot();
+            //form1.addRot();
+        }
+
+        private void manageEvent()
+        {
+            if(touchEvent)
+            {
+                float xpos = touchPosition[0] * 100 / mWidth;
+                float ypos = touchPosition[1] * 100 / mHeight;
+
+                getForm();
+
+                touchEvent = false;
+            }
+        }
+
+        private void getForm()
+        {
+            form1.isSelected((int) touchPosition[0], (int) touchPosition[1]);
         }
     }
 }

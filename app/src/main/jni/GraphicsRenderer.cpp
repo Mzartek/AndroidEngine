@@ -81,6 +81,19 @@ void Engine::GraphicsRenderer::setGeometryState(void) const
      glDepthRangef(0.0f, 1.0f);
 }
 
+bool Engine::GraphicsRenderer::compareColor(const int x, const int y, const glm::vec3 &color)
+{
+     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+     float pixel[3];     
+     glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, pixel);
+
+     ALOGD("%d %d", x, y);
+     ALOGD("%f %f %f vs %f %f %f", pixel[0], pixel[1], pixel[2], color.x, color.y, color.z);
+     
+     return true;
+}
+
 void Engine::GraphicsRenderer::clear(void) const
 {
      glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -108,6 +121,14 @@ extern "C"
      Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_setSize(JNIEnv *env, jobject thiz, jint width, jint height)
      {
 	  Engine::GraphicsRenderer::Instance().setSize(width, height);
+     }
+
+     JNI_RETURN(jboolean)
+     Java_com_paris8_univ_androidproject_engine_GraphicsRenderer_compareColor(JNIEnv *env, jobject thiz,
+									      jint x, jint y,
+									      jfloat r, jfloat g, jfloat b)
+     {
+	  return Engine::GraphicsRenderer::Instance().compareColor(x, y, glm::vec3(r, g, b));
      }
   
      JNI_RETURN(void)
