@@ -72,4 +72,5 @@ public abstract class Model extends EngineObject
 
     public abstract void display(PerspCamera perspCamera);
     public abstract void displayTransparent(PerspCamera perspCamera);
+    public abstract void displayOffSet(PerspCamera perspCamera, float x, float y, float z);
 }

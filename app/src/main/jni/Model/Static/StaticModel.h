@@ -22,6 +22,7 @@ namespace Engine
 
 	  void display(const std::shared_ptr<PerspCamera> &cam) override;
 	  void displayTransparent(const std::shared_ptr<PerspCamera> &cam) override;
+	  void displayOffSet(const std::shared_ptr<PerspCamera> &cam, const glm::vec3 &offset) override;
      };
 }
 

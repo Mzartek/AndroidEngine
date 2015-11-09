@@ -18,6 +18,7 @@ public class StaticModel extends Model
 
     private static native void display(long objectHandler, long cameraHandler);
     private static native void displayTransparent(long objectHandler, long cameraHandler);
+    private static native void displayOffSet(long objectHandler, long cameraHandler, float x, float y, float z);
 
     public StaticModel(ShaderProgram shaderProgram)
     {
@@ -44,5 +45,11 @@ public class StaticModel extends Model
     public void displayTransparent(PerspCamera perspCamera)
     {
         displayTransparent(this.getObjectHandler(), perspCamera.getObjectHandler());
+    }
+
+    @Override
+    public void displayOffSet(PerspCamera perspCamera, float x, float y, float z)
+    {
+        displayOffSet(this.getObjectHandler(), perspCamera.getObjectHandler(), x, y, z);
     }
 }

@@ -74,6 +74,7 @@ namespace Engine
 
 	  virtual void display(const std::shared_ptr<PerspCamera> &cam) = 0;
 	  virtual void displayTransparent(const std::shared_ptr<PerspCamera> &cam) = 0;
+	  virtual void displayOffSet(const std::shared_ptr<PerspCamera> &cam, const glm::vec3 &offset) = 0;
      };
 }
 

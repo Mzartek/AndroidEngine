@@ -9,6 +9,7 @@ import com.paris8.univ.androidproject.engine.GraphicsRenderer;
 import com.paris8.univ.androidproject.engine.ShaderProgram;
 import com.paris8.univ.androidproject.engine.SkyBox;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
+import com.paris8.univ.androidproject.game.piece.Form1;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -42,7 +43,7 @@ public class GameView extends GLSurfaceView
         private PerspCamera camera;
 
         private MySkyBox mySkyBox;
-        private Cube cube0;
+        private Form1 form1;
 
         public Renderer(AssetManager assetManager)
         {
@@ -55,12 +56,14 @@ public class GameView extends GLSurfaceView
             GraphicsRenderer.printGLinfo();
 
             camera = new PerspCamera();
-            camera.setCameraPosition(0, 0, 0);
+            camera.setPositionAndTarget(20, 20, 0, 0, 0, 0);
 
             mySkyBox = new MySkyBox(this.assetManager);
 
-            cube0 = new Cube(this.assetManager, 0, 255, 0);
-            cube0.getModel().setPosition(0, 0, 5);
+            form1 = new Form1(this.assetManager,
+                    0, 255, 0,
+                    0, 0, 0, 0, 0, 0,
+                    0, 0);
         }
 
         @Override
@@ -78,12 +81,12 @@ public class GameView extends GLSurfaceView
         {
             GraphicsRenderer.clear();
 
-            camera.setAngle((float)Math.toRadians(tmp += 0.1), 0);
             camera.updateData();
 
             mySkyBox.display(camera);
-            cube0.display(camera);
-            cube0.getModel().addRotation(0.01f, 0.01f, 0.0f);
+
+            form1.display(camera);
+            form1.addRot();
         }
     }
 }

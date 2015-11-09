@@ -87,9 +87,4 @@ public class Cube
     {
         return mStaticModel;
     }
-
-    public void display(PerspCamera camera)
-    {
-        mStaticModel.display(camera);
-    }
 }

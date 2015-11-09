@@ -107,6 +107,30 @@ void Engine::StaticModel::displayTransparent(const std::shared_ptr<PerspCamera> 
 	  }
 }
 
+void Engine::StaticModel::displayOffSet(const std::shared_ptr<PerspCamera> &cam, const glm::vec3 &offset)
+{
+     checkMatrix();
+
+     Engine::GraphicsRenderer::Instance().setGeometryState();
+
+     glUseProgram(_program->getId());
+
+     glUniformMatrix4fv(_MVPMatrixUniformLocation       , 1, GL_FALSE, glm::value_ptr(cam->getVPMatrix() * _matrix.model * glm::translate(offset)));
+     glUniformMatrix4fv(_projectionMatrixUniformLocation, 1, GL_FALSE, glm::value_ptr(cam->getProjectionMatrix()));
+     glUniformMatrix4fv(_viewMatrixUniformLocation      , 1, GL_FALSE, glm::value_ptr(cam->getViewMatrix()));
+     glUniformMatrix4fv(_modelMatrixUniformLocation     , 1, GL_FALSE, glm::value_ptr(_matrix.model * glm::translate(offset)));
+     glUniformMatrix4fv(_normalMatrixUniformLocation    , 1, GL_FALSE, glm::value_ptr(_matrix.normal));
+
+     for (GLuint i = 0; i < _tMesh->size(); i++)
+	  if ((*_tMesh)[i]->getMaterial()->getOpacity() == 1.0f)
+	  {
+	       if (_cubeTexture)
+		    (*_tMesh)[i]->display(_cubeTexture);
+	       else
+		    (*_tMesh)[i]->display();
+	  }
+}
+
 extern "C"
 {
      JNI_RETURN(Engine::ObjectHandler)
@@ -166,6 +190,17 @@ extern "C"
      {
 	  Engine::PerspCamera *camera = Engine::Object::retrieveObject<Engine::PerspCamera>(cameraHandler);
 	  Engine::Object::retrieveObject<Engine::StaticModel>(objectHandler)
-	       ->displayTransparent(std::shared_ptr<Engine::PerspCamera>(camera, Engine::null_deleter));
+		  ->displayTransparent(std::shared_ptr<Engine::PerspCamera>(camera, Engine::null_deleter));
      }
+
+	JNI_RETURN(void)
+	Java_com_paris8_univ_androidproject_engine_model_staticmodel_StaticModel_displayOffSet(JNIEnv *env, jobject thiz,
+											       Engine::ObjectHandler objectHandler,
+											       Engine::ObjectHandler cameraHandler,
+											       jfloat x, jfloat y, jfloat z)
+	{
+		Engine::PerspCamera *camera = Engine::Object::retrieveObject<Engine::PerspCamera>(cameraHandler);
+		Engine::Object::retrieveObject<Engine::StaticModel>(objectHandler)
+			->displayOffSet(std::shared_ptr<Engine::PerspCamera>(camera, Engine::null_deleter), glm::vec3(x, y, z));
+	}
 }
