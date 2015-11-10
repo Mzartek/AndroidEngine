@@ -119,9 +119,23 @@ public class GameView extends GLSurfaceView
 
     public class DragListener implements OnDragListener
     {
+        private float x, y;
+
         @Override
         public boolean onDrag(View v, DragEvent event)
         {
+            switch (event.getAction())
+            {
+                case DragEvent.ACTION_DRAG_STARTED:
+                    Log.d(TAG, "START DRAG");
+                    x = event.getX();
+                    y = event.getY();
+                    break;
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    Log.d(TAG, "DRAGING");
+                    break;
+            }
+
             return true;
         }
     }
