@@ -67,7 +67,7 @@ public class GameView extends GLSurfaceView
             mySkyBox = new MySkyBox(this.assetManager);
 
             form1 = new Form1(this.assetManager,
-                    0, 1, 0,
+                    0.10f, 0.75f, 0.25f,
                     0, 0, 0, 0, 0, 0,
                     0, 0);
         }

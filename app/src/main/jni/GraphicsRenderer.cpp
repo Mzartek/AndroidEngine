@@ -90,7 +90,9 @@ bool Engine::GraphicsRenderer::compareColor(const int x, const int y, const glm:
 
      ALOGD("%d %d", x, y);
      ALOGD("%u %u %u vs %u %u %u", pixel[0], pixel[1], pixel[2], 
-	   static_cast<GLubyte>(color.x * 255), static_cast<GLubyte>(color.y * 255), static_cast<GLubyte>(color.z * 255));
+	   static_cast<GLubyte>(color.x * 255 + 0.5f),
+	   static_cast<GLubyte>(color.y * 255 + 0.5f),
+	   static_cast<GLubyte>(color.z * 255 + 0.5f));
      
      return true;
 }
