@@ -17,21 +17,7 @@ public class Form1 extends Form
                  float x, float y, float z, float xwin, float ywin, float zwin,
                  float rotation, float rotationWin)
     {
-        this.r = r;
-        this.g = g;
-        this.b = b;
-
-        this.x = x;
-        this.y = y;
-        this.z = z;
-
-        this.xwin = xwin;
-        this.ywin = ywin;
-        this.zwin = zwin;
-
-        this.rotation = rotation;
-
-        this.rotationWin = rotationWin;
+        super(r, g, b, x, y, z, xwin, ywin, zwin, rotation, rotationWin);
 
         cubes = new Cube[]
                 {
