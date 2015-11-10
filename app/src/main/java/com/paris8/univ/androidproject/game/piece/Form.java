@@ -1,12 +1,16 @@
 package com.paris8.univ.androidproject.game.piece;
 
 import com.paris8.univ.androidproject.engine.GraphicsRenderer;
+import com.paris8.univ.androidproject.engine.camera.PerspCamera;
+import com.paris8.univ.androidproject.game.Cube;
 
 /**
  * Created by Mzartek on 09/11/15.
  */
 public abstract class Form
 {
+    protected Cube[] cubes;
+
     protected float r, g, b;
 
     protected float x, y, z;
@@ -74,5 +78,14 @@ public abstract class Form
     public void addRot()
     {
         rotation += Math.toRadians(90);
+    }
+
+    public void display(PerspCamera camera)
+    {
+        for (Cube cube : cubes)
+        {
+            cube.getModel().setPosition(x, y, z);
+            cube.getModel().setRotation(0, rotation, 0);
+        }
     }
 }

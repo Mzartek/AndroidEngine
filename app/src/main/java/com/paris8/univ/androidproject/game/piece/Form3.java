@@ -6,14 +6,14 @@ import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 import com.paris8.univ.androidproject.game.Cube;
 
 /**
- * Created by Mzartek on 09/11/15.
- * C'est une barre |
+ * Created by jpagny on 10/11/15.
+ * C'est la cicatrice d'harry potter
  */
-public class Form1 extends Form
+public class Form3 extends Form
 {
+    private Cube[] cubes;
 
-
-    public Form1(AssetManager assetManager,
+    public Form3(AssetManager assetManager,
                  float r, float g, float b,
                  float x, float y, float z, float xwin, float ywin, float zwin,
                  float rotation, float rotationWin)
@@ -22,6 +22,7 @@ public class Form1 extends Form
 
         cubes = new Cube[]
                 {
+                        new Cube(assetManager, r, g, b),
                         new Cube(assetManager, r, g, b),
                         new Cube(assetManager, r, g, b),
                         new Cube(assetManager, r, g, b),
@@ -36,7 +37,8 @@ public class Form1 extends Form
 
         cubes[0].getModel().displayOffSet(camera, 0, 0, 0);
         cubes[1].getModel().displayOffSet(camera, 0, 0, 2);
-        cubes[2].getModel().displayOffSet(camera, 0, 0, 4);
-        cubes[3].getModel().displayOffSet(camera, 0, 0, 6);
+        cubes[2].getModel().displayOffSet(camera, 2, 0, 2);
+        cubes[3].getModel().displayOffSet(camera, 2, 0, 4);
+        cubes[4].getModel().displayOffSet(camera, 2, 0, 6);
     }
 }
