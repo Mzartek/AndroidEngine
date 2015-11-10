@@ -85,14 +85,31 @@ bool Engine::GraphicsRenderer::compareColor(const int x, const int y, const glm:
 {
      glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-     float pixel[3];     
-     glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, pixel);
+     GLubyte pixel[3];     
+     glReadPixels(x, y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, pixel);
 
      ALOGD("%d %d", x, y);
-     ALOGD("%f %f %f vs %f %f %f", pixel[0], pixel[1], pixel[2], color.x, color.y, color.z);
+     ALOGD("%u %u %u vs %u %u %u", pixel[0], pixel[1], pixel[2], 
+	   static_cast<GLubyte>(color.x * 255), static_cast<GLubyte>(color.y * 255), static_cast<GLubyte>(color.z * 255));
      
      return true;
 }
+
+/*
+void gl4dutStream2texSave(void) {
+  int i, j, i1 , i2;
+  if(!_s2tWriter) return;
+  if(_s2tGrabbedFrame <= _s2tSavedFrame) return;
+  glPixelStorei(GL_PACK_ALIGNMENT, 1);
+  glReadPixels(0, 0, _s2tWimg->width, _s2tWimg->height, GL_BGR, GL_UNSIGNED_BYTE
+, _s2tWimg->imageData);
+  for(i = 0; i < _s2tWimg->height; i++) {
+    i1 = 3 * (_s2tWimg->height - i - 1) * _s2tWimg->width;
+    i2 = 3 * i * _s2tWimg->width;
+    for(j = 0; j < 3 * _s2tWimg->width; j++)
+      _s2tFimg->imageData[i1 + j] = _s2tWimg->imageData[i2 + j];
+  }
+*/
 
 void Engine::GraphicsRenderer::clear(void) const
 {
