@@ -1,5 +1,8 @@
 package com.paris8.univ.androidproject.game;
 
+import android.util.Log;
+
+import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 import com.paris8.univ.androidproject.game.piece.Form;
 
 import java.util.ArrayList;
@@ -10,7 +13,7 @@ import java.util.ArrayList;
 public class Level
 {
     private ArrayList<Form> forms;
-    private Form selectedForm;
+    private Form selectedForm = null;
 
     public Level()
     {
@@ -20,5 +23,40 @@ public class Level
     public void addForm(Form form)
     {
         forms.add(form);
+    }
+
+    public void unselectForm()
+    {
+        if (selectedForm != null)
+        {
+            selectedForm.unselectIt();
+            selectedForm = null;
+        }
+    }
+
+    public boolean selectForm(int x, int y)
+    {
+        unselectForm();
+
+        for (Form form : forms)
+        {
+            if (form.isPointed(x, y))
+            {
+                selectedForm = form;
+                selectedForm.selectIt();
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void display(PerspCamera camera)
+    {
+        for (Form form : forms)
+        {
+            form.display(camera);
+        }
     }
 }

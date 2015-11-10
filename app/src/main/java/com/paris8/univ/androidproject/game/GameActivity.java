@@ -34,18 +34,6 @@ public class GameActivity extends Activity
         mView.onResume();
     }
 
-    @Override
-    public boolean onTouchEvent (MotionEvent event)
-    {
-        super.onTouchEvent(event);
-
-        mView.touchEvent = true;
-        mView.touchPosition[0] = event.getX();
-        mView.touchPosition[1] = event.getY();
-
-        return true;
-    }
-
     static
     {
         // Warning! The order of the load is important

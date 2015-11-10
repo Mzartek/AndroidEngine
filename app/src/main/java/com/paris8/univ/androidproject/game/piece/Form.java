@@ -40,11 +40,6 @@ public abstract class Form
         this.rotationWin = rotationWin;
     }
 
-    public boolean isSelected(int x, int y)
-    {
-        return GraphicsRenderer.compareColor(x, y, r, g, b);
-    }
-
     public boolean winPosition()
     {
         if (x == xwin && y == ywin && z == zwin && rotation == rotationWin)
@@ -78,6 +73,21 @@ public abstract class Form
     public void addRot()
     {
         rotation += Math.toRadians(90);
+    }
+
+    public boolean isPointed(int x, int y)
+    {
+        return GraphicsRenderer.compareColor(x, y, r, g, b);
+    }
+
+    public void unselectIt()
+    {
+        y = 0;
+    }
+
+    public void selectIt()
+    {
+        y = 10;
     }
 
     public void display(PerspCamera camera)

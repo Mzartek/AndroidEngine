@@ -84,17 +84,18 @@ void Engine::GraphicsRenderer::setGeometryState(void) const
 bool Engine::GraphicsRenderer::compareColor(const int x, const int y, const glm::vec3 &color)
 {
      glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-     GLubyte pixel[3];     
-     glReadPixels(x, y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, pixel);
-
-     ALOGD("%d %d", x, y);
-     ALOGD("%u %u %u vs %u %u %u", pixel[0], pixel[1], pixel[2], 
-	   static_cast<GLubyte>(color.x * 255 + 0.5f),
-	   static_cast<GLubyte>(color.y * 255 + 0.5f),
-	   static_cast<GLubyte>(color.z * 255 + 0.5f));
      
-     return true;
+     GLubyte pixel[3];
+     glReadPixels(x, y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, pixel);
+     
+     if (pixel[0] == static_cast<GLubyte>(color.x * 255 + 0.5f) &&
+	 pixel[1] == static_cast<GLubyte>(color.y * 255 + 0.5f) &&
+	 pixel[2] == static_cast<GLubyte>(color.z * 255 + 0.5f))
+     {
+	  return true;
+     }
+     
+     return false;
 }
 
 /*
