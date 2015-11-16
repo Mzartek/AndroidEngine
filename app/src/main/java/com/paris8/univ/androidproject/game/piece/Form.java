@@ -90,12 +90,27 @@ public abstract class Form
         y = 10;
     }
 
-    public void display(PerspCamera camera)
+    protected void displayCube(PerspCamera camera)
     {
         for (Cube cube : cubes)
         {
+            cube.setColor(r, g, b);
+            cube.getModel().setScale(1, 1, 1);
             cube.getModel().setPosition(x, y, z);
             cube.getModel().setRotation(0, rotation, 0);
         }
     }
+
+    protected void displayFloor(PerspCamera camera)
+    {
+        for (Cube cube : cubes)
+        {
+            cube.setColor(0.5f, 0, 0);
+            cube.getModel().setScale(1, 0, 1);
+            cube.getModel().setPosition(xwin, ywin, zwin);
+            cube.getModel().setRotation(0, rotationWin, 0);
+        }
+    }
+
+    public abstract void display(PerspCamera camera);
 }

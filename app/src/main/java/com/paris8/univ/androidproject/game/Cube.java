@@ -59,7 +59,7 @@ public class Cube
     private StaticMesh mStaticMesh;
     private StaticModel mStaticModel;
 
-    public Cube(AssetManager assetManager, float r, float g, float b)
+    public Cube(AssetManager assetManager)
     {
         try
         {
@@ -73,7 +73,6 @@ public class Cube
         }
 
         mMaterial = new Material();
-        mMaterial.setDiffuse(r, g, b);
 
         mStaticMesh = new StaticMesh(mShaderProgram);
         mStaticMesh.setMaterial(mMaterial);
@@ -86,5 +85,10 @@ public class Cube
     public StaticModel getModel()
     {
         return mStaticModel;
+    }
+
+    public void setColor(float r, float g, float b)
+    {
+        mMaterial.setDiffuse(r, g, b);
     }
 }

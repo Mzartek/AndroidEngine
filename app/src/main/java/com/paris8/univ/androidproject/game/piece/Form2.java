@@ -22,18 +22,26 @@ public class Form2 extends Form
 
         cubes = new Cube[]
                 {
-                        new Cube(assetManager, r, g, b),
-                        new Cube(assetManager, r, g, b),
-                        new Cube(assetManager, r, g, b),
-                        new Cube(assetManager, r, g, b),
-                        new Cube(assetManager, r, g, b),
+                        new Cube(assetManager),
+                        new Cube(assetManager),
+                        new Cube(assetManager),
+                        new Cube(assetManager),
+                        new Cube(assetManager),
                 };
     }
 
     @Override
     public void display(PerspCamera camera)
     {
-        super.display(camera);
+        super.displayFloor(camera);
+
+        cubes[0].getModel().displayOffSet(camera, 0, 0, 0);
+        cubes[1].getModel().displayOffSet(camera, 0, 0, 2);
+        cubes[2].getModel().displayOffSet(camera, 0, 0, 4);
+        cubes[3].getModel().displayOffSet(camera, 0, 0, 6);
+        cubes[4].getModel().displayOffSet(camera, 2, 0, 6);
+
+        super.displayCube(camera);
 
         cubes[0].getModel().displayOffSet(camera, 0, 0, 0);
         cubes[1].getModel().displayOffSet(camera, 0, 0, 2);
