@@ -7,9 +7,11 @@ import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 
 import com.paris8.univ.androidproject.engine.GraphicsRenderer;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
+import com.paris8.univ.androidproject.game.control.GameButton;
 import com.paris8.univ.androidproject.game.piece.Form1;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -30,6 +32,12 @@ public class GameView extends GLSurfaceView
 
     private MySkyBox mySkyBox;
     private Level mLevel;
+
+    private GameButton upButton;
+    private GameButton downButton;
+    private GameButton rightButton;
+    private GameButton leftButton;
+    private GameButton rotateButton;
 
     private boolean selectEvent = false;
     private int[] selectEventPosition = new int[] { 0,  0 };
@@ -54,6 +62,16 @@ public class GameView extends GLSurfaceView
         private int mWidth = 0;
         private int mHeight = 0;
 
+        public int getWidth()
+        {
+            return mWidth;
+        }
+
+        public int getHeight()
+        {
+            return mHeight;
+        }
+
         @Override
         public void onSurfaceCreated(GL10 gl, EGLConfig config)
         {
@@ -66,6 +84,36 @@ public class GameView extends GLSurfaceView
             mLevel = new Level();
 
             mLevel.addForm(new Form1(mAssetManager, 0.10f, 0.75f, 0.25f, 0, 0, 0, 0, 0, 0, 0, 0));
+
+            upButton = new GameButton(mAssetManager, "Textures/Control/arrow.jpg",
+                    0.2f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 1.0f, 0.0f,
+                    0.4f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 1.0f, 1.0f,
+                    0.2f * 2.0f - 1.0f, 0.33f * 2.0f - 1.0f, 0.0f, 0.0f,
+                    0.4f * 2.0f - 1.0f, 0.33f * 2.0f - 1.0f, 0.0f, 1.0f);
+
+            downButton = new GameButton(mAssetManager, "Textures/Control/arrow.jpg",
+                    0.2f * 2.0f - 1.0f, 0.0f * 2.0f - 1.0f, 0.0f, 1.0f,
+                    0.4f * 2.0f - 1.0f, 0.0f * 2.0f - 1.0f, 0.0f, 0.0f,
+                    0.2f * 2.0f - 1.0f, 0.11f * 2.0f - 1.0f, 1.0f, 1.0f,
+                    0.4f * 2.0f - 1.0f, 0.11f * 2.0f - 1.0f, 1.0f, 0.0f);
+
+            leftButton = new GameButton(mAssetManager, "Textures/Control/arrow.jpg",
+                    0.0f * 2.0f - 1.0f, 0.11f * 2.0f - 1.0f, 0.0f, 0.0f,
+                    0.2f * 2.0f - 1.0f, 0.11f * 2.0f - 1.0f, 1.0f, 0.0f,
+                    0.0f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 0.0f, 1.0f,
+                    0.2f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 1.0f, 1.0f);
+
+            rightButton = new GameButton(mAssetManager, "Textures/Control/arrow.jpg",
+                    0.4f * 2.0f - 1.0f, 0.11f * 2.0f - 1.0f, 1.0f, 1.0f,
+                    0.6f * 2.0f - 1.0f, 0.11f * 2.0f - 1.0f, 0.0f, 1.0f,
+                    0.4f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 1.0f, 0.0f,
+                    0.6f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 0.0f, 0.0f);
+
+            rotateButton = new GameButton(mAssetManager, "Textures/Control/rotate.jpg",
+                    0.2f, 0.11f, 0.0f, 0.0f,
+                    0.4f, 0.11f, 1.0f, 0.0f,
+                    0.2f, 0.22f, 0.0f, 1.0f,
+                    0.4f, 0.22f, 1.0f, 1.0f);
 
             mSurfaceCreated = true;
         }
@@ -95,6 +143,15 @@ public class GameView extends GLSurfaceView
 
             mySkyBox.display(mCamera);
             mLevel.display(mCamera);
+
+            if (mLevel.isFormSelected())
+            {
+                upButton.display(mCamera);
+                downButton.display(mCamera);
+                leftButton.display(mCamera);
+                rightButton.display(mCamera);
+                rotateButton.display(mCamera);
+            }
         }
     }
 
@@ -107,9 +164,37 @@ public class GameView extends GLSurfaceView
             {
                 if (event.getAction() == MotionEvent.ACTION_DOWN)
                 {
-                    selectEvent = true;
-                    selectEventPosition[0] = (int)event.getX();
-                    selectEventPosition[1] = (int)event.getY();
+                    if(mLevel.isFormSelected() &&
+                            upButton.isClicked((int)event.getX(), (int)event.getY(), mRenderer.getWidth(), mRenderer.getHeight()))
+                    {
+                        mLevel.getSelectedForm().remX();
+                    }
+                    else if(mLevel.isFormSelected() &&
+                            downButton.isClicked((int)event.getX(), (int)event.getY(), mRenderer.getWidth(), mRenderer.getHeight()))
+                    {
+                        mLevel.getSelectedForm().addX();
+                    }
+                    else if(mLevel.isFormSelected() &&
+                            leftButton.isClicked((int)event.getX(), (int)event.getY(), mRenderer.getWidth(), mRenderer.getHeight()))
+                    {
+                        mLevel.getSelectedForm().addZ();
+                    }
+                    else if(mLevel.isFormSelected() &&
+                            rightButton.isClicked((int)event.getX(), (int)event.getY(), mRenderer.getWidth(), mRenderer.getHeight()))
+                    {
+                        mLevel.getSelectedForm().remZ();
+                    }
+                    else if(mLevel.isFormSelected() &&
+                            rotateButton.isClicked((int)event.getX(), (int)event.getY(), mRenderer.getWidth(), mRenderer.getHeight()))
+                    {
+                        mLevel.getSelectedForm().addRot();
+                    }
+                    else
+                    {
+                        selectEvent = true;
+                        selectEventPosition[0] = (int)event.getX();
+                        selectEventPosition[1] = Math.abs((int)event.getY() - mRenderer.getHeight());
+                    }
                 }
             }
 

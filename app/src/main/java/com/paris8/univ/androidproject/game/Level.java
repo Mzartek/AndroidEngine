@@ -52,6 +52,18 @@ public class Level
         return false;
     }
 
+    public boolean isFormSelected()
+    {
+        if (selectedForm != null)
+            return true;
+        return false;
+    }
+
+    public Form getSelectedForm()
+    {
+        return selectedForm;
+    }
+
     public void display(PerspCamera camera)
     {
         for (Form form : forms)

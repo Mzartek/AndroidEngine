@@ -465,7 +465,7 @@ typedef struct SDL_HapticConstant
     Uint16 delay;           /**< Delay before starting the effect. */
 
     /* Trigger */
-    Uint16 button;          /**< Button that triggers the effect. */
+    Uint16 button;          /**< GameButton that triggers the effect. */
     Uint16 interval;        /**< How soon it can be triggered again after button. */
 
     /* Constant */
@@ -548,7 +548,7 @@ typedef struct SDL_HapticPeriodic
     Uint16 delay;       /**< Delay before starting the effect. */
 
     /* Trigger */
-    Uint16 button;      /**< Button that triggers the effect. */
+    Uint16 button;      /**< GameButton that triggers the effect. */
     Uint16 interval;    /**< How soon it can be triggered again after button. */
 
     /* Periodic */
@@ -600,7 +600,7 @@ typedef struct SDL_HapticCondition
     Uint16 delay;           /**< Delay before starting the effect. */
 
     /* Trigger */
-    Uint16 button;          /**< Button that triggers the effect. */
+    Uint16 button;          /**< GameButton that triggers the effect. */
     Uint16 interval;        /**< How soon it can be triggered again after button. */
 
     /* Condition */
@@ -636,7 +636,7 @@ typedef struct SDL_HapticRamp
     Uint16 delay;           /**< Delay before starting the effect. */
 
     /* Trigger */
-    Uint16 button;          /**< Button that triggers the effect. */
+    Uint16 button;          /**< GameButton that triggers the effect. */
     Uint16 interval;        /**< How soon it can be triggered again after button. */
 
     /* Ramp */
@@ -699,7 +699,7 @@ typedef struct SDL_HapticCustom
     Uint16 delay;           /**< Delay before starting the effect. */
 
     /* Trigger */
-    Uint16 button;          /**< Button that triggers the effect. */
+    Uint16 button;          /**< GameButton that triggers the effect. */
     Uint16 interval;        /**< How soon it can be triggered again after button. */
 
     /* Custom */
@@ -728,7 +728,7 @@ typedef struct SDL_HapticCustom
  *  Additionally, the ::SDL_HAPTIC_RAMP effect does not support a duration of
  *  ::SDL_HAPTIC_INFINITY.
  *
- *  Button triggers may not be supported on all devices, it is advised to not
+ *  GameButton triggers may not be supported on all devices, it is advised to not
  *  use them if possible.  Buttons start at index 1 instead of index 0 like
  *  the joystick.
  *
@@ -742,7 +742,7 @@ typedef struct SDL_HapticCustom
  *  Uint16 delay;         // Delay before starting effect.
  *
  *  // Trigger - All effects have this
- *  Uint16 button;        // Button that triggers effect.
+ *  Uint16 button;        // GameButton that triggers effect.
  *  Uint16 interval;      // How soon before effect can be triggered again.
  *
  *  // Envelope - All effects except condition effects have this
