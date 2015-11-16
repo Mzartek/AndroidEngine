@@ -110,10 +110,10 @@ public class GameView extends GLSurfaceView
                     0.6f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 0.0f, 0.0f);
 
             rotateButton = new GameButton(mAssetManager, "Textures/Control/rotate.jpg",
-                    0.2f, 0.11f, 0.0f, 0.0f,
-                    0.4f, 0.11f, 1.0f, 0.0f,
-                    0.2f, 0.22f, 0.0f, 1.0f,
-                    0.4f, 0.22f, 1.0f, 1.0f);
+                    0.2f * 2.0f - 1.0f, 0.11f * 2.0f - 1.0f, 0.0f, 0.0f,
+                    0.4f * 2.0f - 1.0f, 0.11f * 2.0f - 1.0f, 1.0f, 0.0f,
+                    0.2f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 0.0f, 1.0f,
+                    0.4f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 1.0f, 1.0f);
 
             mSurfaceCreated = true;
         }
