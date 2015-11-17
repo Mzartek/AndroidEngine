@@ -11,14 +11,12 @@ import com.paris8.univ.androidproject.game.Cube;
  */
 public class Form1 extends Form
 {
-
-
     public Form1(AssetManager assetManager,
                  float r, float g, float b,
-                 float x, float y, float z, float xwin, float ywin, float zwin,
+                 float x, float z, float xwin, float zwin,
                  float rotation, float rotationWin)
     {
-        super(r, g, b, x, y, z, xwin, ywin, zwin, rotation, rotationWin);
+        super(r, g, b, x, z, xwin, zwin, rotation, rotationWin);
 
         cubes = new Cube[]
                 {
@@ -32,6 +30,13 @@ public class Form1 extends Form
     @Override
     public void display(PerspCamera camera)
     {
+        super.displayShadow(camera);
+
+        cubes[0].getModel().displayOffSet(camera, 0, 0, 0);
+        cubes[1].getModel().displayOffSet(camera, 0, 0, 2);
+        cubes[2].getModel().displayOffSet(camera, 0, 0, 4);
+        cubes[3].getModel().displayOffSet(camera, 0, 0, 6);
+
         super.displayFloor(camera);
 
         cubes[0].getModel().displayOffSet(camera, 0, 0, 0);

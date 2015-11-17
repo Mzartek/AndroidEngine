@@ -7,12 +7,14 @@ import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 
 import com.paris8.univ.androidproject.engine.GraphicsRenderer;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
-import com.paris8.univ.androidproject.game.control.GameButton;
 import com.paris8.univ.androidproject.game.piece.Form1;
+import com.paris8.univ.androidproject.game.piece.Form2;
+import com.paris8.univ.androidproject.game.piece.Form3;
+import com.paris8.univ.androidproject.game.piece.Form4;
+import com.paris8.univ.androidproject.game.piece.Form5;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -83,7 +85,10 @@ public class GameView extends GLSurfaceView
             mySkyBox = new MySkyBox(mAssetManager);
             mLevel = new Level();
 
-            mLevel.addForm(new Form1(mAssetManager, 0.10f, 0.75f, 0.25f, 0, 0, 0, 0, 0, 0, 0, 0));
+            mLevel.addForm(new Form5(mAssetManager, 0.10f, 0.75f, 0.25f,
+                    1.75555555555555555555f, 0,
+                    0, 3.75f,
+                    66, 137));
 
             upButton = new GameButton(mAssetManager, "Textures/Control/arrow.jpg",
                     0.2f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 1.0f, 0.0f,
