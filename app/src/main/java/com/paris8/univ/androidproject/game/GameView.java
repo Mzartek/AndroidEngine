@@ -86,9 +86,13 @@ public class GameView extends GLSurfaceView
             mLevel = new Level();
 
             mLevel.addForm(new Form5(mAssetManager, 0.10f, 0.75f, 0.25f,
-                    1.75555555555555555555f, 0,
+                    1.75f, 0,
                     0, 3.75f,
                     66, 137));
+            mLevel.addForm(new Form1(mAssetManager, 1, 0, 0,
+                    3, 1,
+                    1, 2,
+                    33, 7));
 
             upButton = new GameButton(mAssetManager, "Textures/Control/arrow.jpg",
                     0.2f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 1.0f, 0.0f,
@@ -140,6 +144,11 @@ public class GameView extends GLSurfaceView
             {
                 mLevel.selectForm(selectEventPosition[0], selectEventPosition[1]);
                 selectEvent = false;
+
+                if (mLevel.isWin())
+                {
+                    System.exit(0);
+                }
             }
 
             GraphicsRenderer.clear();

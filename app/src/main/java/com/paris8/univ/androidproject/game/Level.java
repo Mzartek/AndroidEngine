@@ -12,6 +12,8 @@ import java.util.ArrayList;
  */
 public class Level
 {
+    private static final String TAG = "Level";
+
     private ArrayList<Form> forms;
     private Form selectedForm = null;
 
@@ -70,5 +72,17 @@ public class Level
         {
             form.display(camera);
         }
+    }
+
+    public boolean isWin()
+    {
+        for (Form form : forms)
+        {
+            if (!form.winPosition())
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

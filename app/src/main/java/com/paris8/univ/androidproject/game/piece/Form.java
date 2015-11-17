@@ -38,9 +38,9 @@ public abstract class Form
         this.xwin = xwin;
         this.zwin = zwin;
 
-        this.rotation = rotation;
+        this.rotation = rotation % (float)Math.toRadians(360);
 
-        this.rotationWin = rotationWin;
+        this.rotationWin = rotationWin % (float)Math.toRadians(360);
 
         if ((this.x % 2) != 0) this.x += 2 -(this.x % 2);
         if ((this.z % 2) != 0) this.z += 2 -(this.z % 2);
@@ -55,7 +55,12 @@ public abstract class Form
 
     public boolean winPosition()
     {
-        if (x == xwin && z == zwin && rotation == rotationWin)
+        Log.d(TAG, x + " " + y + " " + z);
+        Log.d(TAG, xwin + " " + 1 + " " + zwin);
+        Log.d(TAG, rotation + " " + rotationWin);
+        Log.d(TAG, "END");
+
+        if (x == xwin && y == 1 && z == zwin && rotation == rotationWin)
         {
             return true;
         }
@@ -86,6 +91,7 @@ public abstract class Form
     public void addRot()
     {
         rotation += Math.toRadians(90);
+        this.rotation %= (float)Math.toRadians(360);
     }
 
     public boolean isPointed(int x, int y)
