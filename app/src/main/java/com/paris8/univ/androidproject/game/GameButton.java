@@ -1,4 +1,4 @@
-package com.paris8.univ.androidproject.game.control;
+package com.paris8.univ.androidproject.game;
 
 import android.content.res.AssetManager;
 import android.util.Log;
