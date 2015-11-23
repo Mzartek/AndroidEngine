@@ -14,9 +14,9 @@ public class Form1 extends Form
     public Form1(AssetManager assetManager,
                  float r, float g, float b,
                  float x, float z, float xwin, float zwin,
-                 float rotation, float rotationWin)
+                 float rotation)
     {
-        super(r, g, b, x, z, xwin, zwin, rotation, rotationWin);
+        super(r, g, b, x, z, xwin, zwin);
 
         cubes = new Cube[]
                 {
@@ -25,6 +25,11 @@ public class Form1 extends Form
                         new Cube(assetManager),
                         new Cube(assetManager),
                 };
+
+        for (Cube cube : cubes)
+        {
+            cube.getModel().setRotation(0, rotation, 0);
+        }
     }
 
     @Override

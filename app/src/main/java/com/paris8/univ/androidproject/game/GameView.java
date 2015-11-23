@@ -39,7 +39,6 @@ public class GameView extends GLSurfaceView
     private GameButton downButton;
     private GameButton rightButton;
     private GameButton leftButton;
-    private GameButton rotateButton;
 
     private boolean selectEvent = false;
     private int[] selectEventPosition = new int[] { 0,  0 };
@@ -88,11 +87,11 @@ public class GameView extends GLSurfaceView
             mLevel.addForm(new Form5(mAssetManager, 0.10f, 0.75f, 0.25f,
                     1.75f, 0,
                     0, 3.75f,
-                    66, 137));
+                    66));
             mLevel.addForm(new Form1(mAssetManager, 1, 0, 0,
                     3, 1,
                     1, 2,
-                    33, 7));
+                    33));
 
             upButton = new GameButton(mAssetManager, "Textures/Control/arrow.jpg",
                     0.2f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 1.0f, 0.0f,
@@ -117,12 +116,6 @@ public class GameView extends GLSurfaceView
                     0.6f * 2.0f - 1.0f, 0.11f * 2.0f - 1.0f, 0.0f, 1.0f,
                     0.4f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 1.0f, 0.0f,
                     0.6f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 0.0f, 0.0f);
-
-            rotateButton = new GameButton(mAssetManager, "Textures/Control/rotate.jpg",
-                    0.2f * 2.0f - 1.0f, 0.11f * 2.0f - 1.0f, 0.0f, 0.0f,
-                    0.4f * 2.0f - 1.0f, 0.11f * 2.0f - 1.0f, 1.0f, 0.0f,
-                    0.2f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 0.0f, 1.0f,
-                    0.4f * 2.0f - 1.0f, 0.22f * 2.0f - 1.0f, 1.0f, 1.0f);
 
             mSurfaceCreated = true;
         }
@@ -164,7 +157,6 @@ public class GameView extends GLSurfaceView
                 downButton.display(mCamera);
                 leftButton.display(mCamera);
                 rightButton.display(mCamera);
-                rotateButton.display(mCamera);
             }
         }
     }
@@ -197,11 +189,6 @@ public class GameView extends GLSurfaceView
                             rightButton.isClicked((int)event.getX(), (int)event.getY(), mRenderer.getWidth(), mRenderer.getHeight()))
                     {
                         mLevel.getSelectedForm().remZ();
-                    }
-                    else if(mLevel.isFormSelected() &&
-                            rotateButton.isClicked((int)event.getX(), (int)event.getY(), mRenderer.getWidth(), mRenderer.getHeight()))
-                    {
-                        mLevel.getSelectedForm().addRot();
                     }
                     else
                     {
