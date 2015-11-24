@@ -10,6 +10,9 @@ import android.view.View;
 
 import com.paris8.univ.androidproject.engine.GraphicsRenderer;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
+import com.paris8.univ.androidproject.game.geometry.MySkyBox;
+import com.paris8.univ.androidproject.game.level.Level;
+import com.paris8.univ.androidproject.game.level.Levels;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;

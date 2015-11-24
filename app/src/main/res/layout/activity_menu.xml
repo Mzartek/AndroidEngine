@@ -23,15 +23,16 @@
         android:id="@+id/scoreButton"
         android:layout_below="@+id/playButton"
         android:layout_alignLeft="@+id/playButton"
-        android:layout_alignStart="@+id/playButton"
-        android:layout_marginTop="45dp" />
+        android:layout_alignStart="@+id/playButton"/>
 
-    <RadioButton
+    <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sound"
         android:id="@+id/soundButton"
+        android:checked="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
