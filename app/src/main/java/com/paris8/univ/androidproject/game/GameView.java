@@ -117,6 +117,9 @@ public class GameView extends GLSurfaceView
                 case 2:
                     mLevel = Levels.getLevel2(mAssetManager);
                     break;
+                default:
+                    Log.e(TAG, "Invalid level number");
+                    System.exit(1);
             }
 
             mSurfaceCreated = true;
