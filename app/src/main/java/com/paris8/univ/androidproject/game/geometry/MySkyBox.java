@@ -33,7 +33,7 @@ public class MySkyBox
         skyBox = new SkyBox(skyboxProgram);
         skyBox.load(assetManager,
                 "Textures/BlueSky/bluesky_right.jpg", "Textures/BlueSky/bluesky_left.jpg",
-                "Textures/BlueSky/bluesky_top.jpg", "Textures/BlueSky/bluesky_top.jpg",
+                "Textures/BlueSky/bluesky_top.jpg", "Textures/BlueSky/floor.jpg",
                 "Textures/BlueSky/bluesky_front.jpg", "Textures/BlueSky/bluesky_back.jpg");
     }
 
