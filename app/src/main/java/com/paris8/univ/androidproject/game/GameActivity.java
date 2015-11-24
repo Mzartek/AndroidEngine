@@ -9,6 +9,8 @@ public class GameActivity extends Activity
 {
     final static private String TAG = "GameActivity";
 
+    static public int mSelectedLevel = 0;
+
     GameView mView;
 
     @Override
@@ -16,7 +18,7 @@ public class GameActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 
-        mView = new GameView(getApplication(), getAssets());
+        mView = new GameView(getApplication(), getAssets(), mSelectedLevel);
         setContentView(mView);
     }
 
