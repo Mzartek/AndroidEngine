@@ -123,6 +123,8 @@ public class GameView extends GLSurfaceView
             }
 
             mSurfaceCreated = true;
+
+            Chronometer.start();
         }
 
         @Override
