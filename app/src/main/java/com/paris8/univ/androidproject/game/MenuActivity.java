@@ -15,6 +15,7 @@ public class MenuActivity extends Activity {
 
     private Button playButton;
     private Button soundButton;
+    private Button scoreButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class MenuActivity extends Activity {
 
         playButton = (Button) findViewById(R.id.playButton);
         soundButton = (Button) findViewById(R.id.soundButton);
+        scoreButton = (Button) findViewById(R.id.scoreButton);
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +38,13 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //faire un truc avec le son
+            }
+        });
+
+        scoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //afficher les scores !
             }
         });
 
