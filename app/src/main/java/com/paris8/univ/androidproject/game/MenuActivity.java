@@ -29,7 +29,7 @@ public class MenuActivity extends Activity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, GameActivity.class);
+                Intent intent = new Intent(MenuActivity.this, LevelChooser.class);
                 MenuActivity.this.startActivity(intent);
             }
         });

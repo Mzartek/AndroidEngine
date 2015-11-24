@@ -12,21 +12,8 @@
         android:id="@+id/playButton"
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="155dp" />
-
-    <Button
-        android:layout_width="98dp"
-        android:layout_height="wrap_content"
-        android:text="Sound"
-        android:layout_weight="1"
-        android:id="@+id/soundButton"
         android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/playButton"
-        android:layout_alignEnd="@+id/playButton"
-        android:layout_alignLeft="@+id/playButton"
-        android:layout_alignStart="@+id/playButton" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="98dp"
@@ -34,7 +21,17 @@
         android:text="Score"
         android:layout_weight="1"
         android:id="@+id/scoreButton"
-        android:layout_below="@+id/soundButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="74dp" />
+        android:layout_below="@+id/playButton"
+        android:layout_alignLeft="@+id/playButton"
+        android:layout_alignStart="@+id/playButton"
+        android:layout_marginTop="45dp" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sound"
+        android:id="@+id/soundButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
