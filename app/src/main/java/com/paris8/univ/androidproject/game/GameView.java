@@ -2,17 +2,20 @@ package com.paris8.univ.androidproject.game;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.media.MediaPlayer;
 import android.opengl.GLSurfaceView;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.paris8.univ.androidproject.R;
 import com.paris8.univ.androidproject.engine.GraphicsRenderer;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 import com.paris8.univ.androidproject.game.geometry.MySkyBox;
 import com.paris8.univ.androidproject.game.level.Level;
 import com.paris8.univ.androidproject.game.level.Levels;
+import com.paris8.univ.androidproject.game.menu.MenuActivity;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -23,6 +26,11 @@ import javax.microedition.khronos.opengles.GL10;
 public class GameView extends GLSurfaceView
 {
     final static private String TAG = "GameView";
+
+    //Pour la musique [
+    private MediaPlayer mMediaPlayer;
+    private MenuActivity menu;
+    // ]
 
     private int mSelectedLevel;
 
@@ -58,6 +66,12 @@ public class GameView extends GLSurfaceView
 
         setOnTouchListener(new TouchListener());
         setOnDragListener(new DragListener());
+    }
+
+    @Override
+    public void onPause()
+    {
+        mMediaPlayer.stop();
     }
 
     private class Renderer implements GLSurfaceView.Renderer
@@ -112,12 +126,18 @@ public class GameView extends GLSurfaceView
             switch (mSelectedLevel)
             {
                 case 0:
+                    mMediaPlayer = MediaPlayer.create(getContext(), R.raw.level1_music);
+                    runMusic();
                     mLevel = Levels.getLevel0(mAssetManager);
                     break;
                 case 1:
+                    mMediaPlayer = MediaPlayer.create(getContext(), R.raw.level2_music);
+                    runMusic();
                     mLevel = Levels.getLevel1(mAssetManager);
                     break;
                 case 2:
+                    mMediaPlayer = MediaPlayer.create(getContext(), R.raw.level3_music);
+                    runMusic();
                     mLevel = Levels.getLevel2(mAssetManager);
                     break;
                 default:
@@ -128,6 +148,12 @@ public class GameView extends GLSurfaceView
             mSurfaceCreated = true;
 
             Chronometer.start();
+        }
+
+        public void runMusic()
+        {
+            if(menu.sound)
+                mMediaPlayer.start();
         }
 
         @Override
@@ -150,6 +176,7 @@ public class GameView extends GLSurfaceView
 
                 if (mLevel.isWin())
                 {
+                    mMediaPlayer.stop();
                     System.exit(0);
                 }
             }
@@ -169,6 +196,8 @@ public class GameView extends GLSurfaceView
                 mRightButton.display(mCamera);
             }
         }
+
+
     }
 
     public class TouchListener implements OnTouchListener

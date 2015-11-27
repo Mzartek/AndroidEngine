@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import com.paris8.univ.androidproject.R;
 
@@ -17,10 +18,17 @@ public class MenuActivity extends Activity {
     public static boolean sound = true;
 
     private Button playButton;
-    private Button soundButton;
+    private CheckBox soundButton;
     private Button scoreButton;
 
     private MediaPlayer mMediaPlayer;
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(sound)
+            mMediaPlayer.start();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,16 +36,25 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.activity_menu);
 
         mMediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.menu);
-        mMediaPlayer.start();
 
         playButton = (Button) findViewById(R.id.playButton);
-        soundButton = (Button) findViewById(R.id.soundButton);
+        soundButton = (CheckBox) findViewById(R.id.soundButton);
         scoreButton = (Button) findViewById(R.id.scoreButton);
+
+        if (soundButton.isChecked()) {
+            soundButton.setChecked(true);
+            mMediaPlayer.start();
+            sound = true;
+        } else {
+            sound = false;
+        }
+
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, LevelChooser.class);
+                mMediaPlayer.pause();
                 MenuActivity.this.startActivity(intent);
             }
         });
@@ -45,8 +62,11 @@ public class MenuActivity extends Activity {
         soundButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sound = !sound;
-                if(!sound)
+                if (soundButton.isChecked())
+                    sound = true;
+                else
+                    sound = false;
+                if (!sound)
                     mMediaPlayer.pause();
                 else
                     mMediaPlayer.start();
@@ -59,6 +79,5 @@ public class MenuActivity extends Activity {
                 //afficher les scores !
             }
         });
-
     }
 }

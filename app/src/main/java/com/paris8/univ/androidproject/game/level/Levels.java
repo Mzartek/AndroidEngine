@@ -1,7 +1,9 @@
 package com.paris8.univ.androidproject.game.level;
 
 import android.content.res.AssetManager;
+import android.media.MediaPlayer;
 
+import com.paris8.univ.androidproject.R;
 import com.paris8.univ.androidproject.game.geometry.Form1;
 import com.paris8.univ.androidproject.game.geometry.Form2;
 import com.paris8.univ.androidproject.game.geometry.Form3;
@@ -11,13 +13,15 @@ import com.paris8.univ.androidproject.game.geometry.Form5;
 /**
  * Created by Mzartek on 24/11/15.
  */
+
 public class Levels
 {
     public static Level getLevel0(AssetManager assetManager)
     {
+
         Level level = new Level();
 
-        level.addForm(new Form5(assetManager, 0.10f, 0.75f, 0.25f,
+        level.addForm(new Form5(assetManager, 0, 1, 0, //avant le vert etait (0.10f, 0.75f, 0.25f)
                 1.75f, 0,
                 0, 3.75f,
                 66));
@@ -33,7 +37,7 @@ public class Levels
     {
         Level level = new Level();
 
-        level.addForm(new Form3(assetManager, 0.10f, 0.75f, 0.25f,
+        level.addForm(new Form3(assetManager, 0, 1, 0,
                 1.75f, 0,
                 0, 3.75f,
                 66));
@@ -49,7 +53,7 @@ public class Levels
     {
         Level level = new Level();
 
-        level.addForm(new Form4(assetManager, 0.10f, 0.75f, 0.25f,
+        level.addForm(new Form4(assetManager, 0, 1, 0,
                 1.75f, 0,
                 0, 3.75f,
                 66));

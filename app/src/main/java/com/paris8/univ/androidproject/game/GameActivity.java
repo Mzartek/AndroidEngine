@@ -1,9 +1,7 @@
 package com.paris8.univ.androidproject.game;
 
 import android.app.Activity;
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.view.MotionEvent;
 
 public class GameActivity extends Activity
 {
