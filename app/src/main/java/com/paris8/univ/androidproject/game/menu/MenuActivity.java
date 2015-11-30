@@ -10,9 +10,7 @@ import android.widget.CheckBox;
 
 import com.paris8.univ.androidproject.R;
 
-/**
- * Created by Mzartek on 23/11/15.
- */
+
 public class MenuActivity extends Activity {
 
     public static boolean sound = true;

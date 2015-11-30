@@ -71,7 +71,7 @@ public class GameView extends GLSurfaceView
         setRenderer(mRenderer);
 
         setOnTouchListener(new TouchListener());
-        setOnDragListener(new DragListener());
+        //setOnDragListener(new DragListener());
     }
 
     @Override
@@ -131,18 +131,15 @@ public class GameView extends GLSurfaceView
             switch (mSelectedLevel)
             {
                 case 0:
-                    mMediaPlayer = MediaPlayer.create(getContext(), R.raw.level1_music);
-                    runMusic();
+                    runMusic(R.raw.level1_music);
                     mLevel = Levels.getLevel0(mAssetManager);
                     break;
                 case 1:
-                    mMediaPlayer = MediaPlayer.create(getContext(), R.raw.level2_music);
-                    runMusic();
+                    runMusic(R.raw.level2_music);
                     mLevel = Levels.getLevel1(mAssetManager);
                     break;
                 case 2:
-                    mMediaPlayer = MediaPlayer.create(getContext(), R.raw.level3_music);
-                    runMusic();
+                    runMusic(R.raw.level3_music);
                     mLevel = Levels.getLevel2(mAssetManager);
                     break;
                 default:
@@ -155,8 +152,9 @@ public class GameView extends GLSurfaceView
             Chronometer.start();
         }
 
-        public void runMusic()
+        public void runMusic(int music)
         {
+            mMediaPlayer = MediaPlayer.create(getContext(), music);
             if(menu.sound)
                 mMediaPlayer.start();
         }

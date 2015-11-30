@@ -6,7 +6,7 @@
     android:background="@drawable/cerveau">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="98dp"
         android:layout_height="wrap_content"
         android:text="Play"
         android:id="@+id/playButton"
@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="98dp"
         android:layout_height="wrap_content"
         android:text="Score"
         android:layout_weight="50"
