@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.media.MediaPlayer;
 import android.opengl.GLSurfaceView;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -69,8 +70,7 @@ public class GameView extends GLSurfaceView
     }
 
     @Override
-    public void onPause()
-    {
+    public void onPause(){
         mMediaPlayer.stop();
     }
 

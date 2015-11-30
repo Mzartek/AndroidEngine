@@ -31,6 +31,13 @@ public class MenuActivity extends Activity {
     }
 
     @Override
+    public void onPause()
+    {
+        mMediaPlayer.pause();
+        super.onPause();
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
