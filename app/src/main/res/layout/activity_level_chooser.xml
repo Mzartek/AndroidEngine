@@ -8,25 +8,25 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Level 1"
+        android:text="@string/level1_string"
         android:id="@+id/level1Button"
-        android:layout_marginTop="194dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/level2Button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Level 2"
+        android:text="@string/level2_string"
         android:id="@+id/level2Button"
-        android:layout_marginTop="10dp"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/level1Button"
+        android:layout_alignStart="@+id/level1Button" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Level 3"
+        android:text="@string/level3_string"
         android:id="@+id/level3Button"
         android:layout_below="@+id/level2Button"
         android:layout_alignLeft="@+id/level2Button"

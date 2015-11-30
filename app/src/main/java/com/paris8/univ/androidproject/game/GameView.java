@@ -155,7 +155,7 @@ public class GameView extends GLSurfaceView
         public void runMusic(int music)
         {
             mMediaPlayer = MediaPlayer.create(getContext(), music);
-            if(menu.sound)
+            if(menu.sharedPreferences.getBoolean(getResources().getString(R.string.pref_sound), true))
                 mMediaPlayer.start();
         }
 

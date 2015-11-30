@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +9,7 @@
     <Button
         android:layout_width="98dp"
         android:layout_height="wrap_content"
-        android:text="Play"
+        android:text="@string/play_string"
         android:id="@+id/playButton"
         android:layout_gravity="center_horizontal"
         android:layout_weight="50"
@@ -18,14 +19,14 @@
     <Button
         android:layout_width="98dp"
         android:layout_height="wrap_content"
-        android:text="Score"
+        android:text="@string/score_string"
         android:layout_weight="50"
         android:id="@+id/scoreButton"
         android:layout_below="@+id/playButton"
         android:layout_alignLeft="@+id/playButton"
         android:layout_alignStart="@+id/playButton"/>
 
-    <CheckBox
+   <!-- <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sound"
@@ -33,6 +34,15 @@
         android:checked="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true" />-->
+
+    <Button
+        android:layout_width="98dp"
+        android:layout_height="wrap_content"
+        android:text="@string/action_settings"
+        android:id="@+id/settingsButton"
+        android:layout_below="@+id/scoreButton"
+        android:layout_alignRight="@+id/scoreButton"
+        android:layout_alignEnd="@+id/scoreButton" />
 
 </RelativeLayout>
