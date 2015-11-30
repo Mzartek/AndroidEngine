@@ -5,9 +5,6 @@ import com.paris8.univ.androidproject.game.geometry.Form;
 
 import java.util.ArrayList;
 
-/**
- * Created by Mzartek on 10/11/15.
- */
 public class Level
 {
     private static final String TAG = "Level";

@@ -9,9 +9,6 @@ import android.widget.Button;
 import com.paris8.univ.androidproject.R;
 import com.paris8.univ.androidproject.game.GameActivity;
 
-/**
- * Created by jpagny on 24/11/15.
- */
 public class LevelChooser extends Activity{
 
     private Button level1Button;

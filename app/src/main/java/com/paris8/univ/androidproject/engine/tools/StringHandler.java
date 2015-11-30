@@ -6,9 +6,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- * Created by Mzartek on 20/10/2015.
- */
 public class StringHandler
 {
     private static final String TAG = "StringHandler";

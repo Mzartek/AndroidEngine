@@ -1,8 +1,5 @@
 package com.paris8.univ.androidproject.engine.camera;
 
-/**
- * Created by khavranek on 14/10/15.
- */
 public class PerspCamera extends Camera
 {
     private static native long newPerspCamera();

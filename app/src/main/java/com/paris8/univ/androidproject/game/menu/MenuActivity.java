@@ -11,14 +11,11 @@ import android.widget.Button;
 
 import com.paris8.univ.androidproject.R;
 
-
 public class MenuActivity extends Activity {
-    //public static boolean sound = true;
 
     public static SharedPreferences sharedPreferences;
 
     private Button playButton;
-    //private CheckBox soundButton;
     private Button scoreButton;
     private Button settingsButton;
 
@@ -27,7 +24,7 @@ public class MenuActivity extends Activity {
     @Override
     public void onResume(){
         super.onResume();
-        if(mMediaPlayer == null) mMediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.menu);
+        if(mMediaPlayer == null) { mMediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.menu); mMediaPlayer.setLooping(true); }
         if(sharedPreferences.getBoolean(getResources().getString(R.string.pref_sound), true))
             mMediaPlayer.start();
     }
@@ -47,17 +44,15 @@ public class MenuActivity extends Activity {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         mMediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.menu);
-
+        mMediaPlayer.setLooping(true);
         playButton = (Button) findViewById(R.id.playButton);
         //soundButton = (CheckBox) findViewById(R.id.soundButton);
         scoreButton = (Button) findViewById(R.id.scoreButton);
         settingsButton = (Button) findViewById(R.id.settingsButton);
 
-
         if (sharedPreferences.getBoolean(getResources().getString(R.string.pref_sound), true)) {
             mMediaPlayer.start();
         }
-
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,20 +61,6 @@ public class MenuActivity extends Activity {
                 MenuActivity.this.startActivity(intent);
             }
         });
-
-        /*soundButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (soundButton.isChecked())
-                    sound = true;
-                else
-                    sound = false;
-                if (!sound)
-                    mMediaPlayer.pause();
-                else
-                    mMediaPlayer.start();
-            }
-        });*/
 
         scoreButton.setOnClickListener(new View.OnClickListener() {
             @Override

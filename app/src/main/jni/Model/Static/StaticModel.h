@@ -1,7 +1,3 @@
-//
-// Created by Mzartek on 13/10/15.
-//
-
 #ifndef ANDROIDPROJECT_STATICMODEL_H
 #define ANDROIDPROJECT_STATICMODEL_H
 

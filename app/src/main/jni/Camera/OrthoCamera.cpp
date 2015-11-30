@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 25/09/15.
-//
-
 #include "OrthoCamera.h"
 
 Engine::OrthoCamera::OrthoCamera(void)

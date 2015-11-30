@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 22/09/15.
-//
-
 #ifndef ANDROIDPROJECT_GRAPHICSRENDERER_H
 #define ANDROIDPROJECT_GRAPHICSRENDERER_H
 

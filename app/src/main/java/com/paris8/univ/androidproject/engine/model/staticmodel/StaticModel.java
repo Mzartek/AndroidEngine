@@ -6,9 +6,6 @@ import com.paris8.univ.androidproject.engine.ShaderProgram;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 import com.paris8.univ.androidproject.engine.model.Model;
 
-/**
- * Created by Mzartek on 02/11/15.
- */
 public class StaticModel extends Model
 {
     private static native long createStaticModel1(long shaderProgramHandler);

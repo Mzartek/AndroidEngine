@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 29/09/15.
-//
-
 #include "TextureCube.h"
 
 #include "Tools/AssetTool.h"

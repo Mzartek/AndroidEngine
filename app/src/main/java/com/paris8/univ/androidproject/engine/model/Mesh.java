@@ -2,9 +2,6 @@ package com.paris8.univ.androidproject.engine.model;
 
 import com.paris8.univ.androidproject.engine.EngineObject;
 
-/**
- * Created by Mzartek on 27/10/15.
- */
 public abstract class Mesh extends EngineObject
 {
     private static native void setMaterial(long objectHandler, long materialHandler);

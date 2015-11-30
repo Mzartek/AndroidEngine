@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 25/09/15.
-//
-
 #ifndef ANDROIDPROJECT_CAMERA_H
 #define ANDROIDPROJECT_CAMERA_H
 

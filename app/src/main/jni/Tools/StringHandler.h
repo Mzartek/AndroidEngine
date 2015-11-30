@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 24/09/15.
-//
-
 #ifndef ANDROIDPROJECT_STRINGHANDLER_H
 #define ANDROIDPROJECT_STRINGHANDLER_H
 

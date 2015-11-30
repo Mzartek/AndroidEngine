@@ -5,7 +5,6 @@ import android.content.res.AssetManager;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 
 /**
- * Created by jpagny on 10/11/15.
  * C'est la cicatrice d'harry potter
  */
 public class Form3 extends Form

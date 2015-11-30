@@ -1,7 +1,3 @@
-//
-// Created by khavranek on 30/09/15.
-//
-
 #ifndef ANDROIDPROJECT_SKYBOX_H
 #define ANDROIDPROJECT_SKYBOX_H
 

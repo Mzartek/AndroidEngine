@@ -1,7 +1,3 @@
-//
-// Created by khavranek on 07/10/15.
-//
-
 #ifndef ANDROIDPROJECT_MESH_H
 #define ANDROIDPROJECT_MESH_H
 

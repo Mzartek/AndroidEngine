@@ -9,9 +9,6 @@ import com.paris8.univ.androidproject.engine.model.Material;
 import com.paris8.univ.androidproject.engine.model.staticmodel.StaticMesh;
 import com.paris8.univ.androidproject.engine.model.staticmodel.StaticModel;
 
-/**
- * Created by Mzartek on 04/11/2015.
- */
 public class Cube
 {
     private static final String TAG = "Cube";

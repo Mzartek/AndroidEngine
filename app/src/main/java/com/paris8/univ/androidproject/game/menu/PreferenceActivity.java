@@ -5,9 +5,6 @@ import android.preference.CheckBoxPreference;
 
 import com.paris8.univ.androidproject.R;
 
-/**
- * Created by Jérémie on 30/11/2015.
- */
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 
 

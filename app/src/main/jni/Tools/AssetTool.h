@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 22/10/15.
-//
-
 #ifndef ANDROIDPROJECT_ASSETTOOL_H
 #define ANDROIDPROJECT_ASSETTOOL_H
 

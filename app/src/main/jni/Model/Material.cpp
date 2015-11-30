@@ -1,7 +1,3 @@
-//
-// Created by Mzartek on 05/10/15.
-//
-
 #include "Material.h"
 
 Engine::Material::Material(void)

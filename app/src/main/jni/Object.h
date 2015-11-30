@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 22/09/15.
-//
-
 #ifndef ANDROIDPROJECT_OBJECT_H
 #define ANDROIDPROJECT_OBJECT_H
 

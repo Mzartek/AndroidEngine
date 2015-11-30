@@ -1,7 +1,3 @@
-//
-// Created by Mzartek on 13/10/15.
-//
-
 #include "StaticMesh.h"
 
 Engine::StaticMesh::StaticMesh(const std::shared_ptr<ShaderProgram> &_program)

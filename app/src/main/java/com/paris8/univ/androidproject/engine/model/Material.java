@@ -3,9 +3,6 @@ package com.paris8.univ.androidproject.engine.model;
 import com.paris8.univ.androidproject.engine.EngineObject;
 import com.paris8.univ.androidproject.engine.texture.Texture2D;
 
-/**
- * Created by Mzartek on 27/10/15.
- */
 public class Material extends EngineObject
 {
     private static native long createMaterial();

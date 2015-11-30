@@ -1,7 +1,3 @@
-//
-// Created by khavranek on 30/09/15.
-//
-
 #include "SkyBox.h"
 
 #include "Tools/AssetTool.h"

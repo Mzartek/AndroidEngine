@@ -7,9 +7,6 @@ import com.paris8.univ.androidproject.engine.ShaderProgram;
 import com.paris8.univ.androidproject.engine.SkyBox;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 
-/**
- * Created by Mzartek on 04/11/2015.
- */
 public class MySkyBox
 {
     private static final String TAG = "MySkyBox";

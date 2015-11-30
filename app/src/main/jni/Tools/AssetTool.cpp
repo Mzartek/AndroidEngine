@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 22/10/15.
-//
-
 #include "AssetTool.h"
 
 JNIEnv *Engine::Tools::jniEnv;

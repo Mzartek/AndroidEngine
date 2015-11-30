@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 24/09/15.
-//
-
 #ifndef ANDROIDPROJECT_SHADERPROGRAM_H
 #define ANDROIDPROJECT_SHADERPROGRAM_H
 

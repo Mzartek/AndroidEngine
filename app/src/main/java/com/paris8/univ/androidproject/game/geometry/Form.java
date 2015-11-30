@@ -3,9 +3,6 @@ package com.paris8.univ.androidproject.game.geometry;
 import com.paris8.univ.androidproject.engine.GraphicsRenderer;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 
-/**
- * Created by Mzartek on 09/11/15.
- */
 public abstract class Form
 {
     private static final String TAG = "Form";

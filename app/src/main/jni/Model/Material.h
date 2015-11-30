@@ -1,7 +1,3 @@
-//
-// Created by Mzartek on 05/10/15.
-//
-
 #ifndef ANDROIDPROJECT_MATERIAL_H
 #define ANDROIDPROJECT_MATERIAL_H
 

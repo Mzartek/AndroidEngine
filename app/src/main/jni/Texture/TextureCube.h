@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 29/09/15.
-//
-
 #ifndef ANDROIDPROJECT_TEXTURECUBE_H
 #define ANDROIDPROJECT_TEXTURECUBE_H
 

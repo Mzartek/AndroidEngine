@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 24/09/15.
-//
-
 #include "ShaderProgram.h"
 
 #include "Tools/AssetTool.h"

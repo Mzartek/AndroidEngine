@@ -5,7 +5,6 @@ import android.content.res.AssetManager;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 
 /**
- * Created by Mzartek on 09/11/15.
  * C'est une barre |
  */
 public class Form1 extends Form

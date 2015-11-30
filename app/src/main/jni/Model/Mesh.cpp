@@ -1,7 +1,3 @@
-//
-// Created by khavranek on 07/10/15.
-//
-
 #include "Mesh.h"
 
 Engine::Mesh::Mesh(const std::shared_ptr<ShaderProgram> &_program)

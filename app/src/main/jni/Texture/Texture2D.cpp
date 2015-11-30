@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 28/09/15.
-//
-
 #include "Texture2D.h"
 
 #include "../Tools/AssetTool.h"

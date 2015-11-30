@@ -1,8 +1,5 @@
 package com.paris8.univ.androidproject.game;
 
-/**
- * Created by Mzartek on 24/11/15.
- */
 public final class Chronometer
 {
     private static long begin, end;

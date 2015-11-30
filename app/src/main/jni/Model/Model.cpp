@@ -1,7 +1,3 @@
-//
-// Created by Mzartek on 13/10/15.
-//
-
 #include "Model.h"
 
 void Engine::Model::checkMatrix(void)

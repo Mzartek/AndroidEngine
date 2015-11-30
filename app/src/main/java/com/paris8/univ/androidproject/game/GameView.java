@@ -22,9 +22,6 @@ import com.paris8.univ.androidproject.game.menu.MenuActivity;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-/**
- * Created by mzartek on 22/09/15.
- */
 public class GameView extends GLSurfaceView
 {
     final static private String TAG = "GameView";
@@ -155,6 +152,7 @@ public class GameView extends GLSurfaceView
         public void runMusic(int music)
         {
             mMediaPlayer = MediaPlayer.create(getContext(), music);
+            mMediaPlayer.setLooping(true);
             if(menu.sharedPreferences.getBoolean(getResources().getString(R.string.pref_sound), true))
                 mMediaPlayer.start();
         }

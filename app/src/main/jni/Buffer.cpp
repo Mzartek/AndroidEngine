@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 25/09/15.
-//
-
 #include "Buffer.h"
 
 Engine::Buffer::Buffer(void)

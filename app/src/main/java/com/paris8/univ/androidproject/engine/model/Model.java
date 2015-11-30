@@ -3,9 +3,6 @@ package com.paris8.univ.androidproject.engine.model;
 import com.paris8.univ.androidproject.engine.EngineObject;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 
-/**
- * Created by Mzartek on 02/11/15.
- */
 public abstract class Model extends EngineObject
 {
     private static native void addMesh(long objectHandler, long meshHandler);

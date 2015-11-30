@@ -1,7 +1,3 @@
-//
-// Created by Mzartek on 13/10/15.
-//
-
 #include "AssimpTool.h"
 #include <assimp/postprocess.h>
 

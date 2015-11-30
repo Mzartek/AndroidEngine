@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 25/09/15.
-//
-
 #ifndef ANDROIDPROJECT_PERSPCAMERA_H
 #define ANDROIDPROJECT_PERSPCAMERA_H
 

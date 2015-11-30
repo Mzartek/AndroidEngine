@@ -9,9 +9,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- * Created by mzartek on 24/09/15.
- */
 public class ShaderProgram extends EngineObject
 {
     private static final String TAG = "ShaderProgram";

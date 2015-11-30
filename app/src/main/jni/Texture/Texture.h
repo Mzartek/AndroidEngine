@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 27/09/15.
-//
-
 #ifndef ANDROIDPROJECT_TEXTURE_H
 #define ANDROIDPROJECT_TEXTURE_H
 

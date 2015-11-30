@@ -10,9 +10,6 @@ import com.paris8.univ.androidproject.engine.model.staticmodel.StaticMesh;
 import com.paris8.univ.androidproject.engine.model.staticmodel.StaticModel;
 import com.paris8.univ.androidproject.engine.texture.Texture2D;
 
-/**
- * Created by Mzartek on 16/11/15.
- */
 public class GameButton
 {
     private static final String TAG = "GameButton";

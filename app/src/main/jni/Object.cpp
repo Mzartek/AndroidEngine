@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 22/09/15.
-//
-
 #include "Object.h"
 
 Engine::Object::Object(void)

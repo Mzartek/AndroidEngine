@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 25/09/15.
-//
-
 #include "Camera.h"
 
 Engine::Camera::Camera(void)

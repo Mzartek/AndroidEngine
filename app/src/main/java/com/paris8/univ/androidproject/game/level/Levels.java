@@ -10,10 +10,6 @@ import com.paris8.univ.androidproject.game.geometry.Form3;
 import com.paris8.univ.androidproject.game.geometry.Form4;
 import com.paris8.univ.androidproject.game.geometry.Form5;
 
-/**
- * Created by Mzartek on 24/11/15.
- */
-
 public class Levels
 {
     public static Level getLevel0(AssetManager assetManager)

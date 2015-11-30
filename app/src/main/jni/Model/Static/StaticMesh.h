@@ -1,7 +1,3 @@
-//
-// Created by Mzartek on 13/10/15.
-//
-
 #ifndef ANDROIDPROJECT_STATICMESH_H
 #define ANDROIDPROJECT_STATICMESH_H
 

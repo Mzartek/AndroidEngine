@@ -4,9 +4,6 @@ import android.content.res.AssetManager;
 
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 
-/**
- * Created by khavranek on 30/09/15.
- */
 public class SkyBox extends EngineObject
 {
     private static native long newSkyBox(long shaderProgram);

@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 27/09/15.
-//
-
 #include "Texture.h"
 
 Engine::Texture::Texture(void)

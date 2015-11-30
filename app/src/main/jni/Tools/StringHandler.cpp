@@ -1,7 +1,3 @@
-//
-// Created by mzartek on 24/09/15.
-//
-
 #include "StringHandler.h"
 
 std::string Engine::Tools::getDir(const char *filePath)
