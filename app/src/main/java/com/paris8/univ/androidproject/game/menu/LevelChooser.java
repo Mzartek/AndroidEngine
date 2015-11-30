@@ -53,11 +53,5 @@ public class LevelChooser extends Activity{
                 LevelChooser.this.startActivity(intent);
             }
         });
-
-
     }
-
-
-
-
 }

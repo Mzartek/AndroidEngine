@@ -26,13 +26,13 @@ public class MenuActivity extends Activity {
         super.onResume();
         if(mMediaPlayer == null) { mMediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.menu); mMediaPlayer.setLooping(true); }
         if(sharedPreferences.getBoolean(getResources().getString(R.string.pref_sound), true))
-            mMediaPlayer.start();
+            if(!mMediaPlayer.isPlaying())mMediaPlayer.start();
     }
 
     @Override
     public void onPause()
     {
-        mMediaPlayer.pause();
+        if(mMediaPlayer.isPlaying()) mMediaPlayer.pause();
         super.onPause();
     }
 
@@ -46,12 +46,11 @@ public class MenuActivity extends Activity {
         mMediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.menu);
         mMediaPlayer.setLooping(true);
         playButton = (Button) findViewById(R.id.playButton);
-        //soundButton = (CheckBox) findViewById(R.id.soundButton);
         scoreButton = (Button) findViewById(R.id.scoreButton);
         settingsButton = (Button) findViewById(R.id.settingsButton);
 
         if (sharedPreferences.getBoolean(getResources().getString(R.string.pref_sound), true)) {
-            mMediaPlayer.start();
+            if(!mMediaPlayer.isPlaying())mMediaPlayer.start();
         }
 
         playButton.setOnClickListener(new View.OnClickListener() {

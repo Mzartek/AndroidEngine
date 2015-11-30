@@ -1,11 +1,9 @@
 package com.paris8.univ.androidproject.game;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.media.MediaPlayer;
 import android.opengl.GLSurfaceView;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -178,6 +176,8 @@ public class GameView extends GLSurfaceView
                 if (mLevel.isWin())
                 {
                     mMediaPlayer.stop();
+                    Chronometer.stop();
+                    Log.d(TAG, "TEST CHRONO: " + Chronometer.getHours() + " H " + Chronometer.getMinutes() + " M " + Chronometer.getSeconds() + " S " + Chronometer.getMilliseconds() + " MS");
                     mGameActivity.finish();
                 }
             }

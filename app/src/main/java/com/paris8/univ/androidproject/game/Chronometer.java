@@ -21,36 +21,36 @@ public final class Chronometer
 
     public static long getMilliseconds()
     {
-        return end-begin;
+        return (end-begin);
     }
 
-    public static double getSeconds()
+    public static long getSeconds()
     {
-        return (end - begin) / 1000.0;
+        return (long)((end - begin) / 1000.0);
     }
 
-    public static double getMinutes()
+    public static long getMinutes()
     {
-        return (end - begin) / 60000.0;
+        return (long)((end - begin) / 60000.0);
     }
 
-    public static double getHours()
+    public static long getHours()
     {
-        return (end - begin) / 3600000.0;
+        return (long)((end - begin) / 3600000.0);
     }
 
-    public static double getSeconds(long time)
+    public static long getSeconds(long time)
     {
-        return time / 1000.0;
+        return (long)(time / 1000.0);
     }
 
-    public static double getMinutes(long time)
+    public static long getMinutes(long time)
     {
-        return time / 60000.0;
+        return (long)(time / 60000.0);
     }
 
-    public static double getHours(long time)
+    public static long getHours(long time)
     {
-        return time / 3600000.0;
+        return (long)(time / 3600000.0);
     }
 }
