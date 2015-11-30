@@ -1,5 +1,6 @@
 package com.paris8.univ.androidproject.game;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.media.MediaPlayer;
@@ -32,6 +33,8 @@ public class GameView extends GLSurfaceView
     private MenuActivity menu;
     // ]
 
+    private GameActivity mGameActivity;
+
     private int mSelectedLevel;
 
     private AssetManager mAssetManager;
@@ -51,9 +54,11 @@ public class GameView extends GLSurfaceView
     private boolean selectEvent = false;
     private int[] selectEventPosition = new int[] { 0,  0 };
 
-    public GameView(Context context, AssetManager assetManager, int selectedLevel)
+    public GameView(GameActivity gameActivity, Context context, AssetManager assetManager, int selectedLevel)
     {
         super(context);
+
+        mGameActivity = gameActivity;
 
         mSelectedLevel = selectedLevel;
 
@@ -142,7 +147,7 @@ public class GameView extends GLSurfaceView
                     break;
                 default:
                     Log.e(TAG, "Invalid level number");
-                    System.exit(1);
+                    mGameActivity.finish();
             }
 
             mSurfaceCreated = true;
@@ -177,7 +182,7 @@ public class GameView extends GLSurfaceView
                 if (mLevel.isWin())
                 {
                     mMediaPlayer.stop();
-                    System.exit(0);
+                    mGameActivity.finish();
                 }
             }
 

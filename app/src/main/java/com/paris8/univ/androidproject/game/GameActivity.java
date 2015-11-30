@@ -16,7 +16,7 @@ public class GameActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 
-        mView = new GameView(getApplication(), getAssets(), mSelectedLevel);
+        mView = new GameView(this, getApplication(), getAssets(), mSelectedLevel);
         setContentView(mView);
     }
 
