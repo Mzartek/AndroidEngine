@@ -4,9 +4,7 @@
     <CheckBoxPreference
         android:title="Sound"
         android:key="@string/pref_sound"
-        android:checked="true"
+        android:defaultValue="true"
         />
-
-
 
 </PreferenceScreen>

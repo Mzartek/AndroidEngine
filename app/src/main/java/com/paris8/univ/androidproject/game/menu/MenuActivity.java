@@ -63,7 +63,6 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, LevelChooser.class);
-                mMediaPlayer.pause();
                 MenuActivity.this.startActivity(intent);
             }
         });
@@ -93,7 +92,6 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, PreferenceActivity.class);
-                mMediaPlayer.pause();
                 MenuActivity.this.startActivity(intent);
             }
         });
