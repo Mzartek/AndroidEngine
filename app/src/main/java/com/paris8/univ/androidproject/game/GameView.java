@@ -16,6 +16,7 @@ import com.paris8.univ.androidproject.game.geometry.MySkyBox;
 import com.paris8.univ.androidproject.game.level.Level;
 import com.paris8.univ.androidproject.game.level.Levels;
 import com.paris8.univ.androidproject.game.menu.MenuActivity;
+import com.paris8.univ.androidproject.game.menu.ScoreActivity;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -177,7 +178,20 @@ public class GameView extends GLSurfaceView
                 {
                     mMediaPlayer.stop();
                     Chronometer.stop();
-                    Log.d(TAG, "TEST CHRONO: " + Chronometer.getHours() + " H " + Chronometer.getMinutes() + " M " + Chronometer.getSeconds() + " S " + Chronometer.getMilliseconds() + " MS");
+
+                    switch (mSelectedLevel)
+                    {
+                        case 0:
+                            ScoreActivity.setScoreLevel1(Chronometer.getTime());
+                            break;
+                        case 1:
+                            ScoreActivity.setScoreLevel2(Chronometer.getTime());
+                            break;
+                        case 2:
+                            ScoreActivity.setScoreLevel3(Chronometer.getTime());
+                            break;
+                    }
+
                     mGameActivity.finish();
                 }
             }

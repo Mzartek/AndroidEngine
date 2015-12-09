@@ -20,7 +20,7 @@
         </activity>
 
         <activity
-            android:name=".game.menu.LevelChooser"
+            android:name=".game.menu.LevelActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">>
         </activity>
 
@@ -34,6 +34,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize">>
         </activity>
 
+        <activity
+            android:name=".game.menu.ScoreActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize">>
+        </activity>
 
     </application>
 

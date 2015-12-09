@@ -34,18 +34,15 @@ public class Level
     public boolean selectForm(int x, int y)
     {
         unselectForm();
-
         for (Form form : forms)
         {
             if (form.isPointed(x, y))
             {
                 selectedForm = form;
                 selectedForm.selectIt();
-
                 return true;
             }
         }
-
         return false;
     }
 

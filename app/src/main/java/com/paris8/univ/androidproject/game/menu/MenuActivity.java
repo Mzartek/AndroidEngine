@@ -12,7 +12,6 @@ import android.widget.Button;
 import com.paris8.univ.androidproject.R;
 
 public class MenuActivity extends Activity {
-
     public static SharedPreferences sharedPreferences;
 
     private Button playButton;
@@ -42,6 +41,7 @@ public class MenuActivity extends Activity {
         setContentView(R.layout.activity_menu);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        ScoreActivity.init(getSharedPreferences("Score", MODE_PRIVATE));
 
         mMediaPlayer = MediaPlayer.create(getBaseContext(), R.raw.menu);
         mMediaPlayer.setLooping(true);
@@ -56,7 +56,7 @@ public class MenuActivity extends Activity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, LevelChooser.class);
+                Intent intent = new Intent(MenuActivity.this, LevelActivity.class);
                 MenuActivity.this.startActivity(intent);
             }
         });
@@ -64,7 +64,8 @@ public class MenuActivity extends Activity {
         scoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //afficher les scores !
+                Intent intent = new Intent(MenuActivity.this, ScoreActivity.class);
+                MenuActivity.this.startActivity(intent);
             }
         });
 
