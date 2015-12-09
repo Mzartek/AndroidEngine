@@ -81,17 +81,27 @@ bool Engine::GraphicsRenderer::compareColor(const int x, const int y, const glm:
 {
      glBindFramebuffer(GL_FRAMEBUFFER, 0);
      
+	 GLubyte compare[] = 
+	 {
+		 static_cast<GLubyte>(round(color.x * 255)),
+		 static_cast<GLubyte>(round(color.y * 255)),
+		 static_cast<GLubyte>(round(color.z * 255)),
+	 };
      GLubyte pixel[3];
      glReadPixels(x, y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, pixel);
+	 
+	 /*
+	 ALOGD("%u %u %f", pixel[0], color[0], color.x);
+	 ALOGD("%u %u %f", pixel[1], color[1], color.y);
+	 ALOGD("%u %u %f", pixel[2], color[2], color.z);
+	 ALOGD("END");
+	 */
+	 
+	 if (abs(pixel[0] - compare[0]) > 1 ||
+		 abs(pixel[1] - compare[1]) > 1 ||
+		 abs(pixel[2] - compare[2]) > 1) return false;
      
-     if (pixel[0] == static_cast<GLubyte>(color.x * 255 + 0.5f) &&
-	 pixel[1] == static_cast<GLubyte>(color.y * 255 + 0.5f) &&
-	 pixel[2] == static_cast<GLubyte>(color.z * 255 + 0.5f))
-     {
-	  return true;
-     }
-     
-     return false;
+     return true;
 }
 
 /*
