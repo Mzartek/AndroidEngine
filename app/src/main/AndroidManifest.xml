@@ -21,35 +21,17 @@
 
         <activity
             android:name=".game.menu.LevelChooser"
-            android:label="@string/app_name"
             android:configChanges="orientation|keyboardHidden|screenSize">>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".game.GameActivity"
-            android:label="@string/app_name"
             android:configChanges="orientation|keyboardHidden|screenSize">>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".game.menu.PreferenceActivity"
-            android:label="@string/app_name"
             android:configChanges="orientation|keyboardHidden|screenSize">>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
 
