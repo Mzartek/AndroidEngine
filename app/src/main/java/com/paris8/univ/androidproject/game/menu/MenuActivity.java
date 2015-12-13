@@ -20,7 +20,7 @@ public class MenuActivity extends Activity
     public void onResume()
     {
         super.onResume();
-        MyMusicManager.GetInstance().resumeMusic();
+        MyMusicManager.GetInstance().startMusic(R.raw.menu);
     }
 
     @Override
