@@ -10,11 +10,11 @@ import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 public class Form3 extends Form
 {
     public Form3(AssetManager assetManager,
-                 Vector3D<Float> color,
-                 float x, float z, float xwin, float zwin,
+                 Vector3D color,
+                 Vector2D position, float xwin, float zwin,
                  float rotation)
     {
-        super(color, x, z, xwin, zwin);
+        super(color, position, xwin, zwin);
 
         cubes = new Cube[]
                 {

@@ -3,31 +3,29 @@ package com.paris8.univ.androidproject.game.geometry;
 import com.paris8.univ.androidproject.engine.GraphicsRenderer;
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 
+import java.util.ArrayList;
+
 public abstract class Form
 {
     private static final String TAG = "Form";
 
     protected Cube[] cubes;
-
-    protected Vector3D<Float> color;
-
-    protected float x, y, z;
+    protected Vector3D color;
+    protected Vector3D position;
+    protected ArrayList winPositions = new ArrayList();
     protected float xwin, zwin;
 
-    public Form(Vector3D<Float> color,
-                float x, float z, float xwin, float zwin)
+    public Form(Vector3D color,
+                Vector2D position, float xwin, float zwin)
     {
         this.color = color;
-
-        this.x = x;
-        this.y = 1;
-        this.z = z;
+        this.position = new Vector3D(position.x, 1, position.y);
 
         this.xwin = xwin;
         this.zwin = zwin;
 
-        if ((this.x % 2) != 0) this.x += 2 -(this.x % 2);
-        if ((this.z % 2) != 0) this.z += 2 -(this.z % 2);
+        if ((this.position.x % 2) != 0) this.position.x += 2 -(this.position.x % 2);
+        if ((this.position.z % 2) != 0) this.position.z += 2 -(this.position.z % 2);
 
         if ((this.xwin % 2) != 0) this.xwin += 2 -(this.xwin % 2);
         if ((this.zwin % 2) != 0) this.zwin += 2 -(this.zwin % 2);
@@ -35,7 +33,7 @@ public abstract class Form
 
     public boolean winPosition()
     {
-        if (x == xwin && y == 1 && z == zwin)
+        if (position.x == xwin && position.y == 1 && position.z == zwin)
         {
             return true;
         }
@@ -45,22 +43,22 @@ public abstract class Form
 
     public void addX()
     {
-        x += 2;
+        position.x += 2;
     }
 
     public void remX()
     {
-        x -= 2;
+        position.x -= 2;
     }
 
     public void addZ()
     {
-        z += 2;
+        position.z += 2;
     }
 
     public void remZ()
     {
-        z -= 2;
+        position.z -= 2;
     }
 
     public boolean isPointed(int x, int y)
@@ -70,12 +68,12 @@ public abstract class Form
 
     public void unselectIt()
     {
-        y = 1;
+        position.y = 1;
     }
 
     public void selectIt()
     {
-        y = 10;
+        position.y = 10;
     }
 
     protected void displayCube(PerspCamera camera)
@@ -84,7 +82,7 @@ public abstract class Form
         {
             cube.setColor(color);
             cube.getModel().setScale(1, 1, 1);
-            cube.getModel().setPosition(x, y, z);
+            cube.getModel().setPosition(position.x, position.y, position.z);
         }
     }
 
@@ -92,7 +90,7 @@ public abstract class Form
     {
         for (Cube cube : cubes)
         {
-            cube.setColor(new Vector3D(0.5f, 0.0f, 0.0f));
+            cube.setColor(new Vector3D(0.5f, 0, 0));
             cube.getModel().setScale(1, 0, 1);
             cube.getModel().setPosition(xwin, 0, zwin);
         }
@@ -102,9 +100,9 @@ public abstract class Form
     {
         for (Cube cube : cubes)
         {
-            cube.setColor(new Vector3D(0.0f, 0.0f, 0.0f));
+            cube.setColor(new Vector3D(0, 0, 0));
             cube.getModel().setScale(1, 0, 1);
-            cube.getModel().setPosition(x, 0.1f, z);
+            cube.getModel().setPosition(position.x, 0.1f, position.z);
         }
     }
 
