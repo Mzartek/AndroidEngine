@@ -9,17 +9,15 @@ public abstract class Form
 
     protected Cube[] cubes;
 
-    protected float r, g, b;
+    protected Vector3D<Float> color;
 
     protected float x, y, z;
     protected float xwin, zwin;
 
-    public Form(float r, float g, float b,
+    public Form(Vector3D<Float> color,
                 float x, float z, float xwin, float zwin)
     {
-        this.r = r;
-        this.g = g;
-        this.b = b;
+        this.color = color;
 
         this.x = x;
         this.y = 1;
@@ -67,7 +65,7 @@ public abstract class Form
 
     public boolean isPointed(int x, int y)
     {
-        return GraphicsRenderer.compareColor(x, y, r, g, b);
+        return GraphicsRenderer.compareColor(x, y, color.x, color.y, color.z);
     }
 
     public void unselectIt()
@@ -84,7 +82,7 @@ public abstract class Form
     {
         for (Cube cube : cubes)
         {
-            cube.setColor(r, g, b);
+            cube.setColor(color);
             cube.getModel().setScale(1, 1, 1);
             cube.getModel().setPosition(x, y, z);
         }
@@ -94,7 +92,7 @@ public abstract class Form
     {
         for (Cube cube : cubes)
         {
-            cube.setColor(0.5f, 0, 0);
+            cube.setColor(new Vector3D(0.5f, 0.0f, 0.0f));
             cube.getModel().setScale(1, 0, 1);
             cube.getModel().setPosition(xwin, 0, zwin);
         }
@@ -104,7 +102,7 @@ public abstract class Form
     {
         for (Cube cube : cubes)
         {
-            cube.setColor(0, 0, 0);
+            cube.setColor(new Vector3D(0.0f, 0.0f, 0.0f));
             cube.getModel().setScale(1, 0, 1);
             cube.getModel().setPosition(x, 0.1f, z);
         }
