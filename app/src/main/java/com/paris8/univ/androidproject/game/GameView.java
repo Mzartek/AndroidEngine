@@ -204,8 +204,6 @@ public class GameView extends GLSurfaceView
                 mRightButton.display(mCamera);
             }
         }
-
-
     }
 
     public class TouchListener implements OnTouchListener
