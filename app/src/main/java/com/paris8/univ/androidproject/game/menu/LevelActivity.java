@@ -8,15 +8,17 @@ import android.widget.Button;
 
 import com.paris8.univ.androidproject.R;
 import com.paris8.univ.androidproject.game.GameActivity;
+import com.paris8.univ.androidproject.game.MyMusicManager;
 
-public class LevelActivity extends Activity{
-
+public class LevelActivity extends Activity
+{
     private Button level1Button;
     private Button level2Button;
     private Button level3Button;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_chooser);
 
@@ -24,9 +26,11 @@ public class LevelActivity extends Activity{
         level2Button = (Button) findViewById(R.id.level2Button);
         level3Button = (Button) findViewById(R.id.level3Button);
 
-        level1Button.setOnClickListener(new View.OnClickListener() {
+        level1Button.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent intent = new Intent(LevelActivity.this, GameActivity.class);
                 GameActivity.mSelectedLevel = 0;
 
@@ -34,18 +38,22 @@ public class LevelActivity extends Activity{
             }
         });
 
-        level2Button.setOnClickListener(new View.OnClickListener() {
+        level2Button.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent intent = new Intent(LevelActivity.this, GameActivity.class);
                 GameActivity.mSelectedLevel = 1;
                 LevelActivity.this.startActivity(intent);
             }
         });
 
-        level3Button.setOnClickListener(new View.OnClickListener() {
+        level3Button.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent intent = new Intent(LevelActivity.this, GameActivity.class);
                 GameActivity.mSelectedLevel = 2;
                 LevelActivity.this.startActivity(intent);

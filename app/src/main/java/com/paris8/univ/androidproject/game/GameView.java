@@ -25,11 +25,6 @@ public class GameView extends GLSurfaceView
 {
     final static private String TAG = "GameView";
 
-    //Pour la musique [
-    private MediaPlayer mMediaPlayer;
-    private MenuActivity menu;
-    // ]
-
     private GameActivity mGameActivity;
 
     private int mSelectedLevel;
@@ -71,8 +66,9 @@ public class GameView extends GLSurfaceView
     }
 
     @Override
-    public void onPause(){
-        mMediaPlayer.stop();
+    public void onPause()
+    {
+        MyMusicManager.GetInstance().stopMusic();
     }
 
     private class Renderer implements GLSurfaceView.Renderer
@@ -150,10 +146,7 @@ public class GameView extends GLSurfaceView
 
         public void runMusic(int music)
         {
-            mMediaPlayer = MediaPlayer.create(getContext(), music);
-            mMediaPlayer.setLooping(true);
-            if(menu.sharedPreferences.getBoolean(getResources().getString(R.string.pref_sound), true))
-                mMediaPlayer.start();
+            MyMusicManager.GetInstance().startMusic(music);
         }
 
         @Override
@@ -176,7 +169,7 @@ public class GameView extends GLSurfaceView
 
                 if (mLevel.isWin())
                 {
-                    mMediaPlayer.stop();
+                    MyMusicManager.GetInstance().stopMusic();
                     Chronometer.stop();
 
                     switch (mSelectedLevel)
