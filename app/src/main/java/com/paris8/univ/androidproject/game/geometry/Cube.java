@@ -84,8 +84,8 @@ public class Cube
         return mStaticModel;
     }
 
-    public void setColor(float r, float g, float b)
+    public void setColor(Vector3D<Float> color)
     {
-        mMaterial.setDiffuse(r, g, b);
+        mMaterial.setDiffuse(color.x, color.y, color.z);
     }
 }

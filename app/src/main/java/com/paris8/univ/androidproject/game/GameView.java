@@ -250,6 +250,7 @@ public class GameView extends GLSurfaceView
         }
     }
 
+    /*
     public class DragListener implements OnDragListener
     {
         private float x, y;
@@ -272,4 +273,5 @@ public class GameView extends GLSurfaceView
             return true;
         }
     }
+    */
 }
