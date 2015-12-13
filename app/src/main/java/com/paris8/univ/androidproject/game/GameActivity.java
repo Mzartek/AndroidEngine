@@ -23,8 +23,8 @@ public class GameActivity extends Activity
     @Override
     protected void onPause()
     {
-        super.onPause();
         mView.onPause();
+        super.onPause();
     }
 
     @Override

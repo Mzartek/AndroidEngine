@@ -4,6 +4,8 @@ import android.content.res.AssetManager;
 
 import com.paris8.univ.androidproject.engine.camera.PerspCamera;
 
+import java.util.ArrayList;
+
 /**
  * C'est un L
  */
@@ -11,10 +13,11 @@ public class Form2 extends Form
 {
     public Form2(AssetManager assetManager,
                  Vector3D color,
-                 Vector2D position, float xwin, float zwin,
+                 Vector2D position,
+                 ArrayList<Vector2D> winPositions,
                  float rotation)
     {
-        super(color, position, xwin, zwin);
+        super(color, position, winPositions);
 
         cubes = new Cube[]
                 {
@@ -23,6 +26,15 @@ public class Form2 extends Form
                         new Cube(assetManager),
                         new Cube(assetManager),
                         new Cube(assetManager),
+                };
+
+        offsets = new Vector3D[]
+                {
+                        new Vector3D(0, 0, 0),
+                        new Vector3D(0, 0, 2),
+                        new Vector3D(0, 0, 4),
+                        new Vector3D(0, 0, 6),
+                        new Vector3D(2, 0, 6),
                 };
 
         for (Cube cube : cubes)
@@ -35,27 +47,7 @@ public class Form2 extends Form
     public void display(PerspCamera camera)
     {
         super.displayShadow(camera);
-
-        cubes[0].getModel().displayOffSet(camera, 0, 0, 0);
-        cubes[1].getModel().displayOffSet(camera, 0, 0, 2);
-        cubes[2].getModel().displayOffSet(camera, 0, 0, 4);
-        cubes[3].getModel().displayOffSet(camera, 0, 0, 6);
-        cubes[4].getModel().displayOffSet(camera, 2, 0, 6);
-
         super.displayFloor(camera);
-
-        cubes[0].getModel().displayOffSet(camera, 0, 0, 0);
-        cubes[1].getModel().displayOffSet(camera, 0, 0, 2);
-        cubes[2].getModel().displayOffSet(camera, 0, 0, 4);
-        cubes[3].getModel().displayOffSet(camera, 0, 0, 6);
-        cubes[4].getModel().displayOffSet(camera, 2, 0, 6);
-
         super.displayCube(camera);
-
-        cubes[0].getModel().displayOffSet(camera, 0, 0, 0);
-        cubes[1].getModel().displayOffSet(camera, 0, 0, 2);
-        cubes[2].getModel().displayOffSet(camera, 0, 0, 4);
-        cubes[3].getModel().displayOffSet(camera, 0, 0, 6);
-        cubes[4].getModel().displayOffSet(camera, 2, 0, 6);
     }
 }

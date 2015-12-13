@@ -66,6 +66,23 @@ public class GameView extends GLSurfaceView
     }
 
     @Override
+    public void onResume()
+    {
+        switch (mSelectedLevel)
+        {
+            case 0:
+                MyMusicManager.GetInstance().startMusic(R.raw.level1_music);
+                break;
+            case 1:
+                MyMusicManager.GetInstance().startMusic(R.raw.level2_music);
+                break;
+            case 2:
+                MyMusicManager.GetInstance().startMusic(R.raw.level3_music);
+                break;
+        }
+    }
+
+    @Override
     public void onPause()
     {
         MyMusicManager.GetInstance().stopMusic();
@@ -92,7 +109,7 @@ public class GameView extends GLSurfaceView
             GraphicsRenderer.printGLinfo();
 
             mCamera = new PerspCamera();
-            mCamera.setPositionAndTarget(20, 20, 0, 0, 0, 0);
+            mCamera.setPositionAndTarget(0, 20, 20, 0, 0, 0);
 
             mySkyBox = new MySkyBox(mAssetManager);
 
@@ -123,15 +140,15 @@ public class GameView extends GLSurfaceView
             switch (mSelectedLevel)
             {
                 case 0:
-                    runMusic(R.raw.level1_music);
+                    MyMusicManager.GetInstance().startMusic(R.raw.level1_music);
                     mLevel = Levels.getLevel0(mAssetManager);
                     break;
                 case 1:
-                    runMusic(R.raw.level2_music);
+                    MyMusicManager.GetInstance().startMusic(R.raw.level2_music);
                     mLevel = Levels.getLevel1(mAssetManager);
                     break;
                 case 2:
-                    runMusic(R.raw.level3_music);
+                    MyMusicManager.GetInstance().startMusic(R.raw.level3_music);
                     mLevel = Levels.getLevel2(mAssetManager);
                     break;
                 default:
@@ -142,11 +159,6 @@ public class GameView extends GLSurfaceView
             mSurfaceCreated = true;
 
             Chronometer.start();
-        }
-
-        public void runMusic(int music)
-        {
-            MyMusicManager.GetInstance().startMusic(music);
         }
 
         @Override
@@ -218,22 +230,22 @@ public class GameView extends GLSurfaceView
                     if(mLevel.isFormSelected() &&
                             mUpButton.isClicked((int)event.getX(), (int)event.getY(), mRenderer.getWidth(), mRenderer.getHeight()))
                     {
-                        mLevel.getSelectedForm().remX();
+                        mLevel.getSelectedForm().remZ();
                     }
                     else if(mLevel.isFormSelected() &&
                             mDownButton.isClicked((int)event.getX(), (int)event.getY(), mRenderer.getWidth(), mRenderer.getHeight()))
                     {
-                        mLevel.getSelectedForm().addX();
+                        mLevel.getSelectedForm().addZ();
                     }
                     else if(mLevel.isFormSelected() &&
                             mLeftButton.isClicked((int)event.getX(), (int)event.getY(), mRenderer.getWidth(), mRenderer.getHeight()))
                     {
-                        mLevel.getSelectedForm().addZ();
+                        mLevel.getSelectedForm().remX();
                     }
                     else if(mLevel.isFormSelected() &&
                             mRightButton.isClicked((int)event.getX(), (int)event.getY(), mRenderer.getWidth(), mRenderer.getHeight()))
                     {
-                        mLevel.getSelectedForm().remZ();
+                        mLevel.getSelectedForm().addX();
                     }
                     else
                     {
