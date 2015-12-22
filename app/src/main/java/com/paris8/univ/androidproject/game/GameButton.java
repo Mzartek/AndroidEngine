@@ -62,7 +62,6 @@ public class GameButton
                         tx3, ty3,
                         0, 0, 0, 0, 0, 0,
                 };
-
         try
         {
             mShaderProgram = new ShaderProgram(assetManager,

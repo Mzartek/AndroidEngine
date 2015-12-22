@@ -15,7 +15,7 @@ public class Form2 extends Form
                  Vector3D color,
                  Vector2D position,
                  ArrayList<Vector2D> winPositions,
-                 float rotation)
+                 Vector3D rotation)
     {
         super(color, position, winPositions);
 
@@ -39,7 +39,7 @@ public class Form2 extends Form
 
         for (Cube cube : cubes)
         {
-            cube.getModel().setRotation(0, rotation, 0);
+            cube.getModel().setRotation(rotation.x, rotation.y, rotation.z);
         }
     }
 
