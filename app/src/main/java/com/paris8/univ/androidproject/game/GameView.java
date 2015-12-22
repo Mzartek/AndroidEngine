@@ -109,7 +109,7 @@ public class GameView extends GLSurfaceView
             GraphicsRenderer.printGLinfo();
 
             mCamera = new PerspCamera();
-            mCamera.setPositionAndTarget(0, 20, 20, 0, 0, 0);
+            mCamera.setPositionAndTarget(0, 30, 10, 0, 0, 0);
 
             mySkyBox = new MySkyBox(mAssetManager);
 
