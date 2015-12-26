@@ -24,7 +24,7 @@ public class Levels
 
         level.addForm(new Form1(assetManager,
                 new Vector3D(1, 1, 0),
-                new Vector2D(8, -14),
+                new Vector2D(8, -10),
                 form1Solutions,
                 new Vector3D(0,0,0)));
 
@@ -35,13 +35,13 @@ public class Levels
 
         level.addForm(new Form2(assetManager,
                 new Vector3D(1, 1, 0.5f),
-                new Vector2D(4, 10),
+                new Vector2D(8, 10),
                 form2Solutions,
                 new Vector3D(0.0f,(float)Math.toRadians(180),0.0f)));
 
         level.addForm(new Form2(assetManager,
                 new Vector3D(0.5f, 1, 0.5f),
-                new Vector2D(-4, 10),
+                new Vector2D(-8, 10),
                 form2Solutions,
                 new Vector3D(0.0f,(float)Math.toRadians(180),0.0f)));
 
@@ -53,13 +53,13 @@ public class Levels
 
         level.addForm(new Form4(assetManager,
                 new Vector3D(1, 0, 0),
-                new Vector2D(4, -14),
+                new Vector2D(4, 16),
                 form4Solutions,
                 new Vector3D(0,0,0)));
 
         level.addForm(new Form4(assetManager,
                 new Vector3D(0, 1, 0),
-                new Vector2D(0, -14),
+                new Vector2D(-8, 16),
                 form4Solutions,
                 new Vector3D(0,0,0)));
 
@@ -76,7 +76,7 @@ public class Levels
 
         level.addForm(new Form3(assetManager,
                 new Vector3D(1, 0, 1),
-                new Vector2D(-4, -14),
+                new Vector2D(-4, -8),
                 form3Solutions,
                 new Vector3D(0,0,0)));
 
@@ -110,19 +110,19 @@ public class Levels
 
         level.addForm(new Form2(assetManager,
                 new Vector3D(0.0f, 1.0f, 0.0f),
-                new Vector2D(4.0f, 0),
+                new Vector2D(8, 0),
                 form2_1_solution,
                 new Vector3D(0.0f, (float) Math.toRadians(180), (float) Math.toRadians(180))));
 
         level.addForm(new Form2(assetManager,
                 new Vector3D(1.0f, 1.0f, 0.0f),
-                new Vector2D(3.0f, 0),
+                new Vector2D(8, 16),
                 form2_2_solution,
                 new Vector3D(0,0,0)));
 
         level.addForm(new Form2(assetManager,
                 new Vector3D(1.0f, 1.0f, 1.0f),
-                new Vector2D(-8.0f, 8),
+                new Vector2D(-10, 18),
                 form2_3_solution,
                 new Vector3D(0,(float) Math.toRadians(90),0)));
 
@@ -145,19 +145,19 @@ public class Levels
 
         level.addForm(new Form3(assetManager,
                 new Vector3D(1.0f, 0.0f, 0.50f),
-                new Vector2D(3.0f, 0),
+                new Vector2D(-0, -8),
                 form3_1_solution,
                 new Vector3D(0, 0, 0)));
 
         level.addForm(new Form3(assetManager,
                 new Vector3D(0.0f, 0.50f, 0.50f),
-                new Vector2D(3.0f, 0),
+                new Vector2D(-6, -8),
                 form3_2_solution,
                 new Vector3D(0, 0, (float) Math.toRadians(180))));
 
         level.addForm(new Form3(assetManager,
                 new Vector3D(0.50f, 1.0f, 0.50f),
-                new Vector2D(3.0f, 0),
+                new Vector2D(-4, 22),
                 form3_3_solution,
                 new Vector3D(0, (float) Math.toRadians(180), (float) Math.toRadians(180))));
 
@@ -168,7 +168,7 @@ public class Levels
 
         level.addForm(new Form1(assetManager,
                 new Vector3D(0.25f, 0.50f, 0.75f),
-                new Vector2D(-8, 6),
+                new Vector2D(-10, 6),
                 form1_1_solution,
                 new Vector3D(0, 0, 0)));
 
@@ -190,7 +190,7 @@ public class Levels
 
         level.addForm(new Form5(assetManager,
                 new Vector3D(0.75f, 0.0f, 0.25f),
-                new Vector2D(8, 10),
+                new Vector2D(12, 14),
                 form5_1_solution,
                 new Vector3D(0, (float) Math.toRadians(-90), 0)));
 
@@ -202,16 +202,99 @@ public class Levels
     {
         Level level = new Level();
 
-        /*level.addForm(new Form4(assetManager,
+        // Form 1 section
+
+        ArrayList<Vector2D> form1_1_solution = new ArrayList();
+        form1_1_solution.add(new Vector2D(-8, 0));
+
+        ArrayList<Vector2D> form1_2_solution = new ArrayList();
+        form1_2_solution.add(new Vector2D(-8, 8));
+
+        level.addForm(new Form1(assetManager,
                 new Vector3D(0, 1, 0),
-                new Vector2D(1.75f, 0),
-                0, 3.75f,
-                66));
-        level.addForm(new Form5(assetManager,
+                new Vector2D(-10, 6),
+                form1_1_solution,
+                new Vector3D(0,0,0)));
+
+        level.addForm(new Form1(assetManager,
                 new Vector3D(1, 0, 0),
-                new Vector2D(3, 1),
-                1, 2,
-                33));*/
+                new Vector2D(-8, -6),
+                form1_2_solution,
+                new Vector3D(0, (float) Math.toRadians(90), 0)));
+
+        // Form 2 section
+
+        ArrayList<Vector2D> form2_1_solution = new ArrayList();
+        form2_1_solution.add(new Vector2D(-6, 0));
+
+        ArrayList<Vector2D> form2_2_solution = new ArrayList();
+        form2_2_solution.add(new Vector2D(8, 0));
+
+        ArrayList<Vector2D> form2_3_solution = new ArrayList();
+        form2_3_solution.add(new Vector2D(8, 2));
+
+        level.addForm(new Form2(assetManager,
+                new Vector3D(0.5f, 0.25f, 0.12f),
+                new Vector2D(-10, 16),
+                form2_1_solution,
+                new Vector3D(0, 0, 0)));
+
+        level.addForm(new Form2(assetManager,
+                new Vector3D(1, 0.66f, 0.40f),
+                new Vector2D(12, 10),
+                form2_2_solution,
+                new Vector3D(0, (float) Math.toRadians(-90), 0)));
+
+        level.addForm(new Form2(assetManager,
+                new Vector3D(0, 1, 1),
+                new Vector2D(0, 10),
+                form2_3_solution,
+                new Vector3D(0, 0, (float) Math.toRadians(180))));
+
+        // Form 4 section
+
+        ArrayList<Vector2D> form4_solution = new ArrayList();
+        form4_solution.add(new Vector2D(-2, 0));
+        form4_solution.add(new Vector2D(0, 4));
+        form4_solution.add(new Vector2D(4, 2));
+
+        level.addForm(new Form4(assetManager,
+                new Vector3D(0.25f, 0.75f, 1),
+                new Vector2D(10, 0),
+                form4_solution,
+                new Vector3D(0, 0, 0)));
+
+        level.addForm(new Form4(assetManager,
+                new Vector3D(0, 0.5f, 0.75f),
+                new Vector2D(10, -8),
+                form4_solution,
+                new Vector3D(0, 0, 0)));
+
+        level.addForm(new Form4(assetManager,
+                new Vector3D(0.33f, 0.12f, 0.50f),
+                new Vector2D(0, -6),
+                form4_solution,
+                new Vector3D(0, 0, 0)));
+
+        // Form 3 section
+
+        ArrayList<Vector2D> form3_1_solution = new ArrayList();
+        form3_1_solution.add(new Vector2D(-2, 6));
+
+        ArrayList<Vector2D> form3_2_solution = new ArrayList();
+        form3_2_solution.add(new Vector2D(6, 6));
+
+        level.addForm(new Form3(assetManager,
+                new Vector3D(0.50f, 0.80f, 0.0f),
+                new Vector2D(2, -16),
+                form3_1_solution,
+                new Vector3D(0, (float) Math.toRadians(180), 0)));
+
+        level.addForm(new Form3(assetManager,
+                new Vector3D(0.25f, 0.80f, 0.70f),
+                new Vector2D(6, -16),
+                form3_2_solution,
+                new Vector3D(0, (float) Math.toRadians(-90), 0)));
 
         return level;
     }
